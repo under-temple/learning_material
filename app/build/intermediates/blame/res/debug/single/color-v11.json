@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+    },
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+    }
+]

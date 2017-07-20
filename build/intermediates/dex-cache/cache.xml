@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="9cf321f68bd56cfcd03f93ca7bd22a641849281f">
+        <dex dex="/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_905b96d47a6173dc5352022b1103e436f615200b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_dc0c68a249812bbada636e3ab9a38ee9b30f8e1d/classes.dex" />
+    </item>
+
+</items>

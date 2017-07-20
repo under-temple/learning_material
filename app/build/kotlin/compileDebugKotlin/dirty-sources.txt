@@ -1,0 +1,2 @@
+/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/java/com/example/shokiterashita/learningmaterial/views/activities/MainActivity.kt
+/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/java/com/example/shokiterashita/learningmaterial/views/fragments/LearningMaterialTestFragment.kt

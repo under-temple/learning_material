@@ -1,0 +1,87 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:2:1-21:12
+	package
+		ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:3:5-58
+		INJECTED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml
+application
+ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:5:5-19:19
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/8e38b7a69e40927e1d3d93f3eee44197c27be320/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/961a928d719faf2e3d95c5049140075106e94b42/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/shoki.terashita/.android/build-cache/03d810d923e15af70abcfc8eb8a8ca15e7453d70/output/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/1e26b23f151048a7ce5717df4b72752e95cca274/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/10f766174cfed72e8e5561a8299bf6fc3a73d8fb/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/5434a3dcdba110c570a4a6b07787d38d426cf40c/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/75c1dfeb1788e79d8339525821348020fc7c859a/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/d1f425242e0227fcd074e5d6da6e223e9e607b8f/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/eed1f39f1990e6b28083a368f290c16ae8b716ed/output/AndroidManifest.xml:29:5-20
+	android:label
+		ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:8:9-41
+	android:supportsRtl
+		ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:10:9-35
+	android:roundIcon
+		ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:9:9-54
+	android:allowBackup
+		ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:6:9-35
+	android:icon
+		ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:7:9-43
+	android:theme
+		ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:11:9-40
+activity#com.example.shokiterashita.learningmaterial.views.activities.MainActivity
+ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:12:19-64
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml:16:27-74
+uses-sdk
+INJECTED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/8e38b7a69e40927e1d3d93f3eee44197c27be320/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/961a928d719faf2e3d95c5049140075106e94b42/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/shoki.terashita/.android/build-cache/03d810d923e15af70abcfc8eb8a8ca15e7453d70/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/1e26b23f151048a7ce5717df4b72752e95cca274/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/10f766174cfed72e8e5561a8299bf6fc3a73d8fb/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/5434a3dcdba110c570a4a6b07787d38d426cf40c/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/75c1dfeb1788e79d8339525821348020fc7c859a/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/d1f425242e0227fcd074e5d6da6e223e9e607b8f/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/eed1f39f1990e6b28083a368f290c16ae8b716ed/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/src/main/AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:animated-vector-drawable:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/8e38b7a69e40927e1d3d93f3eee44197c27be320/output/AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-vector-drawable:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/961a928d719faf2e3d95c5049140075106e94b42/output/AndroidManifest.xml:22:5-24:41
+MERGED from [com.android.support:support-v4:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/1e26b23f151048a7ce5717df4b72752e95cca274/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-media-compat:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/10f766174cfed72e8e5561a8299bf6fc3a73d8fb/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-fragment:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/5434a3dcdba110c570a4a6b07787d38d426cf40c/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-ui:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/75c1dfeb1788e79d8339525821348020fc7c859a/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-core-utils:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/d1f425242e0227fcd074e5d6da6e223e9e607b8f/output/AndroidManifest.xml:25:5-27:41
+MERGED from [com.android.support:support-compat:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/eed1f39f1990e6b28083a368f290c16ae8b716ed/output/AndroidManifest.xml:25:5-27:41
+	android:value
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/AndroidManifest.xml:27:9-38
+	android:name
+		ADDED from [com.android.support:appcompat-v7:26.0.0-alpha1] /Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/AndroidManifest.xml:26:9-47

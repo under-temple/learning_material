@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/Users/shoki.terashita/Documents/workspace/android/LearningMaterial/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/Users/shoki.terashita/.android/build-cache/3b4fd54c78c295065d6e87b3d75f8c897e5f14aa/output/res/anim/abc_slide_out_bottom.xml"
+    }
+]
