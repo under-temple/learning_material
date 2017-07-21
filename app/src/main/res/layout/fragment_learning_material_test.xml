@@ -1,17 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:tag="LearningMaterialTestFragment"
     tools:context="com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment">
 
-
-
-    <!--<TextView-->
-        <!--android:id="@+id/textView"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:text="@string/hello_blank_fragment" />-->
 
     <TextView
         android:id="@+id/material_test_title"
@@ -26,6 +21,7 @@
         android:orientation="horizontal"
         android:layout_gravity="center">
 
+        <!--//プレイスホルダーを使用する。-->
         <TextView
             android:id="@+id/currentTestNumber"
             android:layout_width="wrap_content"

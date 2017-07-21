@@ -38,8 +38,11 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
     }
 }
 repositories {
     mavenCentral()
 }
+
+//apply plugin: 'realm-android'
