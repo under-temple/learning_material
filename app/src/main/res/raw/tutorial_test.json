@@ -1,0 +1,29 @@
+[
+  {
+    "option_2" : "猫 ",
+    "answer" : 1,
+    "id" : 1,
+    "option_1" : "犬 ",
+    "question" : "dog ",
+    "option_4" : "ヤギ ",
+    "option_3" : "豚 "
+  },
+  {
+    "option_2" : "冷静に ",
+    "answer" : 3,
+    "id" : 2,
+    "option_1" : "便利に ",
+    "question" : "really ",
+    "option_4" : "的確に ",
+    "option_3" : "本当に "
+  },
+  {
+    "option_2" : "地図 ",
+    "answer" : 2,
+    "id" : 3,
+    "option_1" : "モップ ",
+    "question" : "map ",
+    "option_4" : "眠り ",
+    "option_3" : "山岳 "
+  }
+]

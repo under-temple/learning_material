@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
+import com.example.shokiterashita.learningmaterial.views.lib.manager.extention.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,10 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     fun showFragment() {
 
-        this.addContentView()
-//        supportFragmentManager.beginTransaction().add(learningMaterial, "LearningMaterialTestFragment").commit()
-        supportFragmentManager.beginTransaction().show(learningMaterial).commit()
-
+        this.replaceFragment(R.id.content_layout, learningMaterial)
 
     }
 

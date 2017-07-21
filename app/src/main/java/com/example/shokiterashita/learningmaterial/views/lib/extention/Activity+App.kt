@@ -15,6 +15,7 @@ fun AppCompatActivity.addFragment(id:Int, fragment: Fragment){
         this.replaceFragment(id, fragment)
         return
     }
+    //以下は、Fragmentを管理するクラス。
     val transaction = supportFragmentManager.beginTransaction()
     transaction.add(id, fragment)
     transaction.addToBackStack(null)

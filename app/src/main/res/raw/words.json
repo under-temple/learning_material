@@ -1,0 +1,2704 @@
+{"list":
+[
+  {
+    "worden" : "general",
+    "wordjp" : "全般的な",
+    "examplejp" : "彼の仕事はシステムの全般的な維持管理に関係している",
+    "id" : 1,
+    "option_1" : "危機的な",
+    "option_2" : "効率的な",
+    "exampleen" : "His work involves the general maintenance of the system."
+  },
+  {
+    "worden" : "advertise",
+    "wordjp" : "宣伝する",
+    "examplejp" : "我々は当社の新しい製品を宣伝する必要がある",
+    "id" : 2,
+    "option_1" : "依頼する",
+    "option_2" : "協力する",
+    "exampleen" : "We need to advertise our new products."
+  },
+  {
+    "worden" : "clearly",
+    "wordjp" : "明らかに",
+    "examplejp" : "彼は明らかに無罪だ",
+    "id" : 3,
+    "option_1" : "暗に",
+    "option_2" : "すぐに",
+    "exampleen" : "He is clearly innocent."
+  },
+  {
+    "worden" : "doubt",
+    "wordjp" : "疑う",
+    "examplejp" : "私は間違いなく食べるのが好きだ",
+    "id" : 4,
+    "option_1" : "願う",
+    "option_2" : "間違う",
+    "exampleen" : "I love to eat, without a doubt."
+  },
+  {
+    "worden" : "origin",
+    "wordjp" : "原産",
+    "examplejp" : "この家は熱帯産の木材で建てられた",
+    "id" : 5,
+    "option_1" : "オルガン",
+    "option_2" : "臓器",
+    "exampleen" : "This house was built from wood of a tropical origin."
+  },
+  {
+    "worden" : "quit",
+    "wordjp" : "辞める",
+    "examplejp" : "私は会社を辞めたい",
+    "id" : 6,
+    "option_1" : "とても",
+    "option_2" : "静か",
+    "exampleen" : "I want to quit the company."
+  },
+  {
+    "worden" : "garbage",
+    "wordjp" : "ごみ",
+    "examplejp" : "会社では私はゴミ当番です",
+    "id" : 7,
+    "option_1" : "キャベツ",
+    "option_2" : "荷物",
+    "exampleen" : "I'm on duty for garbage in the company."
+  },
+  {
+    "worden" : "yet",
+    "wordjp" : "けれども",
+    "examplejp" : "我々の新商品はとてもよいけれども価格が高い",
+    "id" : 8,
+    "option_1" : "そのため",
+    "option_2" : "にもかかわらず",
+    "exampleen" : "Our new product is very good, yet its price is high."
+  },
+  {
+    "worden" : "rather",
+    "wordjp" : "かなり",
+    "examplejp" : "今日はかなり暖かい",
+    "id" : 9,
+    "option_1" : "皮",
+    "option_2" : "すくなくとも",
+    "exampleen" : "It's rather warm today."
+  },
+  {
+    "worden" : "identity",
+    "wordjp" : "独自性",
+    "examplejp" : "そのマーケットで勝つには、我々の製品にもっと独自性が必要だ",
+    "id" : 10,
+    "option_1" : "類似性",
+    "option_2" : "人間性",
+    "exampleen" : "To win in that market, our product needs more identity."
+  },
+  {
+    "worden" : "locate",
+    "wordjp" : "位置づける",
+    "examplejp" : "御社はどこにありますか？",
+    "id" : 11,
+    "option_1" : "回転する",
+    "option_2" : "移動する",
+    "exampleen" : "How do I locate your company?"
+  },
+  {
+    "worden" : "iron",
+    "wordjp" : "アイロンをかける",
+    "examplejp" : "あなたは自身の服にアイロンをかけたのですか？",
+    "id" : 12,
+    "option_1" : "鉄を磨く",
+    "option_2" : "話しかける",
+    "exampleen" : "Did you iron your clothes?"
+  },
+  {
+    "worden" : "house",
+    "wordjp" : "収容する",
+    "examplejp" : "新しいオフィスは従業員を500人収容できる",
+    "id" : 13,
+    "option_1" : "馬",
+    "option_2" : "落胆する",
+    "exampleen" : "Our new office can house 500 employees."
+  },
+  {
+    "worden" : "nearly",
+    "wordjp" : "ほとんど",
+    "examplejp" : "もう少しでプロジェクトは終わります",
+    "id" : 14,
+    "option_1" : "本当に",
+    "option_2" : "すくなくとも",
+    "exampleen" : "We are nearly at the end of the project."
+  },
+  {
+    "worden" : "advertising",
+    "wordjp" : "広告",
+    "examplejp" : "我々のビジネスは広告を製作することです",
+    "id" : 15,
+    "option_1" : "進捗",
+    "option_2" : "屋外",
+    "exampleen" : "Our business is to create advertising."
+  },
+  {
+    "worden" : "memorize",
+    "wordjp" : "記憶する",
+    "examplejp" : "自分のパスワードは記憶しておかなければならない。",
+    "id" : 16,
+    "option_1" : "祈る",
+    "option_2" : "感動する",
+    "exampleen" : "You have to memorize your password."
+  },
+  {
+    "worden" : "housing",
+    "wordjp" : "住宅",
+    "examplejp" : "多くの従業員が公営住宅に住んでいる",
+    "id" : 17,
+    "option_1" : "城",
+    "option_2" : "馬",
+    "exampleen" : "Many employees live in public housing."
+  },
+  {
+    "worden" : "spot",
+    "wordjp" : "場所",
+    "examplejp" : "彼らは静かな場所に支社を建てた",
+    "id" : 18,
+    "option_1" : "ポット",
+    "option_2" : "住宅",
+    "exampleen" : "They built a branch office in a quiet spot."
+  },
+  {
+    "worden" : "screen",
+    "wordjp" : "スクリーン",
+    "examplejp" : "テレビのスクリーンに何が見えますか？",
+    "id" : 19,
+    "option_1" : "裏側",
+    "option_2" : "表面",
+    "exampleen" : "What can you see on a TV screen?"
+  },
+  {
+    "worden" : "luxury",
+    "wordjp" : "豪華さ",
+    "examplejp" : "あのパーティはこの上なく豪華だった",
+    "id" : 20,
+    "option_1" : "貧しさ",
+    "option_2" : "速さ",
+    "exampleen" : "That party was the ultimate luxury."
+  },
+  {
+    "worden" : "resemble",
+    "wordjp" : "似ている",
+    "examplejp" : "どのように彼らの製品は、私たちの製品に似ていますか？",
+    "id" : 21,
+    "option_1" : "似ていない",
+    "option_2" : "知っている",
+    "exampleen" : "How does their product resemble ours?"
+  },
+  {
+    "worden" : "amazing",
+    "wordjp" : "驚くべき",
+    "examplejp" : "彼は驚くべき成功をやり遂げた",
+    "id" : 22,
+    "option_1" : "知られざる",
+    "option_2" : "知るべき",
+    "exampleen" : "He made an amazing success of the job."
+  },
+  {
+    "worden" : "fix",
+    "wordjp" : "修理する",
+    "examplejp" : "それを修理できますか？",
+    "id" : 23,
+    "option_1" : "開発する",
+    "option_2" : "前進する",
+    "exampleen" : "Can you fix it?"
+  },
+  {
+    "worden" : "departure",
+    "wordjp" : "出発",
+    "examplejp" : "出発予定時刻の2時間前に搭乗手続きをお済ませください。",
+    "id" : 24,
+    "option_1" : "デパート",
+    "option_2" : "乗り換え",
+    "exampleen" : "Please check in two hours before your scheduled departure."
+  },
+  {
+    "worden" : "fortunate",
+    "wordjp" : "幸運な",
+    "examplejp" : "私たちは素晴らしいマネージャーと仕事が出来て幸運です",
+    "id" : 25,
+    "option_1" : "不運な",
+    "option_2" : "未来の",
+    "exampleen" : "We are fortunate enough to work with a great manager."
+  },
+  {
+    "worden" : "satisfaction",
+    "wordjp" : "満足",
+    "examplejp" : "まず最初に我々は顧客の満足を考えなければならない",
+    "id" : 26,
+    "option_1" : "不足",
+    "option_2" : "限界",
+    "exampleen" : "We need to think about customer satisfaction first."
+  },
+  {
+    "worden" : "skip",
+    "wordjp" : "飛ばす",
+    "examplejp" : "私は朝食を飛ばさないといけない",
+    "id" : 27,
+    "option_1" : "滑る",
+    "option_2" : "転がす",
+    "exampleen" : "I need to skip breakfast."
+  },
+  {
+    "worden" : "consumer",
+    "wordjp" : "消費者",
+    "examplejp" : "我々はまず最初に消費者を知る必要がある",
+    "id" : 28,
+    "option_1" : "浪費家",
+    "option_2" : "学者",
+    "exampleen" : "We need to know about the consumer first."
+  },
+  {
+    "worden" : "therefore",
+    "wordjp" : "それゆえに",
+    "examplejp" : "従って、この状況下で我々に選択肢はありません",
+    "id" : 29,
+    "option_1" : "しかしながら",
+    "option_2" : "だいたい",
+    "exampleen" : "Therefore, we have no choice in this situation."
+  },
+  {
+    "worden" : "source",
+    "wordjp" : "源",
+    "examplejp" : "私たちはニュースの出どころを見つけないといけない",
+    "id" : 30,
+    "option_1" : "調味だれ",
+    "option_2" : "南",
+    "exampleen" : "We need to find the news source."
+  },
+  {
+    "worden" : "region",
+    "wordjp" : "地帯",
+    "examplejp" : "砂漠地帯では水が重要だ",
+    "id" : 31,
+    "option_1" : "各国の",
+    "option_2" : "幻覚",
+    "exampleen" : "Water is important in a desert region."
+  },
+  {
+    "worden" : "drop",
+    "wordjp" : "減少する",
+    "examplejp" : "我々は製品の価格を下げる必要がある",
+    "id" : 32,
+    "option_1" : "増加する",
+    "option_2" : "身近になる",
+    "exampleen" : "We need to drop the price of our product."
+  },
+  {
+    "worden" : "urban",
+    "wordjp" : "都会の",
+    "examplejp" : "多くの会社は都心部に位置しています",
+    "id" : 33,
+    "option_1" : "田舎の",
+    "option_2" : "知られた",
+    "exampleen" : "Many companies are located in urban centers."
+  },
+  {
+    "worden" : "conclusion",
+    "wordjp" : "結論",
+    "examplejp" : "私はその結論にまったく不満はありません",
+    "id" : 34,
+    "option_1" : "導入",
+    "option_2" : "持論",
+    "exampleen" : "I have no complaints regarding the conclusion."
+  },
+  {
+    "worden" : "container",
+    "wordjp" : "コンテナ",
+    "examplejp" : "私は向こうの方に背の高いコンテナが見える",
+    "id" : 35,
+    "option_1" : "手荷物",
+    "option_2" : "手鏡",
+    "exampleen" : "I can see a huge container over there."
+  },
+  {
+    "worden" : "originally",
+    "wordjp" : "最初は",
+    "examplejp" : "あのビルは最初は公園だった",
+    "id" : 36,
+    "option_1" : "最後は",
+    "option_2" : "中盤は",
+    "exampleen" : "That building was originally a park."
+  },
+  {
+    "worden" : "site",
+    "wordjp" : "現場",
+    "examplejp" : "私は現場リーダーの声を集めた",
+    "id" : 37,
+    "option_1" : "引用",
+    "option_2" : "確信",
+    "exampleen" : "I gathered comments from the site leader."
+  },
+  {
+    "worden" : "visible",
+    "wordjp" : "目に見える",
+    "examplejp" : "山頂は我々のオフィスから見えます。",
+    "id" : 38,
+    "option_1" : "目に見えない",
+    "option_2" : "可能性",
+    "exampleen" : "The mountain peak is visible from our office."
+  },
+  {
+    "worden" : "grocery",
+    "wordjp" : "食料品店",
+    "examplejp" : "肉を大型食料品店で買った。",
+    "id" : 39,
+    "option_1" : "精肉店",
+    "option_2" : "雑貨店",
+    "exampleen" : "We bought meat at a grocery store."
+  },
+  {
+    "worden" : "code",
+    "wordjp" : "規定",
+    "examplejp" : "弊社に正式な服装規定はありません",
+    "id" : 40,
+    "option_1" : "カード",
+    "option_2" : "推奨",
+    "exampleen" : "We have no official dress code at our workplace."
+  },
+  {
+    "worden" : "slip",
+    "wordjp" : "滑る",
+    "examplejp" : "あなたはバナナの皮で滑る事ができる",
+    "id" : 41,
+    "option_1" : "飛ばす",
+    "option_2" : "鳴らす",
+    "exampleen" : "You can slip on a banana peel."
+  },
+  {
+    "worden" : "characteristic",
+    "wordjp" : "特徴",
+    "examplejp" : "この製品の主な特徴はなんですか？",
+    "id" : 42,
+    "option_1" : "異変",
+    "option_2" : "問題",
+    "exampleen" : "What is the main characteristic of this product?"
+  },
+  {
+    "worden" : "harvest",
+    "wordjp" : "収穫する",
+    "examplejp" : "作物を収穫する際には手伝いが欲しい",
+    "id" : 43,
+    "option_1" : "栽培する",
+    "option_2" : "収納する",
+    "exampleen" : "We need help when we harvest our crops."
+  },
+  {
+    "worden" : "manufacturer",
+    "wordjp" : "製造会社",
+    "examplejp" : "私は製造会社の秘書として働いています",
+    "id" : 44,
+    "option_1" : "農場",
+    "option_2" : "鐵工所",
+    "exampleen" : "I work for a manufacturer as a secretary."
+  },
+  {
+    "worden" : "emotional",
+    "wordjp" : "感情の",
+    "examplejp" : "我々は決して感情的な決定を下してはいけない",
+    "id" : 45,
+    "option_1" : "倫理の",
+    "option_2" : "完成した",
+    "exampleen" : "We must not make emotional decisions."
+  },
+  {
+    "worden" : "sound",
+    "wordjp" : "聞こえる",
+    "examplejp" : "ボスの言葉は皮肉に聞こえる",
+    "id" : 46,
+    "option_1" : "聞こえない",
+    "option_2" : "近い",
+    "exampleen" : "My boss can sound sarcastic."
+  },
+  {
+    "worden" : "transportation",
+    "wordjp" : "交通",
+    "examplejp" : "我々は交通費を節約する必要がある",
+    "id" : 47,
+    "option_1" : "瞬間移動",
+    "option_2" : "通信",
+    "exampleen" : "We need to save on transportation fees."
+  },
+  {
+    "worden" : "harmful",
+    "wordjp" : "有害な",
+    "examplejp" : "新しい素材は有害な物質を出さない",
+    "id" : 48,
+    "option_1" : "定期的な",
+    "option_2" : "不利益な",
+    "exampleen" : "The new material doesn't emit harmful substances."
+  },
+  {
+    "worden" : "occupation",
+    "wordjp" : "職業",
+    "examplejp" : "彼の職業は何ですか？",
+    "id" : 49,
+    "option_1" : "機会",
+    "option_2" : "名前",
+    "exampleen" : "What is his occupation?"
+  },
+  {
+    "worden" : "era",
+    "wordjp" : "時代",
+    "examplejp" : "IT産業は新たな時代に入った",
+    "id" : 50,
+    "option_1" : "空間",
+    "option_2" : "世界",
+    "exampleen" : "The IT industry has entered a new era."
+  },
+  {
+    "worden" : "advanced",
+    "wordjp" : "最新の",
+    "examplejp" : "私たちは農業向けの最新機器を売っている",
+    "id" : 51,
+    "option_1" : "最古の",
+    "option_2" : "使い古された",
+    "exampleen" : "We sell advanced machinery for agriculture."
+  },
+  {
+    "worden" : "flu",
+    "wordjp" : "インフルエンザ",
+    "examplejp" : "今年はインフルエンザが流行っています",
+    "id" : 52,
+    "option_1" : "全て",
+    "option_2" : "治療",
+    "exampleen" : "There's a lot of flu around this year."
+  },
+  {
+    "worden" : "charity",
+    "wordjp" : "慈善",
+    "examplejp" : "私たちは夏の終わりに慈善コンサートを行った",
+    "id" : 53,
+    "option_1" : "偽善",
+    "option_2" : "街",
+    "exampleen" : "We held a charity concert at the end of summer."
+  },
+  {
+    "worden" : "purchase",
+    "wordjp" : "購入する",
+    "examplejp" : "私は新しい事業のためにコンピューターを買うだろう",
+    "id" : 54,
+    "option_1" : "販売する",
+    "option_2" : "受け渡す",
+    "exampleen" : "I will purchase a computer for our new business."
+  },
+  {
+    "worden" : "capacity",
+    "wordjp" : "収容能力",
+    "examplejp" : "この会議室には300人の収容力があります。",
+    "id" : 55,
+    "option_1" : "不透明",
+    "option_2" : "街",
+    "exampleen" : "This meeting room has a seating capacity of 300."
+  },
+  {
+    "worden" : "emergency",
+    "wordjp" : "緊急事態",
+    "examplejp" : "ボスは非常時の権限を彼に与えた",
+    "id" : 56,
+    "option_1" : "安全地帯",
+    "option_2" : "平和",
+    "exampleen" : "The boss granted emergency powers to him."
+  },
+  {
+    "worden" : "colleague",
+    "wordjp" : "同僚",
+    "examplejp" : "私はとてもいい仲間を持ちました",
+    "id" : 57,
+    "option_1" : "協力",
+    "option_2" : "友達",
+    "exampleen" : "I have a very good colleague."
+  },
+  {
+    "worden" : "boom",
+    "wordjp" : "好況になる",
+    "examplejp" : "一時のブームは過ぎた",
+    "id" : 58,
+    "option_1" : "不況になる",
+    "option_2" : "一時的になる",
+    "exampleen" : "The temporary boom has passed."
+  },
+  {
+    "worden" : "consume",
+    "wordjp" : "消費する",
+    "examplejp" : "我々は毎日たくさんバナナを消費する",
+    "id" : 59,
+    "option_1" : "浪費する",
+    "option_2" : "コスメ",
+    "exampleen" : "We consume dozens of bananas every day."
+  },
+  {
+    "worden" : "invention",
+    "wordjp" : "発明",
+    "examplejp" : "コンピュータは偉大な発明である",
+    "id" : 60,
+    "option_1" : "失敗",
+    "option_2" : "革新",
+    "exampleen" : "The computer is a great invention."
+  },
+  {
+    "worden" : "attendance",
+    "wordjp" : "出席",
+    "examplejp" : "会議への出席は義務です",
+    "id" : 61,
+    "option_1" : "欠席",
+    "option_2" : "知識",
+    "exampleen" : "Attendance at the meeting is mandatory."
+  },
+  {
+    "worden" : "vivid",
+    "wordjp" : "鮮明な",
+    "examplejp" : "その鮮明な赤色は人々の目を引いた",
+    "id" : 62,
+    "option_1" : "ぼんやりした",
+    "option_2" : "突飛な",
+    "exampleen" : "That vivid red color attracts people's attention."
+  },
+  {
+    "worden" : "missing",
+    "wordjp" : "紛失した",
+    "examplejp" : "紛失した書類は仕事に重要なものだった",
+    "id" : 63,
+    "option_1" : "壊れた",
+    "option_2" : "そのまま",
+    "exampleen" : "The missing document was important for our business."
+  },
+  {
+    "worden" : "behave",
+    "wordjp" : "振舞う",
+    "examplejp" : "私は何事もなかったかのように振る舞った",
+    "id" : 64,
+    "option_1" : "見せる",
+    "option_2" : "持つ",
+    "exampleen" : "I behaved as if nothing had happened."
+  },
+  {
+    "worden" : "increasingly",
+    "wordjp" : "ますます",
+    "examplejp" : "よい製品を作る事がますます重要になってくる",
+    "id" : 65,
+    "option_1" : "まだまだ",
+    "option_2" : "少しだけ",
+    "exampleen" : "It is becoming increasingly important to create a good product."
+  },
+  {
+    "worden" : "regularly",
+    "wordjp" : "いつも",
+    "examplejp" : "我々はいつも朝10時に会議があります",
+    "id" : 66,
+    "option_1" : "たまに",
+    "option_2" : "知らずに",
+    "exampleen" : "We regularly have a meeting at 10 am."
+  },
+  {
+    "worden" : "decade",
+    "wordjp" : "10年間",
+    "examplejp" : "彼はエンジニアとして約10年間働いた",
+    "id" : 67,
+    "option_1" : "1年間",
+    "option_2" : "100年間",
+    "exampleen" : "He worked as an engineer for almost a decade."
+  },
+  {
+    "worden" : "postpone",
+    "wordjp" : "延期する",
+    "examplejp" : "会議は悪天候のため延期された",
+    "id" : 68,
+    "option_1" : "強行する",
+    "option_2" : "開催する",
+    "exampleen" : "Bad weather forced us to postpone the meeting."
+  },
+  {
+    "worden" : "ban",
+    "wordjp" : "禁止",
+    "examplejp" : "このオフィスでは話すことが禁止されている",
+    "id" : 69,
+    "option_1" : "許可する",
+    "option_2" : "賞賛する",
+    "exampleen" : "There is a ban on talking in this office."
+  },
+  {
+    "worden" : "cargo",
+    "wordjp" : "積荷",
+    "examplejp" : "この貨物は既に出荷されています",
+    "id" : 70,
+    "option_1" : "車",
+    "option_2" : "芝生",
+    "exampleen" : "This cargo has already been shipped."
+  },
+  {
+    "worden" : "award",
+    "wordjp" : "賞",
+    "examplejp" : "彼が特別賞に選ばれました",
+    "id" : 71,
+    "option_1" : "言葉",
+    "option_2" : "人類",
+    "exampleen" : "He was singled out for a special award."
+  },
+  {
+    "worden" : "shortage",
+    "wordjp" : "不足",
+    "examplejp" : "チームは人材不足に直面している",
+    "id" : 72,
+    "option_1" : "十分",
+    "option_2" : "短絡的",
+    "exampleen" : "The team faces a shortage of human resource."
+  },
+  {
+    "worden" : "laundry",
+    "wordjp" : "洗濯物",
+    "examplejp" : "すぐに洗濯物を畳みます",
+    "id" : 73,
+    "option_1" : "荷物",
+    "option_2" : "化合物",
+    "exampleen" : "I will fold the laundry soon."
+  },
+  {
+    "worden" : "frequent",
+    "wordjp" : "頻繁な",
+    "examplejp" : "今年はよく雪がふった",
+    "id" : 74,
+    "option_1" : "定期的な",
+    "option_2" : "一時的な",
+    "exampleen" : "We had frequent snowfalls this year."
+  },
+  {
+    "worden" : "apology",
+    "wordjp" : "謝罪",
+    "examplejp" : "あなたは謝る必要がない",
+    "id" : 75,
+    "option_1" : "許可",
+    "option_2" : "精神",
+    "exampleen" : "You don't need to make an apology."
+  },
+  {
+    "worden" : "construction",
+    "wordjp" : "建築",
+    "examplejp" : "あのビルは建設中である。",
+    "id" : 76,
+    "option_1" : "道筋",
+    "option_2" : "生物",
+    "exampleen" : "That building is under construction."
+  },
+  {
+    "worden" : "regional",
+    "wordjp" : "地域の",
+    "examplejp" : "我々の地方支部は、今の所成功している",
+    "id" : 77,
+    "option_1" : "全体の",
+    "option_2" : "元の",
+    "exampleen" : "Our regional office is a success so far."
+  },
+  {
+    "worden" : "reception",
+    "wordjp" : "催し",
+    "examplejp" : "我々の成功した製品の催しが開催された",
+    "id" : 78,
+    "option_1" : "レシピ",
+    "option_2" : "会場",
+    "exampleen" : "A reception was held in honor of our successful products."
+  },
+  {
+    "worden" : "acceptance",
+    "wordjp" : "受け入れ",
+    "examplejp" : "そのアイデアはまだ彼らに受け入れられていない",
+    "id" : 79,
+    "option_1" : "拒否",
+    "option_2" : "披露",
+    "exampleen" : "That idea hasn't received their acceptance yet."
+  },
+  {
+    "worden" : "unexpected",
+    "wordjp" : "予期しない",
+    "examplejp" : "我々は予期せぬ困難に出会った",
+    "id" : 80,
+    "option_1" : "予測された",
+    "option_2" : "知られた",
+    "exampleen" : "We met with an unexpected difficulty."
+  },
+  {
+    "worden" : "nuclear",
+    "wordjp" : "原子力の",
+    "examplejp" : "その国は主要なエネルギー資源として原子力発電に頼っている。",
+    "id" : 81,
+    "option_1" : "火力の",
+    "option_2" : "水力の",
+    "exampleen" : "That nation mainly depends on nuclear energy."
+  },
+  {
+    "worden" : "atmosphere",
+    "wordjp" : "雰囲気",
+    "examplejp" : "あのレストランの雰囲気はとてもよい",
+    "id" : 82,
+    "option_1" : "容器",
+    "option_2" : "恐れ",
+    "exampleen" : "That restaurant has a good atmosphere."
+  },
+  {
+    "worden" : "compete",
+    "wordjp" : "競争する",
+    "examplejp" : "弊社は世界市場で他社と競争しています",
+    "id" : 83,
+    "option_1" : "提供する",
+    "option_2" : "逃げる",
+    "exampleen" : "We compete with others in the global market."
+  },
+  {
+    "worden" : "caution",
+    "wordjp" : "用心",
+    "examplejp" : "十分に注意して歩こう",
+    "id" : 84,
+    "option_1" : "不用心",
+    "option_2" : "楽観的",
+    "exampleen" : "Let's walk with great caution."
+  },
+  {
+    "worden" : "primary",
+    "wordjp" : "主要な",
+    "examplejp" : "私の主要な業務は営業です",
+    "id" : 85,
+    "option_1" : "二次的な",
+    "option_2" : "見慣れた",
+    "exampleen" : "My primary occupation is in sales."
+  },
+  {
+    "worden" : "severe",
+    "wordjp" : "厳しい",
+    "examplejp" : "地球温暖化による激しい暑さ",
+    "id" : 86,
+    "option_1" : "楽しい",
+    "option_2" : "提供された",
+    "exampleen" : "The heat is severe today."
+  },
+  {
+    "worden" : "tight",
+    "wordjp" : "詰まった",
+    "examplejp" : "そのプロジェクトのスケジュールは厳しい",
+    "id" : 87,
+    "option_1" : "余裕のある",
+    "option_2" : "見慣れた",
+    "exampleen" : "That project has a tight schedule."
+  },
+  {
+    "worden" : "statue",
+    "wordjp" : "像",
+    "examplejp" : "顧客との待ち合わせ場所はあの像の前だ",
+    "id" : 88,
+    "option_1" : "住居",
+    "option_2" : "池",
+    "exampleen" : "We will meet the client in front of that statue."
+  },
+  {
+    "worden" : "admirable",
+    "wordjp" : "称賛に値する",
+    "examplejp" : "新人の業績は賞賛に値する",
+    "id" : 89,
+    "option_1" : "ひどい",
+    "option_2" : "的確な",
+    "exampleen" : "The newcomer's achievements are admirable. "
+  },
+  {
+    "worden" : "register",
+    "wordjp" : "記録する",
+    "examplejp" : "あなたがそれを利用するには登録が必要です。",
+    "id" : 90,
+    "option_1" : "手に入れる",
+    "option_2" : "手放す",
+    "exampleen" : "You need to register in order to use that."
+  },
+  {
+    "worden" : "similarity",
+    "wordjp" : "類似点",
+    "examplejp" : "我々はその二つの製品の類似性を認めなければならない",
+    "id" : 91,
+    "option_1" : "相違点",
+    "option_2" : "特異点",
+    "exampleen" : "We need to accept similarity between the two products. "
+  },
+  {
+    "worden" : "unfamiliar",
+    "wordjp" : "馴染みのない",
+    "examplejp" : "私はこの辺に馴染みがありません",
+    "id" : 92,
+    "option_1" : "知っている",
+    "option_2" : "荒れ果てた",
+    "exampleen" : "I am unfamiliar with this area."
+  },
+  {
+    "worden" : "trading",
+    "wordjp" : "貿易",
+    "examplejp" : "私は去年貿易会社に転職した",
+    "id" : 93,
+    "option_1" : "旅行",
+    "option_2" : "伝統的",
+    "exampleen" : "I moved to a trading company last year."
+  },
+  {
+    "worden" : "occupy",
+    "wordjp" : "占める",
+    "examplejp" : "そのグループは場所を占めている",
+    "id" : 94,
+    "option_1" : "コピーする",
+    "option_2" : "止める",
+    "exampleen" : "The group will occupy that space."
+  },
+  {
+    "worden" : "suspect",
+    "wordjp" : "疑う",
+    "examplejp" : "私はそのシステムにバグがあるのではいかと疑っている",
+    "id" : 95,
+    "option_1" : "見える",
+    "option_2" : "見抜く",
+    "exampleen" : "I suspect there is a bug in the system."
+  },
+  {
+    "worden" : "path",
+    "wordjp" : "道",
+    "examplejp" : "雪で道がわからない",
+    "id" : 96,
+    "option_1" : "穴",
+    "option_2" : "飛ばす",
+    "exampleen" : "The snow has obliterated the path."
+  },
+  {
+    "worden" : "folder",
+    "wordjp" : "フォルダ",
+    "examplejp" : "現在のフォルダ名を設定します。",
+    "id" : 97,
+    "option_1" : "フィルタ",
+    "option_2" : "ホルダー",
+    "exampleen" : "Set the current folder name."
+  },
+  {
+    "worden" : "sensitive",
+    "wordjp" : "繊細な",
+    "examplejp" : "彼はコストに対して繊細だ",
+    "id" : 98,
+    "option_1" : "感動的な",
+    "option_2" : "大雑把な",
+    "exampleen" : "He is sensitive to cost."
+  },
+  {
+    "worden" : "agricultural",
+    "wordjp" : "農業の",
+    "examplejp" : "彼は多くの農業の技術を知っている",
+    "id" : 99,
+    "option_1" : "林業の",
+    "option_2" : "漁業の",
+    "exampleen" : "He knows many agricultural techniques."
+  },
+  {
+    "worden" : "beside",
+    "wordjp" : "〜のそばに",
+    "examplejp" : "彼は車を歩道の脇に停めた。",
+    "id" : 100,
+    "option_1" : "〜の上に",
+    "option_2" : "〜の遠くに",
+    "exampleen" : "He parked his car beside the sidewalk."
+  },
+  {
+    "worden" : "blame",
+    "wordjp" : "〜のせいにする",
+    "examplejp" : "彼女はその失敗を彼のせいにすべきではない",
+    "id" : 101,
+    "option_1" : "〜のために",
+    "option_2" : "〜に合わせて",
+    "exampleen" : "She should not blame him for the failure."
+  },
+  {
+    "worden" : "authority",
+    "wordjp" : "権限",
+    "examplejp" : "私は権限を持っていない",
+    "id" : 102,
+    "option_1" : "任務",
+    "option_2" : "詰め合わせ",
+    "exampleen" : "I don't have authority."
+  },
+  {
+    "worden" : "duty",
+    "wordjp" : "任務",
+    "examplejp" : "彼は特別な任務を与えられた",
+    "id" : 103,
+    "option_1" : "汚い",
+    "option_2" : "父親",
+    "exampleen" : "He was given a special duty."
+  },
+  {
+    "worden" : "develop",
+    "wordjp" : "開発する",
+    "examplejp" : "私は暇つぶしのアプリを開発したい",
+    "id" : 104,
+    "option_1" : "免除する",
+    "option_2" : "忘れる",
+    "exampleen" : "I hope to develop an app for killing time."
+  },
+  {
+    "worden" : "note",
+    "wordjp" : "注意する",
+    "examplejp" : "締め切りが近づいている事に気をつけて",
+    "id" : 105,
+    "option_1" : "忘れる",
+    "option_2" : "見過ごす",
+    "exampleen" : "Note that the deadline is approaching."
+  },
+  {
+    "worden" : "focus",
+    "wordjp" : "集中する",
+    "examplejp" : "我々はスピードに集中する必要がある",
+    "id" : 106,
+    "option_1" : "気にする",
+    "option_2" : "失う",
+    "exampleen" : "We need to focus on SPEED."
+  },
+  {
+    "worden" : "memorable",
+    "wordjp" : "記憶に残る",
+    "examplejp" : "我々は記憶に残る景色を見た",
+    "id" : 107,
+    "option_1" : "形に残る",
+    "option_2" : "記憶に残らない",
+    "exampleen" : "We saw a memorable scene."
+  },
+  {
+    "worden" : "negotiate",
+    "wordjp" : "交渉する",
+    "examplejp" : "顧客との交渉はたやすい",
+    "id" : 108,
+    "option_1" : "無理強いをする",
+    "option_2" : "提供する",
+    "exampleen" : "It's easy to negotiate with a client."
+  },
+  {
+    "worden" : "result",
+    "wordjp" : "結果",
+    "examplejp" : "誰も結果を知らない",
+    "id" : 109,
+    "option_1" : "進捗",
+    "option_2" : "継続",
+    "exampleen" : "Nobody knows the result."
+  },
+  {
+    "worden" : "seldom",
+    "wordjp" : "滅多に〜しない",
+    "examplejp" : "彼は滅多に失敗をしない",
+    "id" : 110,
+    "option_1" : "よく〜する",
+    "option_2" : "特に〜だ",
+    "exampleen" : "He seldom makes a mistake."
+  },
+  {
+    "worden" : "shortly",
+    "wordjp" : "まもなく",
+    "examplejp" : "彼はまもなく昇進した",
+    "id" : 111,
+    "option_1" : "ある程度",
+    "option_2" : "当てもなく",
+    "exampleen" : "He was promoted shortly thereafter."
+  },
+  {
+    "worden" : "accept",
+    "wordjp" : "受け入れる",
+    "examplejp" : "我々の部署は新人を受け入れる事ができない",
+    "id" : 112,
+    "option_1" : "排除する",
+    "option_2" : "身近になる",
+    "exampleen" : "Our department cannot accept recruits."
+  },
+  {
+    "worden" : "effective",
+    "wordjp" : "効果的な",
+    "examplejp" : "我々は有効なアイディアについて議論した",
+    "id" : 113,
+    "option_1" : "非効率な",
+    "option_2" : "無謀な",
+    "exampleen" : "We discussed effective ideas."
+  },
+  {
+    "worden" : "recover",
+    "wordjp" : "取り戻す",
+    "examplejp" : "彼は損失を取り戻さねばならない",
+    "id" : 114,
+    "option_1" : "配置する",
+    "option_2" : "避ける",
+    "exampleen" : "He needs to recover losses."
+  },
+  {
+    "worden" : "avoid",
+    "wordjp" : "避ける",
+    "examplejp" : "我々はあらゆるトラブルを避けないといけない",
+    "id" : 115,
+    "option_1" : "受け入れる",
+    "option_2" : "解決する",
+    "exampleen" : "We must avoid any trouble."
+  },
+  {
+    "worden" : "overseas",
+    "wordjp" : "海外の",
+    "examplejp" : "私は海外の研究者と話す",
+    "id" : 116,
+    "option_1" : "海上の",
+    "option_2" : "有名な",
+    "exampleen" : "I talked with an overseas researcher."
+  },
+  {
+    "worden" : "mention",
+    "wordjp" : "言及する",
+    "examplejp" : "彼は経緯について語らなかった",
+    "id" : 117,
+    "option_1" : "考える",
+    "option_2" : "忘れる",
+    "exampleen" : "He did not mention the process."
+  },
+  {
+    "worden" : "closely",
+    "wordjp" : "密接に",
+    "examplejp" : "私は上司と密接に仕事をしなければならない",
+    "id" : 118,
+    "option_1" : "遠く離れて",
+    "option_2" : "たくさん",
+    "exampleen" : "I have to work closely with my boss."
+  },
+  {
+    "worden" : "finance",
+    "wordjp" : "財政",
+    "examplejp" : "私は財政についてはあまり明るくない",
+    "id" : 119,
+    "option_1" : "経済",
+    "option_2" : "社会",
+    "exampleen" : "I'm not familiar with finance."
+  },
+  {
+    "worden" : "fuel",
+    "wordjp" : "燃料",
+    "examplejp" : "私は燃料の不足に悩んでいる",
+    "id" : 120,
+    "option_1" : "じょうご",
+    "option_2" : "羽",
+    "exampleen" : "I have problems from a lack of fuel."
+  },
+  {
+    "worden" : "architect",
+    "wordjp" : "建築家",
+    "examplejp" : "彼は建築家だった",
+    "id" : 121,
+    "option_1" : "組織",
+    "option_2" : "狩人",
+    "exampleen" : "He was an architect."
+  },
+  {
+    "worden" : "recently",
+    "wordjp" : "最近",
+    "examplejp" : "私は最近調子がいい",
+    "id" : 122,
+    "option_1" : "過去",
+    "option_2" : "未来",
+    "exampleen" : "I have recently felt good."
+  },
+  {
+    "worden" : "presence",
+    "wordjp" : "存在感",
+    "examplejp" : "彼は会社で強い存在感がある",
+    "id" : 123,
+    "option_1" : "一体感",
+    "option_2" : "協調性",
+    "exampleen" : "He has a strong presence in his company."
+  },
+  {
+    "worden" : "announce",
+    "wordjp" : "発表する",
+    "examplejp" : "我々は業績の発表をする",
+    "id" : 124,
+    "option_1" : "隠す",
+    "option_2" : "計算する",
+    "exampleen" : "We will announce our results."
+  },
+  {
+    "worden" : "opening",
+    "wordjp" : "空き",
+    "examplejp" : "我々は今すぐの空きがない",
+    "id" : 125,
+    "option_1" : "予約",
+    "option_2" : "予定",
+    "exampleen" : "We don't have an opening right now."
+  },
+  {
+    "worden" : "worth",
+    "wordjp" : "価値",
+    "examplejp" : "それは試す価値がある",
+    "id" : 126,
+    "option_1" : "最悪",
+    "option_2" : "地球",
+    "exampleen" : "It is worth trying."
+  },
+  {
+    "worden" : "operate",
+    "wordjp" : "操作する",
+    "examplejp" : "私はどうやって操作するのかわからない",
+    "id" : 127,
+    "option_1" : "見積もる",
+    "option_2" : "優遇する",
+    "exampleen" : "I don't know how to operate."
+  },
+  {
+    "worden" : "degree",
+    "wordjp" : "学位",
+    "examplejp" : "学位をとるのは簡単ではない",
+    "id" : 128,
+    "option_1" : "単位",
+    "option_2" : "資格",
+    "exampleen" : "It's hard to get a degree."
+  },
+  {
+    "worden" : "in-house",
+    "wordjp" : "社内の",
+    "examplejp" : "私は社内のデザイナーと共に働く",
+    "id" : 129,
+    "option_1" : "家の中",
+    "option_2" : "国内の",
+    "exampleen" : "I work with an in-house designer."
+  },
+  {
+    "worden" : "post",
+    "wordjp" : "提示する",
+    "examplejp" : "我々はバイト募集の広告を掲示する",
+    "id" : 130,
+    "option_1" : "返信する",
+    "option_2" : "止める",
+    "exampleen" : "We will post an advertisement for a part-time job."
+  },
+  {
+    "worden" : "found",
+    "wordjp" : "設立する",
+    "examplejp" : "我々は新しい会社を設立する",
+    "id" : 131,
+    "option_1" : "基金",
+    "option_2" : "建設する",
+    "exampleen" : "We found a new company."
+  },
+  {
+    "worden" : "casual",
+    "wordjp" : "カジュアルな",
+    "examplejp" : "私はカジュアルな服を好んで着る",
+    "id" : 132,
+    "option_1" : "様々",
+    "option_2" : "常に",
+    "exampleen" : "I like to wear casual clothes."
+  },
+  {
+    "worden" : "please",
+    "wordjp" : "満足する",
+    "examplejp" : "その製品は顧客を満足させるかもしれない",
+    "id" : 133,
+    "option_1" : "不満を抱く",
+    "option_2" : "気負う",
+    "exampleen" : "The product should please the customer."
+  },
+  {
+    "worden" : "reasonable",
+    "wordjp" : "手頃な",
+    "examplejp" : "新商品は手頃な価格になるだろう",
+    "id" : 134,
+    "option_1" : "手堅い",
+    "option_2" : "手強い",
+    "exampleen" : "Our new product will be at a reasonable price."
+  },
+  {
+    "worden" : "reschedule",
+    "wordjp" : "予定を変更する",
+    "examplejp" : "私は会議の予定を変更する必要がある",
+    "id" : 135,
+    "option_1" : "予定を立てる",
+    "option_2" : "予定に悩む",
+    "exampleen" : "I need to reschedule our meeting."
+  },
+  {
+    "worden" : "responsible",
+    "wordjp" : "責任",
+    "examplejp" : "彼には製品の責任がある",
+    "id" : 136,
+    "option_1" : "義務",
+    "option_2" : "権利",
+    "exampleen" : "He is responsible for the product."
+  },
+  {
+    "worden" : "reject",
+    "wordjp" : "却下する",
+    "examplejp" : "私はその提案を却下するだろう",
+    "id" : 137,
+    "option_1" : "反応する",
+    "option_2" : "見誤る",
+    "exampleen" : "I will reject these plans."
+  },
+  {
+    "worden" : "immediately",
+    "wordjp" : "すぐに",
+    "examplejp" : "私はすぐにその仕事を終える必要がある",
+    "id" : 138,
+    "option_1" : "時々",
+    "option_2" : "すでに",
+    "exampleen" : "I need to finish this task immediately."
+  },
+  {
+    "worden" : "workload",
+    "wordjp" : "仕事量",
+    "examplejp" : "私は仕事量について考える時間が必要だ",
+    "id" : 139,
+    "option_1" : "休暇",
+    "option_2" : "職業",
+    "exampleen" : "I need time to consider my workload."
+  },
+  {
+    "worden" : "quarter",
+    "wordjp" : "四半期",
+    "examplejp" : "私は第一四半期の目標を決める",
+    "id" : 140,
+    "option_1" : "通年",
+    "option_2" : "十年間",
+    "exampleen" : "I decided on goals for the first quarter."
+  },
+  {
+    "worden" : "match",
+    "wordjp" : "一致",
+    "examplejp" : "彼は私にかなわない",
+    "id" : 141,
+    "option_1" : "間違い",
+    "option_2" : "不都合",
+    "exampleen" : "He is no match for me."
+  },
+  {
+    "worden" : "satisfy",
+    "wordjp" : "満たす",
+    "examplejp" : "その製品は評価を満たさなければいけない",
+    "id" : 142,
+    "option_1" : "不満足",
+    "option_2" : "表情を変える",
+    "exampleen" : "The product must satisfy evaluation."
+  },
+  {
+    "worden" : "instruction",
+    "wordjp" : "指令",
+    "examplejp" : "会社は従業員に指令を与える",
+    "id" : 143,
+    "option_1" : "インスタント食品",
+    "option_2" : "社内文書",
+    "exampleen" : "The company provides instruction to employees."
+  },
+  {
+    "worden" : "seek",
+    "wordjp" : "募集する",
+    "examplejp" : "我々はバイトを募集する",
+    "id" : 144,
+    "option_1" : "盗む",
+    "option_2" : "探し当てる",
+    "exampleen" : "We seek part-time job."
+  },
+  {
+    "worden" : "including",
+    "wordjp" : "含めて",
+    "examplejp" : "あなたを含め我々はチームです",
+    "id" : 145,
+    "option_1" : "含まない",
+    "option_2" : "除く",
+    "exampleen" : "We are a team, including you."
+  },
+  {
+    "worden" : "anniversary",
+    "wordjp" : "周年",
+    "examplejp" : "私たちの１周年は忙しかった",
+    "id" : 146,
+    "option_1" : "十年間",
+    "option_2" : "普遍的",
+    "exampleen" : "Our 1st anniversary was busy."
+  },
+  {
+    "worden" : "aim",
+    "wordjp" : "目的",
+    "examplejp" : "研究の目的を教えてください",
+    "id" : 147,
+    "option_1" : "手段",
+    "option_2" : "腕",
+    "exampleen" : "Please tell me the aim of the study."
+  },
+  {
+    "worden" : "experienced",
+    "wordjp" : "経験豊かな",
+    "examplejp" : "我々は経験豊かなエンジニアが必要だ",
+    "id" : 148,
+    "option_1" : "経験不足の",
+    "option_2" : "有名な",
+    "exampleen" : "We need an experienced engineer."
+  },
+  {
+    "worden" : "document",
+    "wordjp" : "書類",
+    "examplejp" : "書類を送っていただけますか？",
+    "id" : 149,
+    "option_1" : "衣類",
+    "option_2" : "手当て",
+    "exampleen" : "Could you send the document to me?"
+  },
+  {
+    "worden" : "sign",
+    "wordjp" : "署名",
+    "examplejp" : "彼は契約書にサインする必要がある",
+    "id" : 150,
+    "option_1" : "歌う",
+    "option_2" : "落書き",
+    "exampleen" : "He needs to sign the contract."
+  },
+  {
+    "worden" : "complex",
+    "wordjp" : "複雑な",
+    "examplejp" : "複雑な問題が発生した",
+    "id" : 151,
+    "option_1" : "簡単な",
+    "option_2" : "不満を抱えた",
+    "exampleen" : "A complex problem has occurred."
+  },
+  {
+    "worden" : "willing",
+    "wordjp" : "喜んで",
+    "examplejp" : "彼女は喜んでそのタスクを受けた",
+    "id" : 152,
+    "option_1" : "悲しんで",
+    "option_2" : "嫌がって",
+    "exampleen" : "She was willing to take that task."
+  },
+  {
+    "worden" : "establish",
+    "wordjp" : "設立する",
+    "examplejp" : "我々は新しい会社を設立する",
+    "id" : 153,
+    "option_1" : "破壊する",
+    "option_2" : "出版する",
+    "exampleen" : "We wish to establish a new company."
+  },
+  {
+    "worden" : "demand",
+    "wordjp" : "需要",
+    "examplejp" : "我々は消費者の需要に応える必要がある",
+    "id" : 154,
+    "option_1" : "供給",
+    "option_2" : "消費",
+    "exampleen" : "We need to meet consumer demand."
+  },
+  {
+    "worden" : "attend",
+    "wordjp" : "出席する",
+    "examplejp" : "私はリーダー会議に出席する",
+    "id" : 155,
+    "option_1" : "欠席する",
+    "option_2" : "予約する",
+    "exampleen" : "I'll attend a leader meeting."
+  },
+  {
+    "worden" : "facility",
+    "wordjp" : "施設",
+    "examplejp" : "その施設は去年建てられた",
+    "id" : 156,
+    "option_1" : "仏壇",
+    "option_2" : "箪笥",
+    "exampleen" : "That facility was built last year."
+  },
+  {
+    "worden" : "research",
+    "wordjp" : "調査",
+    "examplejp" : "我々は市場調査の結果が必要だ",
+    "id" : 157,
+    "option_1" : "結果",
+    "option_2" : "対象",
+    "exampleen" : "We need the results of our market research."
+  },
+  {
+    "worden" : "attached",
+    "wordjp" : "添付の",
+    "examplejp" : "添付のファイルを確認してくださいますか",
+    "id" : 158,
+    "option_1" : "外された",
+    "option_2" : "見合った",
+    "exampleen" : "Could you confirm the attached file?"
+  },
+  {
+    "worden" : "editor",
+    "wordjp" : "編集者",
+    "examplejp" : "私は編集者になりたい",
+    "id" : 159,
+    "option_1" : "写真家",
+    "option_2" : "建築家",
+    "exampleen" : "I want to be an editor."
+  },
+  {
+    "worden" : "expect",
+    "wordjp" : "予想",
+    "examplejp" : "私はこれが合っていると予想する",
+    "id" : 160,
+    "option_1" : "以外の",
+    "option_2" : "気づき",
+    "exampleen" : "I expect that this is correct."
+  },
+  {
+    "worden" : "confirm",
+    "wordjp" : "確認する",
+    "examplejp" : "私は結果を確認する事ができる",
+    "id" : 161,
+    "option_1" : "決める",
+    "option_2" : "変更する",
+    "exampleen" : "I can confirm the results."
+  },
+  {
+    "worden" : "bill",
+    "wordjp" : "請求書",
+    "examplejp" : "我々は仕事のための多額の請求書を受けとった",
+    "id" : 162,
+    "option_1" : "見積書",
+    "option_2" : "提案書",
+    "exampleen" : "We received a large bill for that work."
+  },
+  {
+    "worden" : "decline",
+    "wordjp" : "断る",
+    "examplejp" : "私はその要求を断ると決めた",
+    "id" : 163,
+    "option_1" : "受け入れる",
+    "option_2" : "無視する",
+    "exampleen" : "I decided to decline the offer."
+  },
+  {
+    "worden" : "full-time",
+    "wordjp" : "常勤の",
+    "examplejp" : "彼は常勤の従業員だ",
+    "id" : 164,
+    "option_1" : "一時的な",
+    "option_2" : "時々の",
+    "exampleen" : "He is a full-time employee."
+  },
+  {
+    "worden" : "opportunity",
+    "wordjp" : "機会",
+    "examplejp" : "私はその機会を逃したくない",
+    "id" : 165,
+    "option_1" : "職業",
+    "option_2" : "提案",
+    "exampleen" : "I don't want to lose that opportunity."
+  },
+  {
+    "worden" : "create",
+    "wordjp" : "創造する",
+    "examplejp" : "新たな製品を創造する必要がある",
+    "id" : 166,
+    "option_1" : "破壊する",
+    "option_2" : "慣らす",
+    "exampleen" : "I need to create a new product."
+  },
+  {
+    "worden" : "loyal",
+    "wordjp" : "常連の",
+    "examplejp" : "私はこのECサイトの常連だ",
+    "id" : 167,
+    "option_1" : "一時的な",
+    "option_2" : "都合のいい",
+    "exampleen" : "I am a loyal user of this EC site."
+  },
+  {
+    "worden" : "regulation",
+    "wordjp" : "規則",
+    "examplejp" : "私は規則に沿ってデザインする",
+    "id" : 168,
+    "option_1" : "提案",
+    "option_2" : "不安",
+    "exampleen" : "I design according to the regulation."
+  },
+  {
+    "worden" : "retire",
+    "wordjp" : "退職する",
+    "examplejp" : "彼は数カ月以内に退職する",
+    "id" : 169,
+    "option_1" : "復職する",
+    "option_2" : "起業する",
+    "exampleen" : "He will retire in a few months."
+  },
+  {
+    "worden" : "analyze",
+    "wordjp" : "分析する",
+    "examplejp" : "私は数字の分析をする",
+    "id" : 170,
+    "option_1" : "読む",
+    "option_2" : "放棄する",
+    "exampleen" : "I analyze figures."
+  },
+  {
+    "worden" : "memorandum",
+    "wordjp" : "社内文書",
+    "examplejp" : "社内文書に目を通してください",
+    "id" : 171,
+    "option_1" : "社外文書",
+    "option_2" : "説明書",
+    "exampleen" : "Please review the memorandum."
+  },
+  {
+    "worden" : "celebration",
+    "wordjp" : "お祝い",
+    "examplejp" : "そのお祝いは盛大だった",
+    "id" : 172,
+    "option_1" : "催し",
+    "option_2" : "大会",
+    "exampleen" : "That celebration was gorgeous."
+  },
+  {
+    "worden" : "propose",
+    "wordjp" : "提案する",
+    "examplejp" : "我々は採用される案を提案する",
+    "id" : 173,
+    "option_1" : "気づく",
+    "option_2" : "転送する",
+    "exampleen" : "We propose the plan be adopted."
+  },
+  {
+    "worden" : "ship",
+    "wordjp" : "出荷する",
+    "examplejp" : "私は商品を出荷する",
+    "id" : 174,
+    "option_1" : "梱包する",
+    "option_2" : "まとめる",
+    "exampleen" : "I'll ship the goods."
+  },
+  {
+    "worden" : "shapely",
+    "wordjp" : "急激に",
+    "examplejp" : "我々の売り上げは急速に増大した",
+    "id" : 175,
+    "option_1" : "緩やかに",
+    "option_2" : "徐々に",
+    "exampleen" : "Our sales figures rose shapely."
+  },
+  {
+    "worden" : "notice",
+    "wordjp" : "通知",
+    "examplejp" : "私は通知を受け取った",
+    "id" : 176,
+    "option_1" : "郵送物",
+    "option_2" : "荷物",
+    "exampleen" : "I received a notice."
+  },
+  {
+    "worden" : "arrival",
+    "wordjp" : "到着",
+    "examplejp" : "到着時刻は9時だ",
+    "id" : 177,
+    "option_1" : "出発",
+    "option_2" : "生き抜く",
+    "exampleen" : "The arrival time is 9:00 am."
+  },
+  {
+    "worden" : "prefer",
+    "wordjp" : "好む",
+    "examplejp" : "私は自宅勤務の方が好きです",
+    "id" : 178,
+    "option_1" : "好まない",
+    "option_2" : "参照する",
+    "exampleen" : "I prefer to work at home."
+  },
+  {
+    "worden" : "department",
+    "wordjp" : "部門",
+    "examplejp" : "その部門は人気だ",
+    "id" : 179,
+    "option_1" : "集団",
+    "option_2" : "人々",
+    "exampleen" : "That department is popular."
+  },
+  {
+    "worden" : "shuttle",
+    "wordjp" : "定期往復便",
+    "examplejp" : " 私はシャトル便に急いで乗った",
+    "id" : 180,
+    "option_1" : "航空機",
+    "option_2" : "シャベル",
+    "exampleen" : "I got on the shuttle in a hurry."
+  },
+  {
+    "worden" : "contribute",
+    "wordjp" : "貢献する",
+    "examplejp" : "誰もがチームに貢献したほうがよい",
+    "id" : 181,
+    "option_1" : "邪魔する",
+    "option_2" : "巻き込む",
+    "exampleen" : "Everyone should contribute to the team."
+  },
+  {
+    "worden" : "wage",
+    "wordjp" : "賃金",
+    "examplejp" : "私は賃金について上司に相談した",
+    "id" : 182,
+    "option_1" : "集金",
+    "option_2" : "借金",
+    "exampleen" : "I asked my boss about my wage."
+  },
+  {
+    "worden" : "sufficient",
+    "wordjp" : "十分な",
+    "examplejp" : "我々に十分な時間はない",
+    "id" : 183,
+    "option_1" : "不足した",
+    "option_2" : "定期的な",
+    "exampleen" : "We don't have sufficient time."
+  },
+  {
+    "worden" : "drawing",
+    "wordjp" : "抽選会",
+    "examplejp" : "我々は抽選会を開く",
+    "id" : 184,
+    "option_1" : "運動会",
+    "option_2" : "運転",
+    "exampleen" : "We hold a drawing."
+  },
+  {
+    "worden" : "estimate",
+    "wordjp" : "見積もり",
+    "examplejp" : "見積もりをいただけますか？",
+    "id" : 185,
+    "option_1" : "請求書",
+    "option_2" : "提案書",
+    "exampleen" : "Would you give me an estimate?"
+  },
+  {
+    "worden" : "warehouse",
+    "wordjp" : "倉庫",
+    "examplejp" : "私は倉庫で働いている",
+    "id" : 186,
+    "option_1" : "冷蔵庫",
+    "option_2" : "一軒家",
+    "exampleen" : "I work at a warehouse."
+  },
+  {
+    "worden" : "introduce",
+    "wordjp" : "紹介する",
+    "examplejp" : "上司を紹介させてください",
+    "id" : 187,
+    "option_1" : "擁護する",
+    "option_2" : "巻き込む",
+    "exampleen" : "Let me introduce my supervisor."
+  },
+  {
+    "worden" : "broadcast",
+    "wordjp" : "放送",
+    "examplejp" : "その放送は間もなく終了した",
+    "id" : 188,
+    "option_1" : "提案",
+    "option_2" : "状況",
+    "exampleen" : "The broadcast ended soon."
+  },
+  {
+    "worden" : "struggle",
+    "wordjp" : "奮闘する",
+    "examplejp" : "彼は昇進のために奮闘するだろう",
+    "id" : 189,
+    "option_1" : "諦める",
+    "option_2" : "埋める",
+    "exampleen" : "He will struggle for promotion."
+  },
+  {
+    "worden" : "fasten",
+    "wordjp" : "締める",
+    "examplejp" : "シートベルトを締めて下さい",
+    "id" : 190,
+    "option_1" : "緩める",
+    "option_2" : "埋める",
+    "exampleen" : "Please fasten your seatbelts."
+  },
+  {
+    "worden" : "concern",
+    "wordjp" : "懸念",
+    "examplejp" : "私は多くの懸念がある",
+    "id" : 191,
+    "option_1" : "案件",
+    "option_2" : "提案",
+    "exampleen" : "I have a lot of concern."
+  },
+  {
+    "worden" : "guideline",
+    "wordjp" : "指針",
+    "examplejp" : "私は指針に従ってデザインする",
+    "id" : 192,
+    "option_1" : "流れ",
+    "option_2" : "考え",
+    "exampleen" : "I design according to the guideline."
+  },
+  {
+    "worden" : "suitable",
+    "wordjp" : "適切な",
+    "examplejp" : "私はあれは適切な態度だったと思う",
+    "id" : 193,
+    "option_1" : "不適切な",
+    "option_2" : "不合理な",
+    "exampleen" : "I think that is a suitable attitude."
+  },
+  {
+    "worden" : "determine",
+    "wordjp" : "決定する",
+    "examplejp" : "私は会議の開始時間を決定する",
+    "id" : 194,
+    "option_1" : "放っておく",
+    "option_2" : "調べる",
+    "exampleen" : "I will determine what time the meeting starts."
+  },
+  {
+    "worden" : "application",
+    "wordjp" : "応募書類",
+    "examplejp" : "私は応募書類を忘れた",
+    "id" : 195,
+    "option_1" : "履歴書",
+    "option_2" : "提案書",
+    "exampleen" : "I forgot an application."
+  },
+  {
+    "worden" : "cafeteria",
+    "wordjp" : "食堂",
+    "examplejp" : "私は食堂で昼食をとる",
+    "id" : 196,
+    "option_1" : "台所",
+    "option_2" : "リビング",
+    "exampleen" : "I eat lunch at the cafeteria."
+  },
+  {
+    "worden" : "upcoming",
+    "wordjp" : "今度の",
+    "examplejp" : "私は今度のパーティーに参加します",
+    "id" : 197,
+    "option_1" : "過去の",
+    "option_2" : "ふさわしい",
+    "exampleen" : "I'll attend the upcoming party."
+  },
+  {
+    "worden" : "interview",
+    "wordjp" : "面接",
+    "examplejp" : "面接は明日だ",
+    "id" : 198,
+    "option_1" : "会議",
+    "option_2" : "競技",
+    "exampleen" : "The interview is tomorrow."
+  },
+  {
+    "worden" : "practical",
+    "wordjp" : "実務の",
+    "examplejp" : "彼は実務の経験が必要だ",
+    "id" : 199,
+    "option_1" : "架空の",
+    "option_2" : "責務の",
+    "exampleen" : "He needs practical experience."
+  },
+  {
+    "worden" : "required",
+    "wordjp" : "必須の",
+    "examplejp" : "その欄は必須です",
+    "id" : 200,
+    "option_1" : "不要の",
+    "option_2" : "自由の",
+    "exampleen" : "That column is required."
+  },
+  {
+    "worden" : "consist",
+    "wordjp" : "構成されている",
+    "examplejp" : "我々の会社は多くのエンジニアで構成されている",
+    "id" : 201,
+    "option_1" : "知られている",
+    "option_2" : "満たされている",
+    "exampleen" : "Our departments mainly consist of engineers."
+  },
+  {
+    "worden" : "publish",
+    "wordjp" : "出版する",
+    "examplejp" : "彼は本を出版する",
+    "id" : 202,
+    "option_1" : "生産する",
+    "option_2" : "販売する",
+    "exampleen" : "He will publish his book."
+  },
+  {
+    "worden" : "agency",
+    "wordjp" : "代理店",
+    "examplejp" : "我々は広告代理店と仕事をする",
+    "id" : 203,
+    "option_1" : "本店",
+    "option_2" : "青果店",
+    "exampleen" : "We work with an ad agency."
+  },
+  {
+    "worden" : "total",
+    "wordjp" : "合計",
+    "examplejp" : "従業員は合計で100名だ",
+    "id" : 204,
+    "option_1" : "少なくとも",
+    "option_2" : "知る限り",
+    "exampleen" : "The total number of employees is hundred."
+  },
+  {
+    "worden" : "detail",
+    "wordjp" : "詳細",
+    "examplejp" : "私は詳細を知りたい",
+    "id" : 205,
+    "option_1" : "内容",
+    "option_2" : "予想",
+    "exampleen" : "I want to know every detail."
+  },
+  {
+    "worden" : "appointed",
+    "wordjp" : "指定された",
+    "examplejp" : "私は定刻に到着した",
+    "id" : 206,
+    "option_1" : "知られた",
+    "option_2" : "見なされた",
+    "exampleen" : "I've arrived at the appointed time."
+  },
+  {
+    "worden" : "arrangement",
+    "wordjp" : "手配",
+    "examplejp" : "私は出張の手配をした",
+    "id" : 207,
+    "option_1" : "予想",
+    "option_2" : "承諾",
+    "exampleen" : "I made a business trip arrangement."
+  },
+  {
+    "worden" : "fare",
+    "wordjp" : "運賃",
+    "examplejp" : "私は安い運賃で会社に行く",
+    "id" : 208,
+    "option_1" : "平等",
+    "option_2" : "手段",
+    "exampleen" : "I get to my company at a cheap fare."
+  },
+  {
+    "worden" : "necessary",
+    "wordjp" : "必要な",
+    "examplejp" : "彼は申し込みの必要条件を知った",
+    "id" : 209,
+    "option_1" : "不要な",
+    "option_2" : "自由な",
+    "exampleen" : "He knew the necessary conditions for his application."
+  },
+  {
+    "worden" : "ideal",
+    "wordjp" : "理想的な",
+    "examplejp" : "我々のチームは理想的だ",
+    "id" : 210,
+    "option_1" : "懐疑的な",
+    "option_2" : "懐かしい",
+    "exampleen" : "Our team is ideal."
+  },
+  {
+    "worden" : "host",
+    "wordjp" : "司会者",
+    "examplejp" : "私は司会者によろしくと言った",
+    "id" : 211,
+    "option_1" : "担当者",
+    "option_2" : "顧客",
+    "exampleen" : "I said \"hello\" to the host."
+  },
+  {
+    "worden" : "suburb",
+    "wordjp" : "郊外",
+    "examplejp" : "我々は郊外の近くに工場を作る",
+    "id" : 212,
+    "option_1" : "都心",
+    "option_2" : "海外",
+    "exampleen" : "We established a factory in a nearby suburb. "
+  },
+  {
+    "worden" : "organization",
+    "wordjp" : "組織",
+    "examplejp" : "私は新しい組織を作った",
+    "id" : 213,
+    "option_1" : "施設",
+    "option_2" : "部門",
+    "exampleen" : "I have established an organization."
+  },
+  {
+    "worden" : "approve",
+    "wordjp" : "承認する",
+    "examplejp" : "上司は私の新しい案を承認するだろう",
+    "id" : 214,
+    "option_1" : "確認する",
+    "option_2" : "拒否する",
+    "exampleen" : "The boss will approve my new plan."
+  },
+  {
+    "worden" : "distribute",
+    "wordjp" : "配布する",
+    "examplejp" : "私は会議のための資料を配布する",
+    "id" : 215,
+    "option_1" : "提案する",
+    "option_2" : "収集する",
+    "exampleen" : "I distribute documents for the meeting."
+  },
+  {
+    "worden" : "tenant",
+    "wordjp" : "入居者",
+    "examplejp" : "私は入居者に挨拶をする",
+    "id" : 216,
+    "option_1" : "管理人",
+    "option_2" : "才能",
+    "exampleen" : "I said \"hello\" to tenants."
+  },
+  {
+    "worden" : "branch",
+    "wordjp" : "支店",
+    "examplejp" : "私は支店へ向かった",
+    "id" : 217,
+    "option_1" : "本店",
+    "option_2" : "代理店",
+    "exampleen" : "I went to our branch office."
+  },
+  {
+    "worden" : "consider",
+    "wordjp" : "考慮する",
+    "examplejp" : "転職について考える",
+    "id" : 218,
+    "option_1" : "遠慮する",
+    "option_2" : "勘違いする",
+    "exampleen" : "I will consider a job change."
+  },
+  {
+    "worden" : "attempt",
+    "wordjp" : "試み",
+    "examplejp" : "その試みは成功した",
+    "id" : 219,
+    "option_1" : "現象",
+    "option_2" : "予想",
+    "exampleen" : "That attempt was successful."
+  },
+  {
+    "worden" : "heavily",
+    "wordjp" : "重く",
+    "examplejp" : "状況は私の心に重くのしかかった",
+    "id" : 220,
+    "option_1" : "時々",
+    "option_2" : "まれに",
+    "exampleen" : "The situation weighed heavily on my mind."
+  },
+  {
+    "worden" : "initial",
+    "wordjp" : "初期",
+    "examplejp" : "我々は初期コストは抑えなければならない",
+    "id" : 221,
+    "option_1" : "後期",
+    "option_2" : "中期",
+    "exampleen" : "We need to reduce the initial cost."
+  },
+  {
+    "worden" : "produce",
+    "wordjp" : "生産する",
+    "examplejp" : "私たちの工場で機械を生産する",
+    "id" : 222,
+    "option_1" : "破棄する",
+    "option_2" : "効率化する",
+    "exampleen" : "We produce machinery in our factory."
+  },
+  {
+    "worden" : "ability",
+    "wordjp" : "能力",
+    "examplejp" : "私は英語を話す能力が必要だ",
+    "id" : 223,
+    "option_1" : "俊敏",
+    "option_2" : "気力",
+    "exampleen" : "I need the ability to speak English."
+  },
+  {
+    "worden" : "guided",
+    "wordjp" : "ガイド付きの",
+    "examplejp" : "我々はガイド付きのツアーを選んだ",
+    "id" : 224,
+    "option_1" : "定まった",
+    "option_2" : "定額の",
+    "exampleen" : "We chose a guided tour."
+  },
+  {
+    "worden" : "temporary",
+    "wordjp" : "一時的な",
+    "examplejp" : "それは一時的な問題です",
+    "id" : 225,
+    "option_1" : "永続的な",
+    "option_2" : "兼務の",
+    "exampleen" : "That problem is temporary."
+  },
+  {
+    "worden" : "rent",
+    "wordjp" : "家賃",
+    "examplejp" : "家賃が上がった",
+    "id" : 226,
+    "option_1" : "借金",
+    "option_2" : "利回り",
+    "exampleen" : "Our rent increased."
+  },
+  {
+    "worden" : "private",
+    "wordjp" : "少人数の",
+    "examplejp" : "私は少人数のレッスンを受ける",
+    "id" : 227,
+    "option_1" : "大人数の",
+    "option_2" : "集団の",
+    "exampleen" : "I take private lessons."
+  },
+  {
+    "worden" : "range",
+    "wordjp" : "範囲",
+    "examplejp" : "私は問題の範囲が特定できない",
+    "id" : 228,
+    "option_1" : "地域の",
+    "option_2" : "電子レンジ",
+    "exampleen" : "I can't identify the range of problems."
+  },
+  {
+    "worden" : "labor",
+    "wordjp" : "労働の",
+    "examplejp" : "我々は人件費を慎重に扱う",
+    "id" : 229,
+    "option_1" : "社会の",
+    "option_2" : "社内の",
+    "exampleen" : "We carefully manage labor costs."
+  },
+  {
+    "worden" : "modern",
+    "wordjp" : "現代の",
+    "examplejp" : "我々のオフィスは現代風だ",
+    "id" : 230,
+    "option_1" : "過去の",
+    "option_2" : "未来の",
+    "exampleen" : "Our office is very modern."
+  },
+  {
+    "worden" : "production",
+    "wordjp" : "生産",
+    "examplejp" : "私は生産ラインで働いている",
+    "id" : 231,
+    "option_1" : "生活",
+    "option_2" : "提案",
+    "exampleen" : "I work on a production line."
+  },
+  {
+    "worden" : "another",
+    "wordjp" : "別の",
+    "examplejp" : "会議はあと3時間ある",
+    "id" : 232,
+    "option_1" : "同じの",
+    "option_2" : "近い",
+    "exampleen" : "The meeting will last another three hours."
+  },
+  {
+    "worden" : "limited",
+    "wordjp" : "限られた",
+    "examplejp" : "私は限られた予算で企画を作る必要がある",
+    "id" : 233,
+    "option_1" : "満たされた",
+    "option_2" : "意味のある",
+    "exampleen" : "I need to make a plan within a limited budget."
+  },
+  {
+    "worden" : "client",
+    "wordjp" : "顧客",
+    "examplejp" : "私は顧客に会いに行く",
+    "id" : 234,
+    "option_1" : "友達",
+    "option_2" : "上司",
+    "exampleen" : "I am going to meet the client."
+  },
+  {
+    "worden" : "function",
+    "wordjp" : "機能",
+    "examplejp" : "その機能は不要だ",
+    "id" : 235,
+    "option_1" : "豊富",
+    "option_2" : "秘密",
+    "exampleen" : "That function is not necessary."
+  },
+  {
+    "worden" : "recommendation",
+    "wordjp" : "推薦",
+    "examplejp" : "私は彼の推薦によってこれを使っていた",
+    "id" : 236,
+    "option_1" : "知名度",
+    "option_2" : "考え",
+    "exampleen" : "I used this on his recommendation."
+  },
+  {
+    "worden" : "hire",
+    "wordjp" : "雇う",
+    "examplejp" : "社は新人を雇うだろう",
+    "id" : 237,
+    "option_1" : "嫌う",
+    "option_2" : "燃える",
+    "exampleen" : "Our company will hire newcomers."
+  },
+  {
+    "worden" : "barely",
+    "wordjp" : "辛うじて",
+    "examplejp" : "かろうじて新製品を世に出した",
+    "id" : 238,
+    "option_1" : "楽に",
+    "option_2" : "ついでに",
+    "exampleen" : "We barely launched our new product."
+  },
+  {
+    "worden" : "commuter",
+    "wordjp" : "通勤者",
+    "examplejp" : "朝の通勤電車は混む",
+    "id" : 239,
+    "option_1" : "生産者",
+    "option_2" : "労働者",
+    "exampleen" : "The commuter train is crowded in the morning."
+  },
+  {
+    "worden" : "report",
+    "wordjp" : "報告する",
+    "examplejp" : "私は調査結果を報告する",
+    "id" : 240,
+    "option_1" : "止める",
+    "option_2" : "勧める",
+    "exampleen" : "I will report the results of our study."
+  },
+  {
+    "worden" : "book",
+    "wordjp" : "予約する",
+    "examplejp" : "私は会議室の予約をする",
+    "id" : 241,
+    "option_1" : "読む",
+    "option_2" : "後ろに下がる",
+    "exampleen" : "I will book a meeting room."
+  },
+  {
+    "worden" : "occasion",
+    "wordjp" : "行事",
+    "examplejp" : "その行事はつまらなかった",
+    "id" : 242,
+    "option_1" : "仕事",
+    "option_2" : "習い事",
+    "exampleen" : "That occasion was boring."
+  },
+  {
+    "worden" : "close",
+    "wordjp" : "近い",
+    "examplejp" : "オフィスは家に近い",
+    "id" : 243,
+    "option_1" : "遠い",
+    "option_2" : "少人数の",
+    "exampleen" : "The office is close to my house."
+  },
+  {
+    "worden" : "mainly",
+    "wordjp" : "主に",
+    "examplejp" : "私は主に新製品を開発しています",
+    "id" : 244,
+    "option_1" : "副次的に",
+    "option_2" : "定期的に",
+    "exampleen" : "I mainly develop new products."
+  },
+  {
+    "worden" : "exhibition",
+    "wordjp" : "展示会",
+    "examplejp" : "私は新商品の展示会に出席する",
+    "id" : 245,
+    "option_1" : "朗読会",
+    "option_2" : "会議",
+    "exampleen" : "I attended an exhibition of new products."
+  },
+  {
+    "worden" : "earn",
+    "wordjp" : "得る",
+    "examplejp" : "お金を稼ぐのは大変だ",
+    "id" : 246,
+    "option_1" : "失う",
+    "option_2" : "知る",
+    "exampleen" : "It's hard to earn money."
+  },
+  {
+    "worden" : "identify",
+    "wordjp" : "特定する",
+    "examplejp" : "彼は原因を特定できる",
+    "id" : 247,
+    "option_1" : "消去する",
+    "option_2" : "認定する",
+    "exampleen" : "He can identify the problem."
+  },
+  {
+    "worden" : "capable",
+    "wordjp" : "する能力がある",
+    "examplejp" : "彼は問題を解決する能力がある",
+    "id" : 248,
+    "option_1" : "する能力がない",
+    "option_2" : "する必要がある",
+    "exampleen" : "He is capable of solving the problem."
+  },
+  {
+    "worden" : "allow",
+    "wordjp" : "許可する",
+    "examplejp" : "私は新しいサービスの使用を許可する",
+    "id" : 249,
+    "option_1" : "拒否する",
+    "option_2" : "見過ごす",
+    "exampleen" : "I will allow them to use the new service."
+  },
+  {
+    "worden" : "conference",
+    "wordjp" : "会議",
+    "examplejp" : "我々は来週大きな会議を開く",
+    "id" : 250,
+    "option_1" : "練習",
+    "option_2" : "大会",
+    "exampleen" : "We have a big conference next week."
+  },
+  {
+    "worden" : "cooperation",
+    "wordjp" : "協力",
+    "examplejp" : "ご協力感謝します",
+    "id" : 251,
+    "option_1" : "拒否",
+    "option_2" : "案内",
+    "exampleen" : "Thank you for your cooperation."
+  },
+  {
+    "worden" : "approach",
+    "wordjp" : "近づく",
+    "examplejp" : "我々は慎重に問題に近づいていく",
+    "id" : 252,
+    "option_1" : "遠ざかる",
+    "option_2" : "過ぎる",
+    "exampleen" : "We will approach the problem carefully."
+  },
+  {
+    "worden" : "available",
+    "wordjp" : "利用可能",
+    "examplejp" : "プリンタは使用可能だ",
+    "id" : 253,
+    "option_1" : "利用不可",
+    "option_2" : "故障中",
+    "exampleen" : "The printer is now available."
+  },
+  {
+    "worden" : "figure",
+    "wordjp" : "数字",
+    "examplejp" : "スプッドシートの数字は合っている",
+    "id" : 254,
+    "option_1" : "文字",
+    "option_2" : "カタカナ",
+    "exampleen" : "The figure on the spreadsheet is correct."
+  },
+  {
+    "worden" : "description",
+    "wordjp" : "説明",
+    "examplejp" : "その説明はわかりにくい",
+    "id" : 255,
+    "option_1" : "討論",
+    "option_2" : "会議",
+    "exampleen" : "That description is hard to understand."
+  },
+  {
+    "worden" : "original",
+    "wordjp" : "元の",
+    "examplejp" : "私は元の場所に書類を戻す",
+    "id" : 256,
+    "option_1" : "模倣の",
+    "option_2" : "近い",
+    "exampleen" : "I will place the documents at their original positions."
+  },
+  {
+    "worden" : "district",
+    "wordjp" : "地区",
+    "examplejp" : "私は商店地区に行く",
+    "id" : 257,
+    "option_1" : "距離",
+    "option_2" : "個別",
+    "exampleen" : "I will go to a shopping district."
+  },
+  {
+    "worden" : "charge",
+    "wordjp" : "請求する",
+    "examplejp" : "私は残りの費用を請求する",
+    "id" : 258,
+    "option_1" : "擁護する",
+    "option_2" : "変更する",
+    "exampleen" : "I charge rest of cost."
+  },
+  {
+    "worden" : "preserve",
+    "wordjp" : "保護する",
+    "examplejp" : "我々は自然の保護を望む",
+    "id" : 259,
+    "option_1" : "提供する",
+    "option_2" : "説明する",
+    "exampleen" : "We wish to preserve nature."
+  },
+  {
+    "worden" : "display",
+    "wordjp" : "展示",
+    "examplejp" : "私は展示を眺める",
+    "id" : 260,
+    "option_1" : "会場",
+    "option_2" : "海",
+    "exampleen" : "I see a display."
+  },
+  {
+    "worden" : "comfort",
+    "wordjp" : "快適さ",
+    "examplejp" : "その座席は最高の快適さを提供する",
+    "id" : 261,
+    "option_1" : "不便さ",
+    "option_2" : "不快さ",
+    "exampleen" : "This seat provides maximum comfort."
+  },
+  {
+    "worden" : "expand",
+    "wordjp" : "拡大する",
+    "examplejp" : "事業の範囲が拡大する事があります",
+    "id" : 262,
+    "option_1" : "縮小する",
+    "option_2" : "間延びする",
+    "exampleen" : "The scope of the project may expand."
+  },
+  {
+    "worden" : "nearby",
+    "wordjp" : "近所の",
+    "examplejp" : "私は近所の支店に行く",
+    "id" : 263,
+    "option_1" : "遠方の",
+    "option_2" : "周りの",
+    "exampleen" : "I go to nearby brunch."
+  },
+  {
+    "worden" : "flyer",
+    "wordjp" : "チラシ",
+    "examplejp" : "私はチラシをデザインする必要がある",
+    "id" : 264,
+    "option_1" : "紙飛行機",
+    "option_2" : "チケット",
+    "exampleen" : "I need to design our new flyer."
+  },
+  {
+    "worden" : "participate",
+    "wordjp" : "参加する",
+    "examplejp" : "私は大きなイベントに参加する",
+    "id" : 265,
+    "option_1" : "練習する",
+    "option_2" : "見学する",
+    "exampleen" : "I will participate in the big event."
+  },
+  {
+    "worden" : "connect",
+    "wordjp" : "接続する",
+    "examplejp" : "我々の製品は日本と世界をつなぐ",
+    "id" : 266,
+    "option_1" : "切断する",
+    "option_2" : "報告する",
+    "exampleen" : "Our product will connect Japan with the world."
+  },
+  {
+    "worden" : "updates",
+    "wordjp" : "最新情報",
+    "examplejp" : "何か最新情報はありますか？",
+    "id" : 267,
+    "option_1" : "参考文献",
+    "option_2" : "説明書",
+    "exampleen" : "Do you have any updates?"
+  },
+  {
+    "worden" : "cause",
+    "wordjp" : "原因",
+    "examplejp" : "原因はここではない",
+    "id" : 268,
+    "option_1" : "問題",
+    "option_2" : "参考",
+    "exampleen" : "The cause of the problem is not here."
+  },
+  {
+    "worden" : "firmly",
+    "wordjp" : "しっかりと",
+    "examplejp" : "我々の事業は良くなると固く信じている",
+    "id" : 269,
+    "option_1" : "ゆっくりと",
+    "option_2" : "すぐに",
+    "exampleen" : "I firmly believe that our project will be good."
+  },
+  {
+    "worden" : "serious",
+    "wordjp" : "深刻",
+    "examplejp" : "我々は深刻な問題を抱えている",
+    "id" : 270,
+    "option_1" : "軽度",
+    "option_2" : "ちょっとした",
+    "exampleen" : "We have a serious problem."
+  },
+  {
+    "worden" : "policy",
+    "wordjp" : "規定",
+    "examplejp" : "弊社の規定は厳しい",
+    "id" : 271,
+    "option_1" : "経験",
+    "option_2" : "知識",
+    "exampleen" : "Our policy is strict."
+  },
+  {
+    "worden" : "store",
+    "wordjp" : "保存する",
+    "examplejp" : "私はデータを保存する",
+    "id" : 272,
+    "option_1" : "破棄する",
+    "option_2" : "確認する",
+    "exampleen" : "I store data."
+  },
+  {
+    "worden" : "leading",
+    "wordjp" : "一流の",
+    "examplejp" : "彼は一流の営業だ",
+    "id" : 273,
+    "option_1" : "二流の",
+    "option_2" : "新人の",
+    "exampleen" : "He is a leading sales staff member."
+  },
+  {
+    "worden" : "encourage",
+    "wordjp" : "奨励する",
+    "examplejp" : "私はあなたがイベントに参加する事を奨励します",
+    "id" : 274,
+    "option_1" : "拒否する",
+    "option_2" : "協力する",
+    "exampleen" : "I encourage you to attend the event."
+  },
+  {
+    "worden" : "brief",
+    "wordjp" : "短い",
+    "examplejp" : "短いレポートを提出してください",
+    "id" : 275,
+    "option_1" : "長い",
+    "option_2" : "細かい",
+    "exampleen" : "Please report your brief summary."
+  },
+  {
+    "worden" : "complaint",
+    "wordjp" : "不満",
+    "examplejp" : "そのプロジェクトに不満を抱くものは多い",
+    "id" : 276,
+    "option_1" : "満足",
+    "option_2" : "欺瞞",
+    "exampleen" : "Many people have made a complaint about that project."
+  },
+  {
+    "worden" : "aisle",
+    "wordjp" : "通路側の",
+    "examplejp" : "私は通路側の席に座った",
+    "id" : 277,
+    "option_1" : "窓側の",
+    "option_2" : "反対側の",
+    "exampleen" : "I sat in an aisle seat."
+  },
+  {
+    "worden" : "forward",
+    "wordjp" : "転送する",
+    "examplejp" : "メールを転送してくれますか",
+    "id" : 278,
+    "option_1" : "輸送する",
+    "option_2" : "保護する",
+    "exampleen" : "Please forward me an email."
+  },
+  {
+    "worden" : "advance",
+    "wordjp" : "進捗",
+    "examplejp" : "そのプロジェクトは進捗がない",
+    "id" : 279,
+    "option_1" : "後退",
+    "option_2" : "改善",
+    "exampleen" : "That project has no advance."
+  },
+  {
+    "worden" : "likely",
+    "wordjp" : "〜しそう",
+    "examplejp" : "彼は出かけそうだ",
+    "id" : 280,
+    "option_1" : "〜である",
+    "option_2" : "〜と思う",
+    "exampleen" : "It's likely that he will leave."
+  },
+  {
+    "worden" : "familiar",
+    "wordjp" : "馴染みがある",
+    "examplejp" : "彼はIT業界に詳しい",
+    "id" : 281,
+    "option_1" : "馴染みがない",
+    "option_2" : "家族の",
+    "exampleen" : "He is familiar with the IT field."
+  },
+  {
+    "worden" : "copy",
+    "wordjp" : "冊",
+    "examplejp" : "一冊のマニュアルがある",
+    "id" : 282,
+    "option_1" : "枚",
+    "option_2" : "ダース",
+    "exampleen" : "There is one copy of the manual."
+  },
+  {
+    "worden" : "inform",
+    "wordjp" : "知らせる",
+    "examplejp" : "私は彼らに事業の成功を伝える",
+    "id" : 283,
+    "option_1" : "見せる",
+    "option_2" : "隠す",
+    "exampleen" : "I will inform them that our project is a success."
+  },
+  {
+    "worden" : "affect",
+    "wordjp" : "影響を及ぼす",
+    "examplejp" : "彼の出発は会社に影響を与えた",
+    "id" : 284,
+    "option_1" : "不安にさせる",
+    "option_2" : "知られる",
+    "exampleen" : "His departure will affect the company."
+  },
+  {
+    "worden" : "maintain",
+    "wordjp" : "維持する",
+    "examplejp" : "その品質を維持するのは大変だ",
+    "id" : 285,
+    "option_1" : "放棄する",
+    "option_2" : "提示する",
+    "exampleen" : "It's hard to maintain that quality."
+  },
+  {
+    "worden" : "throughout",
+    "wordjp" : "ずっと",
+    "examplejp" : "彼は一日ずっとそれについて考えている",
+    "id" : 286,
+    "option_1" : "ちょっと",
+    "option_2" : "だけ",
+    "exampleen" : "He is thinking about it throughout the day."
+  },
+  {
+    "worden" : "bargain",
+    "wordjp" : "お買い得品",
+    "examplejp" : "欲しかった本が特売だ",
+    "id" : 287,
+    "option_1" : "品薄",
+    "option_2" : "売り切れ",
+    "exampleen" : "The book is a bargain at that price."
+  },
+  {
+    "worden" : "eager",
+    "wordjp" : "熱心な",
+    "examplejp" : "彼は真実をとても知りたがった",
+    "id" : 288,
+    "option_1" : "冷静な",
+    "option_2" : "少し",
+    "exampleen" : "He was eager to know the truth."
+  },
+  {
+    "worden" : "impressed",
+    "wordjp" : "感心する",
+    "examplejp" : "我々はその製品のアイデアに感心した",
+    "id" : 289,
+    "option_1" : "驚愕した",
+    "option_2" : "落胆した",
+    "exampleen" : "We were impressed with that idea."
+  },
+  {
+    "worden" : "budget",
+    "wordjp" : "予算",
+    "examplejp" : "予算不足が悩みだ",
+    "id" : 290,
+    "option_1" : "荷物",
+    "option_2" : "小物",
+    "exampleen" : "My trouble is the lack of budget."
+  },
+  {
+    "worden" : "trend",
+    "wordjp" : "動向",
+    "examplejp" : "私は最新の動向についていく必要がある",
+    "id" : 291,
+    "option_1" : "未来",
+    "option_2" : "新聞",
+    "exampleen" : "I need to follow the trend."
+  },
+  {
+    "worden" : "survey",
+    "wordjp" : "調査",
+    "examplejp" : "私は調査の結果をまとめる",
+    "id" : 292,
+    "option_1" : "結果",
+    "option_2" : "占い",
+    "exampleen" : "I will gather the results of our survey."
+  },
+  {
+    "worden" : "response",
+    "wordjp" : "返事",
+    "examplejp" : "お返事ありがとうございます",
+    "id" : 293,
+    "option_1" : "納品",
+    "option_2" : "経験",
+    "exampleen" : "Thank you for your response."
+  },
+  {
+    "worden" : "performance",
+    "wordjp" : "成績",
+    "examplejp" : "彼は社で成績がいい",
+    "id" : 294,
+    "option_1" : "状態",
+    "option_2" : "見た目",
+    "exampleen" : "He demonstrates good performance in his company."
+  },
+  {
+    "worden" : "following",
+    "wordjp" : "〜に続いて",
+    "examplejp" : "会議に続いて昼食があります",
+    "id" : 295,
+    "option_1" : "〜と違う",
+    "option_2" : "〜を知って",
+    "exampleen" : "Following the meeting, we will have lunch."
+  },
+  {
+    "worden" : "provide",
+    "wordjp" : "提供する",
+    "examplejp" : "我が社は安定した製品を提供する",
+    "id" : 296,
+    "option_1" : "引き受ける",
+    "option_2" : "追い込む",
+    "exampleen" : "We provide a stable product to customers."
+  },
+  {
+    "worden" : "improvement",
+    "wordjp" : "改善",
+    "examplejp" : "プロジェクト改善が使命だ",
+    "id" : 297,
+    "option_1" : "改悪",
+    "option_2" : "楽観",
+    "exampleen" : "That will be an improvement to our project."
+  },
+  {
+    "worden" : "crowded",
+    "wordjp" : "混雑している",
+    "examplejp" : "朝の電車は混雑している",
+    "id" : 298,
+    "option_1" : "混乱している",
+    "option_2" : "整備されている",
+    "exampleen" : "The train is crowded in the morning."
+  },
+  {
+    "worden" : "divided",
+    "wordjp" : "分割された",
+    "examplejp" : "資料は三つに分割されています",
+    "id" : 299,
+    "option_1" : "一つにされた",
+    "option_2" : "みなされた",
+    "exampleen" : "The document is divided into three sections."
+  },
+  {
+    "worden" : "deliver",
+    "wordjp" : "(演説などを)行う",
+    "examplejp" : "彼は上司にプレゼンをした",
+    "id" : 300,
+    "option_1" : "受け取る",
+    "option_2" : "潜る",
+    "exampleen" : "He will deliver a presentation to his boss."
+  }
+]
+}
