@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 
 import com.example.shokiterashita.learningmaterial.R
+import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
 
 
 class LearningMaterialTestFragment : Fragment() {
@@ -29,6 +30,11 @@ class LearningMaterialTestFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
+//        com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager?.setup
+        LessonMaterialManager.setup(Context)
+
 
     }
 
@@ -49,6 +55,7 @@ class LearningMaterialTestFragment : Fragment() {
 
 
         testTitleTextView.text = "あと２時間で、進歩報告"
+
 
         return view
     }

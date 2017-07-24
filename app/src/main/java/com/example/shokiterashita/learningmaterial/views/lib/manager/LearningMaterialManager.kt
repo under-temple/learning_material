@@ -10,6 +10,9 @@ import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
+import com.example.shokiterashita.learningmaterial.R
+
+
 object LessonMaterialManager {
     var lessonMaterialConfig:RealmConfiguration? = null
 
@@ -30,8 +33,8 @@ object LessonMaterialManager {
     }
 
     fun loadFromJson(context: Context){
-        val testListJsonText = context.resources.openRawResource(R.raw.test_list.json).bufferedReader().use { it.readText() }
-        val wordListJsonText = context.resources.openRawResource(R.raw.words.json).bufferedReader().use { it.readText() }
+        val testListJsonText = context.resources.openRawResource(R.raw.test_list).bufferedReader().use { it.readText() }
+        val wordListJsonText = context.resources.openRawResource(R.raw.words).bufferedReader().use { it.readText() }
         val realm = getLessonMaterial()
         realm.executeTransaction {
             realm.createObjectFromJson(TOEICFlash600TestList::class.java, testListJsonText)
