@@ -13,39 +13,53 @@ import io.realm.annotations.PrimaryKey
 import com.example.shokiterashita.learningmaterial.R
 
 
+
 object LessonMaterialManager {
     var lessonMaterialConfig:RealmConfiguration? = null
 
     fun setup(context: Context){
         try {
-            //教材データ用
-            lessonMaterialConfig = RealmConfiguration.Builder(context).name("lesson_material.realm").deleteRealmIfMigrationNeeded().build()
+
+            //"lesson_material.realm"という名前でContext.getFilesDir()の場所にファイルを作成している。
+            lessonMaterialConfig = RealmConfiguration.Builder(context)
+                    .name("lesson_material.realm")
+                    .deleteRealmIfMigrationNeeded()
+                    .build()
 //            Realm.getInstance(lessonMaterialConfig)
+
             loadFromJson(context)
+
         }catch (e:Exception){
             Log.d("error",e.message)
         }
     }
 
+    //なぜ、ここの処理を、setup()の中でやらないのであろうか。
     fun getLessonMaterial():Realm{
+        //設定に従ったRealmを取得
         var realm = Realm.getInstance(lessonMaterialConfig)
         return realm
     }
 
     fun loadFromJson(context: Context){
+        //openRawResource -- rawディレクトリから、ファイルを取得する。
         val testListJsonText = context.resources.openRawResource(R.raw.test_list).bufferedReader().use { it.readText() }
         val wordListJsonText = context.resources.openRawResource(R.raw.words).bufferedReader().use { it.readText() }
         val realm = getLessonMaterial()
-        realm.executeTransaction {
+        realm.executeTransaction { //Realm Doc オブジェクトの自動更新にて、「executeTransaction」が使われている。 https://realm.io/jp/docs/java/1.1.0/#section-8
+            //なぜ、createAllFromJsonではないのであろうか。
+
+            //この::class.java の意味が判明　https://kotlinlang.org/docs/reference/java-interop.html
             realm.createObjectFromJson(TOEICFlash600TestList::class.java, testListJsonText)
             realm.createObjectFromJson(TOEICFlash600WordList::class.java, wordListJsonText)
         }
     }
-
 }
 
+// RealmObjectを継承することで、モデルクラスを定義する。
+
 open class TOEICFlash600TestList : RealmObject() {
-    open var list:RealmList<TOEICFlash600Test>? = null
+    open var list:RealmList<TOEICFlash600Test>? = null //1 対 多
 }
 
 open class TOEICFlash600Test:RealmObject(){
@@ -62,8 +76,11 @@ open class TOEICFlash600Test:RealmObject(){
 }
 
 open class TOEICFlash600WordList : RealmObject() {
-    open var list:RealmList<TOEICFlash600Word>? = null
+    open var list:RealmList<TOEICFlash600Word>? = null //1 対 多
 }
+
+
+
 open class TOEICFlash600Word:RealmObject(){
     @PrimaryKey
     open var id:Int? = null

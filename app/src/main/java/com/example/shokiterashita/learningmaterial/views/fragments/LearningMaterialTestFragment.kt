@@ -13,6 +13,20 @@ import android.widget.TextView
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
 
+import android.util.Log
+import com.example.shokiterashita.learningmaterial.views.lib.manager.TOEICFlash600TestList
+import com.example.shokiterashita.learningmaterial.views.lib.manager.TOEICFlash600WordList
+import io.realm.Realm
+import io.realm.RealmConfiguration
+import io.realm.RealmList
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+import org.json.JSONArray
+import io.realm.Sort
+import io.realm.RealmResults
+
+
+
 
 class LearningMaterialTestFragment : Fragment() {
 
@@ -24,6 +38,7 @@ class LearningMaterialTestFragment : Fragment() {
     lateinit var choiceAButton: Button
     lateinit var choiceBButton: Button
     lateinit var choiceCButton: Button
+    lateinit var realm: Realm
 
 
     private var mListener: OnFragmentInteractionListener? = null
@@ -32,8 +47,45 @@ class LearningMaterialTestFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
 
-//        com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager?.setup
-        LessonMaterialManager.setup(Context)
+        LessonMaterialManager.setup(context)
+        var testListFinal = realm.where(TOEICFlash600TestList::class.java).findAll()
+
+//        realm.where(TOEICFlash600TestList::class.java.findAll().forEach {
+            Log.d("RealmWithKotlin", "${testListFinal} is  years old.")
+//            // Tama is 3 years old.
+//            // Mike is 2 years old.
+//        }
+//        val tweets = realm.allObjectsSorted(TOEICFlash600TestList::class.java, "createdAt", Sort.DESCENDING)
+        var testList = TOEICFlash600TestList::class.java
+        var testListWord = testList
+//        var wordList = testWordsList.TOEICFlash600WordList
+//        var wordList = TOEICFlash600TestList
+
+
+        Log.d("toeicWordList", "${testList}")
+
+
+//        val realmConfiguration = RealmConfiguration.Builder().build()
+//        Realm.deleteRealm(realmConfiguration)
+//        realm = Realm.getInstance(realmConfiguration)
+
+
+        LessonMaterialManager.setup(context)
+
+
+
+
+//        LessonMaterialManager.setup(context)
+//        var wordList = LessonMaterialManager.setup(context)
+//
+//        print(wordList)
+//        Log.d(wordList.toString(), "wordlist")
+
+
+
+
+//        var wordList : JSONArray = testListJsonText
+
 
 
     }
