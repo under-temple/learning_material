@@ -4,14 +4,10 @@ package com.example.shokiterashita.learningmaterial.views.lib.manager
  */
 import android.content.Context
 import android.util.Log
-import io.realm.Realm
-import io.realm.RealmConfiguration
-import io.realm.RealmList
-import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
 
 import com.example.shokiterashita.learningmaterial.R
-
+import io.realm.*
 
 
 object LessonMaterialManager {
@@ -53,15 +49,45 @@ object LessonMaterialManager {
 
             //なぜ、createAllFromJsonではないのであろうか。
             //この::class.java の意味が判明　https://kotlinlang.org/docs/reference/java-interop.html
-            realm.createObjectFromJson(TOEICFlash600TestList::class.java, testListJsonText)
-            realm.createObjectFromJson(TOEICFlash600WordList::class.java, wordListJsonText)
+            realm.createObjectFromJson(TOEICFlash600Test::class.java, testListJsonText)
+            realm.createObjectFromJson(TOEICFlash600Word::class.java, wordListJsonText)
         }
     }
 
-    fun findAllTest():TOEICFlash600TestList{
+    fun findAllTest():TOEICFlash600Test{
         val realm = getLessonMaterial()
-        var testListFinal = realm.where(TOEICFlash600TestList::class.java).findAll()
-        return testListFinal.first()
+        var testListFinal = realm.where(TOEICFlash600Test::class.java).findFirst()
+        return testListFinal
+    }
+
+    fun fetchAndShowTest(testListId:Int): TOEICFlash600Test {
+        val realm = getLessonMaterial()
+
+        var testListId:TOEICFlash600Test = realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
+        var totalCount : Int = testListId.idx_start!!
+        var idx_start : Int = testListId.totalCount!!
+
+//        testListId.id?.let{ id ->
+//
+//        }
+
+//        idx_start = testListId.idx_start?.let {
+//            return it
+//        }
+//        totalCount = testListId.totalCount?.let {
+//            return it
+//        }
+//
+
+
+
+        for (i in idx_start..totalCount) {
+            Log.d("iterator", "${i}")
+
+        }
+
+        return testListId
+
     }
 }
 

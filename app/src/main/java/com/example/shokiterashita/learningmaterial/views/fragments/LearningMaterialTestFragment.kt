@@ -14,8 +14,6 @@ import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
 
 import android.util.Log
-import com.example.shokiterashita.learningmaterial.views.lib.manager.TOEICFlash600TestList
-import com.example.shokiterashita.learningmaterial.views.lib.manager.TOEICFlash600WordList
 import io.realm.*
 import io.realm.annotations.PrimaryKey
 import org.json.JSONArray
@@ -32,25 +30,19 @@ class LearningMaterialTestFragment : Fragment() {
     lateinit var choiceAButton: Button
     lateinit var choiceBButton: Button
     lateinit var choiceCButton: Button
-    lateinit var realm: Realm
-    open var sampleDate : String = ""
-
 
     private var mListener: OnFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        realm = Realm.getDefaultInstance()
-//        val results = RealmList<TOEICFlash600TestList>()
-//        val results = RealmList<JSONArray>()
-
         LessonMaterialManager.setup(context)
-        var testListFinal = LessonMaterialManager.findAllTest()
+        var test = LessonMaterialManager.findAllTest()
+        Log.d("LessonMaterialManager", "${test.idx_start}")
 
-//        results.addAll(testListFinal.subList(0,testListFinal.size))
-        Log.d("toeicWordList", "${testListFinal}")
-//        sampleDate = results.size.toString()
+        //カード毎に、testListIDを振り分け、クリックした時に、fetchAndShowTest()メソッドに、IDを渡す。
+        var sampleData = LessonMaterialManager.fetchAndShowTest(2) //今回,testListId = 2
+        Log.d("toeicWordList", "${sampleData.idx_start}")
 
     }
 
@@ -58,7 +50,6 @@ class LearningMaterialTestFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_learning_material_test, container, false)
-
 
         testTitleTextView = view.findViewById(R.id.material_test_title)
         currentTestNumberTextView = view.findViewById(R.id.currentTestNumber)
@@ -69,10 +60,7 @@ class LearningMaterialTestFragment : Fragment() {
         choiceBButton = view.findViewById(R.id.choice_b)
         choiceCButton = view.findViewById(R.id.choice_c)
 
-
         testTitleTextView.text = "test phrase"
-        testTitleTextView.text = sampleDate
-
 
         return view
     }

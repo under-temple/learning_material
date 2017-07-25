@@ -7,19 +7,23 @@
     android:tag="LearningMaterialTestFragment"
     tools:context="com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment">
 
-
     <TextView
         android:id="@+id/material_test_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="単語テスト" />
+        android:text="単語テスト"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"/>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center">
+
 
         <!--//プレイスホルダーを使用する。-->
         <TextView
@@ -40,6 +44,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="48dp"
+        android:textSize="48dp"
         android:text="general"/>
 
 
@@ -47,21 +53,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="100dp"
         android:orientation="vertical">
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/choice_a"
+            android:textSize="24dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:backgroundTint="#ffffff"
+            android:background="#ff44ff"
             android:text="一般的な"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/choice_b"
+            android:textSize="24dp"
+            android:layout_marginTop="12dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:backgroundTint="#ffffff"
+
             android:text="包括的な"/>
+
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/choice_c"
+            android:textSize="24dp"
+            android:layout_marginTop="12dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:backgroundTint="#ffffff"
             android:text="専門的な"/>
 
 
