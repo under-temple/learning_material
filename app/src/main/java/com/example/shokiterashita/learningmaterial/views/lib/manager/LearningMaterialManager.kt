@@ -45,19 +45,28 @@ object LessonMaterialManager {
         //openRawResource -- rawディレクトリから、ファイルを取得する。
         val testListJsonText = context.resources.openRawResource(R.raw.test_list).bufferedReader().use { it.readText() }
         val wordListJsonText = context.resources.openRawResource(R.raw.words).bufferedReader().use { it.readText() }
-        val realm = getLessonMaterial()
-        realm.executeTransaction { //Realm Doc オブジェクトの自動更新にて、「executeTransaction」が使われている。 https://realm.io/jp/docs/java/1.1.0/#section-8
-            //なぜ、createAllFromJsonではないのであろうか。
 
+        val realm = getLessonMaterial()
+
+        //トランザクション開始：書き込み準備
+        realm.executeTransaction { //Realm Doc オブジェクトの自動更新にて、「executeTransaction」が使われている。 https://realm.io/jp/docs/java/1.1.0/#section-8
+
+            //なぜ、createAllFromJsonではないのであろうか。
             //この::class.java の意味が判明　https://kotlinlang.org/docs/reference/java-interop.html
             realm.createObjectFromJson(TOEICFlash600TestList::class.java, testListJsonText)
             realm.createObjectFromJson(TOEICFlash600WordList::class.java, wordListJsonText)
         }
     }
+
+    fun findAllTest():TOEICFlash600TestList{
+        val realm = getLessonMaterial()
+        var testListFinal = realm.where(TOEICFlash600TestList::class.java).findAll()
+        return testListFinal.first()
+    }
 }
 
-// RealmObjectを継承することで、モデルクラスを定義する。
 
+// RealmObjectを継承することで、モデルクラスを定義する。
 open class TOEICFlash600TestList : RealmObject() {
     open var list:RealmList<TOEICFlash600Test>? = null //1 対 多
 }
