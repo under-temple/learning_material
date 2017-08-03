@@ -12,6 +12,8 @@ import io.realm.*
 
 object LessonMaterialManager {
     var lessonMaterialConfig:RealmConfiguration? = null
+    var testId:Int = 0
+    lateinit var testList:TOEICFlash600Test
 
     fun setup(context: Context){
         try {
@@ -29,8 +31,6 @@ object LessonMaterialManager {
             Log.d("error",e.message)
         }
     }
-
-    //なぜ、ここの処理を、setup()の中でやらないのであろうか。
     fun getLessonMaterial():Realm{
         //設定に従ったRealmを取得
         var realm = Realm.getInstance(lessonMaterialConfig)
@@ -38,7 +38,6 @@ object LessonMaterialManager {
     }
 
     fun loadFromJson(context: Context){
-        //openRawResource -- rawディレクトリから、ファイルを取得する。
         val testListJsonText = context.resources.openRawResource(R.raw.test_list).bufferedReader().use { it.readText() }
         val wordListJsonText = context.resources.openRawResource(R.raw.words).bufferedReader().use { it.readText() }
 
@@ -48,53 +47,49 @@ object LessonMaterialManager {
         realm.executeTransaction { //Realm Doc オブジェクトの自動更新にて、「executeTransaction」が使われている。 https://realm.io/jp/docs/java/1.1.0/#section-8
 
             //なぜ、createAllFromJsonではないのであろうか。
-            //この::class.java の意味が判明　https://kotlinlang.org/docs/reference/java-interop.html
             realm.createObjectFromJson(TOEICFlash600Test::class.java, testListJsonText)
             realm.createObjectFromJson(TOEICFlash600Word::class.java, wordListJsonText)
         }
     }
 
-    fun findAllTest():TOEICFlash600Test{
+
+    fun fetchTestList(testListId:Int): TOEICFlash600Word {
         val realm = getLessonMaterial()
-        var testListFinal = realm.where(TOEICFlash600Test::class.java).findFirst()
-        return testListFinal
+        testList = realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
+
+        testId = testList.idx_start!! //Demo: idx_start == 11
+        var testListTotalCount = testList.totalCount //Demo: total_count == 20
+
+        var testContent = realm.where(TOEICFlash600Word::class.java).equalTo("id", testId).findFirst()
+
+        return testContent
     }
 
-    fun fetchAndShowTest(testListId:Int): TOEICFlash600Test {
+//    fun fetchTestContent(testId: Int){
+//        val realm = getLessonMaterial()
+//        var testContent = realm.where(TOEICFlash600Word::class.java).equalTo("id", testId).findFirst()
+//
+//        //memo: testListId-> 2 ... 11 < testId < 20
+//
+//    }
+
+    fun nextQuestion():TOEICFlash600Word{
         val realm = getLessonMaterial()
+        testId = testId + 1
 
-        var testListId:TOEICFlash600Test = realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
-        var totalCount : Int = testListId.idx_start!!
-        var idx_start : Int = testListId.totalCount!!
-
-//        testListId.id?.let{ id ->
-//
-//        }
-
-//        idx_start = testListId.idx_start?.let {
-//            return it
-//        }
-//        totalCount = testListId.totalCount?.let {
-//            return it
-//        }
-//
-
-
-
-        for (i in idx_start..totalCount) {
-            Log.d("iterator", "${i}")
-
-        }
-
-        return testListId
+        var testContent = realm.where(TOEICFlash600Word::class.java).equalTo("id", testId).findFirst()
+        Log.d("testContent","${testContent}")
+        return testContent
 
     }
+
+
 }
 
 
 // RealmObjectを継承することで、モデルクラスを定義する。
 open class TOEICFlash600TestList : RealmObject() {
-    open var list:RealmList<TOEICFlash600Test>? = null //1 対 多
+    open var list:RealmList<TOEICFlash600Test>? = null
 }
 
 open class TOEICFlash600Test:RealmObject(){
