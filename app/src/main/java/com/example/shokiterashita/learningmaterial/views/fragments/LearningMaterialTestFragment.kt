@@ -11,16 +11,30 @@ import android.widget.Button
 import android.widget.TextView
 import kotlin.concurrent.timer
 
-
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
-
-import android.util.Log
 import com.example.shokiterashita.learningmaterial.views.lib.manager.TOEICFlash600Word
 
 
-@Suppress("UNUSED_EXPRESSION")
+import android.util.Log
+
+
+import rx.subscriptions.CompositeSubscription
+import rx.Observable
+import rx.Observer
+import rx.android.schedulers.AndroidSchedulers
+import rx.Subscription
+import rx.functions.Func1
+import android.widget.Toast
+import com.jakewharton.rxbinding2.view.RxView
+import rx.functions.Action1
+import java.util.concurrent.TimeUnit
+import javax.xml.datatype.DatatypeConstants.SECONDS
+
+
 class LearningMaterialTestFragment : Fragment() {
+
+
 
     lateinit var testTitleTextView: TextView
     lateinit var currentTestNumberTextView: TextView
@@ -32,8 +46,12 @@ class LearningMaterialTestFragment : Fragment() {
     lateinit var choiceCButton: Button
     lateinit var initTestContent : TOEICFlash600Word
     lateinit var wordJP: CharSequence
+    private var subscriptions: CompositeSubscription? = null
+    private var mSubscription: Subscription? = null
+
     var countTime = 0
     val limitTime = 500
+    private val TAG = "Rx TEST"
     val handler = Handler()
 
     private var mListener: OnFragmentInteractionListener? = null
@@ -42,7 +60,27 @@ class LearningMaterialTestFragment : Fragment() {
         super.onCreate(savedInstanceState)
         LessonMaterialManager.setup(context)
 
+        subscriptions = CompositeSubscription()
+
+        //OnTextChangeEvent や OnClickEvent をただの Void シグナルに変換
+        val signalizer = Func1<Any,Void>{null}
+
+
+        mSubscription = RxView.clicks(choiceAButton).map(signalizer)
+                .timeout(5, TimeUnit.SECONDS)
+                .subscribe(Action1<Void> {
+                    Log.d(TAG, "5s以内に何かアクションあった")
+                }, Action1<Throwable> {
+                    // 3秒間何もなかったらこっち
+                    Log.d(TAG, "5s以内に、アクションなし。")
+                })
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mSubscription!!.unsubscribe()
+    }
+
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -66,8 +104,8 @@ class LearningMaterialTestFragment : Fragment() {
         choiceBButton.text = initTestContent.option_1
         choiceCButton.text = initTestContent.option_2
 
-        main("うんこ")
-
+        //androidは、スレッドセーフではないため、UIスレッド以外から、UIの操作はできない。従って、以下のコードでは、エラーが発生する。
+        main("nextProblem")
 
         choiceAButton.setOnClickListener {
             checkAnswer(choiceAButton.text)
@@ -79,17 +117,17 @@ class LearningMaterialTestFragment : Fragment() {
             checkAnswer(choiceCButton.text)
         }
 
-        fun timer(
-                name: String? = "countDown",
-                daemon: Boolean = false,
-                initialDelay: Long = 0.toLong(),
-                period: Long,
-                action: Unit
-        ) {
-            timer("countDown", false, 0, 5000, showNextTest(LessonMaterialManager.nextQuestion()))
-
-        }
-
+//        fun timer(
+//                name: String? = "countDown",
+//                daemon: Boolean = false,
+//                initialDelay: Long = 0.toLong(),
+//                period: Long,
+//                action: Unit
+//        ) {
+//            timer("countDown", false, 0, 5000, showNextTest(LessonMaterialManager.nextQuestion()))
+//
+//        }
+//
 
 
         return view

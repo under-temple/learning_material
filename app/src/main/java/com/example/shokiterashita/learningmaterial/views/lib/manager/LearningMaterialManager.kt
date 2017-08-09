@@ -65,14 +65,6 @@ object LessonMaterialManager {
         return testContent
     }
 
-//    fun fetchTestContent(testId: Int){
-//        val realm = getLessonMaterial()
-//        var testContent = realm.where(TOEICFlash600Word::class.java).equalTo("id", testId).findFirst()
-//
-//        //memo: testListId-> 2 ... 11 < testId < 20
-//
-//    }
-
     fun nextQuestion():TOEICFlash600Word{
         val realm = getLessonMaterial()
         testId = testId + 1
@@ -85,9 +77,6 @@ object LessonMaterialManager {
 
 
 }
-
-
-// RealmObjectを継承することで、モデルクラスを定義する。
 open class TOEICFlash600TestList : RealmObject() {
     open var list:RealmList<TOEICFlash600Test>? = null
 }
