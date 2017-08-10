@@ -26,7 +26,7 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.Subscription
 import rx.functions.Func1
 import android.widget.Toast
-import com.jakewharton.rxbinding2.view.RxView
+import com.jakewharton.rxbinding.view.RxView
 import rx.functions.Action1
 import java.util.concurrent.TimeUnit
 import javax.xml.datatype.DatatypeConstants.SECONDS
@@ -49,12 +49,7 @@ class LearningMaterialTestFragment : Fragment() {
     private var subscriptions: CompositeSubscription? = null
     private var mSubscription: Subscription? = null
 
-    var countTime = 0
-    val limitTime = 500
-    private val TAG = "Rx TEST"
-    val handler = Handler()
-
-    private var mListener: OnFragmentInteractionListener? = null
+    var timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,23 +57,11 @@ class LearningMaterialTestFragment : Fragment() {
 
         subscriptions = CompositeSubscription()
 
-        //OnTextChangeEvent や OnClickEvent をただの Void シグナルに変換
-        val signalizer = Func1<Any,Void>{null}
-
-
-        mSubscription = RxView.clicks(choiceAButton).map(signalizer)
-                .timeout(5, TimeUnit.SECONDS)
-                .subscribe(Action1<Void> {
-                    Log.d(TAG, "5s以内に何かアクションあった")
-                }, Action1<Throwable> {
-                    // 3秒間何もなかったらこっち
-                    Log.d(TAG, "5s以内に、アクションなし。")
-                })
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        mSubscription!!.unsubscribe()
+        mSubscription?.unsubscribe()
     }
 
 
@@ -104,9 +87,6 @@ class LearningMaterialTestFragment : Fragment() {
         choiceBButton.text = initTestContent.option_1
         choiceCButton.text = initTestContent.option_2
 
-        //androidは、スレッドセーフではないため、UIスレッド以外から、UIの操作はできない。従って、以下のコードでは、エラーが発生する。
-        main("nextProblem")
-
         choiceAButton.setOnClickListener {
             checkAnswer(choiceAButton.text)
         }
@@ -116,19 +96,6 @@ class LearningMaterialTestFragment : Fragment() {
         choiceCButton.setOnClickListener {
             checkAnswer(choiceCButton.text)
         }
-
-//        fun timer(
-//                name: String? = "countDown",
-//                daemon: Boolean = false,
-//                initialDelay: Long = 0.toLong(),
-//                period: Long,
-//                action: Unit
-//        ) {
-//            timer("countDown", false, 0, 5000, showNextTest(LessonMaterialManager.nextQuestion()))
-//
-//        }
-//
-
 
         return view
     }
@@ -160,23 +127,16 @@ class LearningMaterialTestFragment : Fragment() {
 
     }
 
-    fun main(args: String) {
-        timer(initialDelay = 0, period = 5000) {
-            showNextTest(LessonMaterialManager.nextQuestion())
-        }
-    }
-
     fun showNextTest(testContent:TOEICFlash600Word){
         testWordTextView.text = testContent.worden
         choiceAButton.text = testContent.wordjp
         choiceBButton.text = testContent.option_1
         choiceCButton.text = testContent.option_2
-    }
 
-    interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        fun onFragmentInteraction(uri: Uri)
+        timerObservable.unsubscribe()
+        timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe{
+            inCorrect()//5秒間何もなかったので、不正解になります。
+        }
     }
-
 }
 

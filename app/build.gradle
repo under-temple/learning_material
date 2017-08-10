@@ -31,7 +31,8 @@ dependencies {
     compile 'com.android.support:support-v4:26.+'
     compile 'io.reactivex:rxjava:1.1.8'
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    compile 'com.ramotion.expandingcollection:expanding-collection:0.9.0'
 
     testCompile 'junit:junit:4.12'
 }

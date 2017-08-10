@@ -1,13 +1,16 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.shokiterashita.learningmaterial.views.fragments.TestListFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.ramotion.expandingcollection.ECBackgroundSwitcherView
+        android:id="@+id/ec_bg_switcher_element"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent" />
 
-</FrameLayout>
+    <com.ramotion.expandingcollection.ECPagerView
+        android:id="@+id/ec_pager_element"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>
