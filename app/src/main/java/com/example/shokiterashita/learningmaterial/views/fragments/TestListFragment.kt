@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 
 import com.example.shokiterashita.learningmaterial.R
+import com.example.shokiterashita.learningmaterial.viewmodel.LearningMaterialTest.CardDataImpl
 import com.ramotion.expandingcollection.ECPagerView
 import com.ramotion.expandingcollection.ECBackgroundSwitcherView
 import android.view.Gravity
@@ -20,7 +21,9 @@ import com.ramotion.expandingcollection.ECPagerViewAdapter
 
 class TestListFragment : Fragment() {
 
-    private val ecPagerView: ECPagerView? = null
+    private var ecPagerView: ECPagerView? = null
+    var mCardDataImpl = CardDataImpl()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,11 +32,11 @@ class TestListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_test_list, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_test_list, container, false)
 
         ecPagerView = view.findViewById(R.id.ec_pager_element) as ECPagerView
         // Generate example dataset
-        val dataset = CardDataImpl.generateExampleData()
+        val dataset = mCardDataImpl.generateExampleData()
 
         // Implement pager adapter and attach it to pager view
         ecPagerView.setPagerViewAdapter(object : ECPagerViewAdapter(getApplicationContext(), dataset) {
@@ -41,10 +44,11 @@ class TestListFragment : Fragment() {
                 // Data object for current card
                 val cardData = data as CardDataImpl
 
-                // Set adapter and items to current card content list
-                list.setAdapter(CardListItemAdapter(getApplicationContext(), cardData.getListItems()))
-                // Also some visual tuning can be done here
-                list.setBackgroundColor(Color.WHITE)
+                //Card List Itemに関するコード？
+//                // Set adapter and items to current card content list
+//                list.setAdapter(CardListItemAdapter(getApplicationContext(), cardData.getListItems()))
+//                // Also some visual tuning can be done here
+//                list.setBackgroundColor(Color.WHITE)
 
                 // Here we can create elements for head view or inflate layout from xml using inflater service
                 val cardTitle = TextView(getApplicationContext())
@@ -53,16 +57,12 @@ class TestListFragment : Fragment() {
                 val layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
                 layoutParams.gravity = Gravity.CENTER
                 head.addView(cardTitle, layoutParams)
-
-                // Card toggling by click on head element
-                head.setOnClickListener { ecPagerView.toggle() }
             }
         })
 
         // Add background switcher to pager view
-        ecPagerView.setBackgroundSwitcherView(findViewById(R.id.ec_bg_switcher_element) as ECBackgroundSwitcherView)
+        ecPagerView.setBackgroundSwitcherView(view.findViewById(R.id.ec_bg_switcher_element) as ECBackgroundSwitcherView)
 
+        return view
     }
-
-
 }

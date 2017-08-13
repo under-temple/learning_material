@@ -137,6 +137,7 @@ class LearningMaterialTestFragment : Fragment() {
         timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe{
             inCorrect()//5秒間何もなかったので、不正解になります。
         }
+
     }
 }
 

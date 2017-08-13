@@ -11,6 +11,8 @@
         android:id="@+id/ec_pager_element"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true"
+        ec:cardHeight="200dp"
+        ec:cardWidth="250dp"/>
 
 </RelativeLayout>
