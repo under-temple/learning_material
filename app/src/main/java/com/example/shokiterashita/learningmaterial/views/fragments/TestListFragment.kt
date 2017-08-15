@@ -20,7 +20,7 @@ import com.ramotion.expandingcollection.ECPagerViewAdapter
 
 class TestListFragment : Fragment() {
 
-    private val ecPagerView: ECPagerView? = null
+    private var ecPagerView: ECPagerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +29,11 @@ class TestListFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater!!.inflate(R.layout.fragment_test_list, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_test_list, container, false)
 
-        ecPagerView = view.findViewById(R.id.ec_pager_element) as ECPagerView
+//        ecPagerView = view.findViewById(R.id.ec_pager_element) as ECPagerView
+        ecPagerView = view.findViewById(R.id.ec_pager_element)
+
         // Generate example dataset
         val dataset = CardDataImpl.generateExampleData()
 
@@ -53,15 +55,13 @@ class TestListFragment : Fragment() {
                 val layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
                 layoutParams.gravity = Gravity.CENTER
                 head.addView(cardTitle, layoutParams)
-
-                // Card toggling by click on head element
-                head.setOnClickListener { ecPagerView.toggle() }
             }
         })
 
         // Add background switcher to pager view
         ecPagerView.setBackgroundSwitcherView(findViewById(R.id.ec_bg_switcher_element) as ECBackgroundSwitcherView)
 
+        return view
     }
 
 
