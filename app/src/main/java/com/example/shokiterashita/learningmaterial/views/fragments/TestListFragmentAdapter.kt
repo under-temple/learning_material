@@ -8,14 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-
 import com.example.shokiterashita.learningmaterial.R
-
 
 import com.ramotion.expandingcollection.ECCardContentListItemAdapter
 import java.util.Random
 
-class CardListItemAdapter(context: Context, objects: List<String>) : ECCardContentListItemAdapter<String>(context, R.layout.list_item, objects) {
+class CardListItemAdapter(context: Context, objects: List<String>) : ECCardContentListItemAdapter<String>(context, R.layout.fragment_test_list_item, objects) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val viewHolder: ViewHolder
@@ -23,9 +21,9 @@ class CardListItemAdapter(context: Context, objects: List<String>) : ECCardConte
 
         if (rowView == null) {
             val inflater = LayoutInflater.from(context)
-            rowView = inflater.inflate(R.layout.list_item, null)
+            rowView = inflater.inflate(R.layout.fragment_test_list_item, null)
             viewHolder = ViewHolder()
-            viewHolder.itemText = rowView!!.findViewById(R.id.list_item_text) as TextView
+            viewHolder.itemText = rowView!!.findViewById(R.id.list_item_text)
             rowView.tag = viewHolder
         } else {
             viewHolder = rowView.tag as ViewHolder
@@ -54,5 +52,4 @@ class CardListItemAdapter(context: Context, objects: List<String>) : ECCardConte
     internal class ViewHolder {
         var itemText: TextView? = null
     }
-
 }

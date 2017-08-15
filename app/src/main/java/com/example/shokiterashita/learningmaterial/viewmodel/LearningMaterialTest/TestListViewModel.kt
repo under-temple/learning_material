@@ -1,24 +1,16 @@
-package com.example.shokiterashita.learningmaterial.viewmodel.LearningMaterialTest
+package com.ramotion.expandingcollection.examples.simple
 
 import com.ramotion.expandingcollection.ECCardData
-import com.example.shokiterashita.learningmaterial.R
+
 import java.util.ArrayList
+import java.util.Arrays
+import com.example.shokiterashita.learningmaterial.R
 
-
-
-/**
- * Created by shokiterashita on 2017/08/13.
- */
-class CardDataImpl : ECCardData<String> {
-
-    private val cardTitle: String? = null
-    private val mainBackgroundResource: Int? = null
-    private val headBackgroundResource: Int? = null
+class CardDataImpl(val cardTitle: String, private val mainBackgroundResource: Int?, private val headBackgroundResource: Int?, private val listItems: List<String>) : ECCardData<String> {
 
     override fun getMainBackgroundResource(): Int? {
         return mainBackgroundResource
     }
-
 
     override fun getHeadBackgroundResource(): Int? {
         return headBackgroundResource
@@ -28,16 +20,29 @@ class CardDataImpl : ECCardData<String> {
         return listItems
     }
 
-    fun getCardTitle(): String? {
-        return cardTitle
+    companion object {
+
+        fun generateExampleData(): List<ECCardData<*>> {
+            val list = ArrayList<ECCardData<*>>()
+            list.add(CardDataImpl("Card 1", R.drawable.test, R.drawable.test, createItemsList("Card 1")))
+            list.add(CardDataImpl("Card 2", R.drawable.test, R.drawable.test, createItemsList("Card 2")))
+            list.add(CardDataImpl("Card 3", R.drawable.test, R.drawable.test, createItemsList("Card 3")))
+            return list
+        }
+
+        private fun createItemsList(cardName: String): List<String> {
+            val list = ArrayList<String>()
+            list.addAll(Arrays.asList(
+                    cardName + " - Item 1",
+                    cardName + " - Item 2",
+                    cardName + " - Item 3",
+                    cardName + " - Item 4",
+                    cardName + " - Item 5",
+                    cardName + " - Item 6",
+                    cardName + " - Item 7"
+            ))
+            return list
+        }
     }
 
-
-    fun generateExampleData(): List<ECCardData<*>> {
-        val list = ArrayList<ECCardData<*>>()
-        list.add(CardDataImpl(R.drawable.test, R.drawable.test))
-        list.add(CardDataImpl("Card 2", R.drawable.test, R.drawable.test))
-        list.add(CardDataImpl("Card 3", R.drawable.test, R.drawable.test))
-        return list
-    }
 }

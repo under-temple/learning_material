@@ -34,8 +34,6 @@ import javax.xml.datatype.DatatypeConstants.SECONDS
 
 class LearningMaterialTestFragment : Fragment() {
 
-
-
     lateinit var testTitleTextView: TextView
     lateinit var currentTestNumberTextView: TextView
     lateinit var overallTestNumberTextView: TextView
