@@ -34,8 +34,6 @@ import javax.xml.datatype.DatatypeConstants.SECONDS
 
 class LearningMaterialTestFragment : Fragment() {
 
-
-
     lateinit var testTitleTextView: TextView
     lateinit var currentTestNumberTextView: TextView
     lateinit var overallTestNumberTextView: TextView
@@ -137,6 +135,7 @@ class LearningMaterialTestFragment : Fragment() {
         timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe{
             inCorrect()//5秒間何もなかったので、不正解になります。
         }
+
     }
 }
 
