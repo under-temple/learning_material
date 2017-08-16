@@ -12,8 +12,10 @@ import io.realm.*
 
 object LessonMaterialManager {
     var lessonMaterialConfig:RealmConfiguration? = null
+
+    //ここらへんのクラス変数は、しかるべきアーキテクチャで宣言する。
     var testId:Int = 0
-    lateinit var testList:TOEICFlash600Test
+//    lateinit var testList:TOEICFlash600Test
 
     fun setup(context: Context){
         try {
@@ -32,7 +34,6 @@ object LessonMaterialManager {
         }
     }
     fun getLessonMaterial():Realm{
-        //設定に従ったRealmを取得
         var realm = Realm.getInstance(lessonMaterialConfig)
         return realm
     }
@@ -43,19 +44,17 @@ object LessonMaterialManager {
 
         val realm = getLessonMaterial()
 
-        //トランザクション開始：書き込み準備
-        realm.executeTransaction { //Realm Doc オブジェクトの自動更新にて、「executeTransaction」が使われている。 https://realm.io/jp/docs/java/1.1.0/#section-8
-
-            //なぜ、createAllFromJsonではないのであろうか。
+        realm.executeTransaction {
             realm.createObjectFromJson(TOEICFlash600Test::class.java, testListJsonText)
             realm.createObjectFromJson(TOEICFlash600Word::class.java, wordListJsonText)
         }
     }
 
 
-    fun fetchTestList(testListId:Int): TOEICFlash600Word {
+    //単語テストの開始〜終了を定めるために使用するメソッド
+    fun fetchTestListStartAndTotalCount(testListId:Int): TOEICFlash600Word {
         val realm = getLessonMaterial()
-        testList = realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
+        val testList = realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
 
         testId = testList.idx_start!! //Demo: idx_start == 11
         var testListTotalCount = testList.totalCount //Demo: total_count == 20
@@ -64,6 +63,15 @@ object LessonMaterialManager {
 
         return testContent
     }
+
+    //単語テスト選択カードを表示するために、使用するメソッド
+    fun fetchTestList(testListId:Int): TOEICFlash600Test{
+        val realm = getLessonMaterial()
+        val testList = realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
+        return testList
+    }
+
+
 
     fun nextQuestion():TOEICFlash600Word{
         val realm = getLessonMaterial()
@@ -74,6 +82,8 @@ object LessonMaterialManager {
         return testContent
 
     }
+
+
 
 
 }

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -19,13 +20,27 @@ import com.example.shokiterashita.learningmaterial.R
 //import com.example.shokiterashita.learningmaterial.viewmodel.CardDataImpl
 
 import android.util.TypedValue.COMPLEX_UNIT_DIP
+import android.widget.Button
+import com.example.shokiterashita.learningmaterial.views.lib.manager.extention.replaceFragment
 import com.ramotion.expandingcollection.*
 import com.ramotion.expandingcollection.examples.simple.CardDataImpl
 
 class TestListFragment: Fragment() {
 
+    internal var learningMaterial: LearningMaterialTestFragment = LearningMaterialTestFragment()
+
     private var ecPagerView: ECPagerView? = null
     private var testNumber: TextView? = null
+    private var previousCorrectCount: TextView? = null
+    private var fastestAnswerTime: TextView? = null
+    private var averageAnswerTime: TextView? = null
+    lateinit var startTestBtn: Button
+
+
+
+
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +55,8 @@ class TestListFragment: Fragment() {
         ecPagerView = view.findViewById(R.id.ec_pager_element)
 
         // Generate dataset from ViewModel
-        val dataset = CardDataImpl.generateExampleData()
+        val dataset = CardDataImpl.generateTestCardList(testListPosition = 1, context = context)//DEMO: 単語テスト一覧：101-200を選択したと想定
+
 
         // Implement pager adapter and attach it to pager view
         val ecPagerViewAdapter = object : ECPagerViewAdapter(context, dataset) {
@@ -67,8 +83,25 @@ class TestListFragment: Fragment() {
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
 
+                var startPosition = position + 1
+                var testCardData = CardDataImpl.fetchTestCardContents(startPosition,context)
                 testNumber = res.findViewById(R.id.test_number)
-                testNumber!!.text = position.toString()
+                previousCorrectCount = res.findViewById(R.id.previous_correct_count)
+                averageAnswerTime = res.findViewById(R.id.average_answer_time)
+                fastestAnswerTime = res.findViewById(R.id.fastest_answer_time)
+
+                var testListDataIdxStart = testCardData.idx_start.toString()
+                var testListDataTotalCount = testCardData.totalCount.toString()
+                testNumber!!.text = testListDataIdxStart + "-" + testListDataTotalCount
+
+                previousCorrectCount!!.text = testCardData.result.toString()
+//                averageAnswerTime!!.text = (testCardData.result!!.toInt() / testCardData.time!!.toInt()).toString()
+                fastestAnswerTime!!.text = testCardData.quicktime.toString()
+
+                startTestBtn = res.findViewById(R.id.start_test)
+                startTestBtn.setOnClickListener {
+                    showFragment()
+                }
 
                 return res
             }
@@ -81,6 +114,12 @@ class TestListFragment: Fragment() {
 
 
         return view
+    }
+
+    fun showFragment() {
+        var myApp = AppCompatActivity()
+
+        myApp.replaceFragment(R.id.test_list, learningMaterial)
     }
 
 }

@@ -1,17 +1,20 @@
 package com.ramotion.expandingcollection.examples.simple
 
+import android.app.Application
 import com.ramotion.expandingcollection.ECCardData
-
-import java.util.ArrayList
+import android.content.Context
 import java.util.Arrays
 import com.example.shokiterashita.learningmaterial.R
+import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
+import com.example.shokiterashita.learningmaterial.views.lib.manager.TOEICFlash600Test
+import kotlin.collections.ArrayList
 
- open class CardDataImpl(val cardTitle: String,
+class CardDataImpl(val cardTitle: String,
                    private val mainBackgroundResource: Int?,
                    private val headBackgroundResource: Int?,
                    private val listItems: List<String>) : ECCardData<String> {
 
-    override fun getMainBackgroundResource(): Int? {//親クラスが抽象クラスで、宣言しているため、getMainBackgroundResourceメソッドは消せない
+    override fun getMainBackgroundResource(): Int? {//親クラスが抽象クラスで、宣言しているため、このメソッドは消せない
         return mainBackgroundResource
     }
 
@@ -23,19 +26,44 @@ import com.example.shokiterashita.learningmaterial.R
         return listItems
     }
 
-     fun fetchCardData(){
-         //ここで、RealmManagerから、100枚分のデータを取得するメソッドを考える。
-     }
 
     companion object {
 
-        fun generateExampleData(): List<ECCardData<*>> {
+        fun generateTestCardList(testListPosition: Int, context: Context): List<ECCardData<*>> {
             val list = ArrayList<ECCardData<*>>()
-            list.add(CardDataImpl("Card 1", R.drawable.white, R.drawable.blackborder, createItemsList("Card 1")))
-            list.add(CardDataImpl("Card 2", R.drawable.white, R.drawable.blackborder, createItemsList("Card 2")))
-            list.add(CardDataImpl("Card 3", R.drawable.white, R.drawable.blackborder, createItemsList("Card 3")))
+            LessonMaterialManager.setup(context)
+            //カード枚数が決まる。
+
+            val firstTestListId = testListPosition + 1 + (testListPosition * 10)
+            val lastTestListId = firstTestListId + 10
+            val testListRange = firstTestListId..lastTestListId
+
+
+            for (i in testListRange) {
+                var testListData = LessonMaterialManager.fetchTestList(i)
+
+                list.add(CardDataImpl("", R.drawable.white, R.drawable.blackborder, createItemsList("Card 1")))
+            }
             return list
         }
+
+        fun fetchTestCardContents(testListPosition: Int,context: Context): TOEICFlash600Test{
+            LessonMaterialManager.setup(context)
+            var testCardContents = TOEICFlash600Test()
+
+//            val firstTestListId = testListPosition + 1 + (testListPosition * 10)
+//            val lastTestListId = firstTestListId + 10
+//            val testListRange = firstTestListId..lastTestListId
+
+//            for (i in testListRange) {
+            testCardContents = LessonMaterialManager.fetchTestList(testListPosition)
+//                testCardContentsArray.add(testCardContents)
+//            }
+
+            return testCardContents
+
+        }
+
 
         private fun createItemsList(cardName: String): List<String> {//使わないけど、消せない。
             val list = ArrayList<String>()
