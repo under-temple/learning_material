@@ -19,13 +19,14 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="60dp">
         <TextView
+            android:id="@+id/test_number_label"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="単語No." />
 
         <TextView
-            android:id="@+id/test_number"
+            android:id="@+id/test_number_text"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -97,6 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:text="テストをはじめる" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -142,8 +144,15 @@
             android:id="@+id/show_word_jp_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="70dp"
             android:text="日本語の意味を表示" />
+        <Button
+            android:id="@+id/pronounce_word_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="ここにスピーカーアイコン" />
+
 
     </LinearLayout>
 

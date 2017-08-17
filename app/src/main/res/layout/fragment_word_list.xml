@@ -16,7 +16,7 @@
         android:layout_centerInParent="true"
         ec:cardHeaderHeightExpanded="350dp"
         ec:cardHeight="500dp"
-        ec:cardWidth="320dp">
+        ec:cardWidth="280dp">
 
     </com.ramotion.expandingcollection.ECPagerView>
 

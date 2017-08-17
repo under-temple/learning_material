@@ -29,6 +29,8 @@ class WordListFragment: Fragment() {
     private var japaneseSentence: TextView? = null
     private var englishSentence: TextView? = null
     private var previousCorrectCount: TextView? = null
+    lateinit var testNumberLabel: TextView
+    lateinit var startTestButton: Button
 
     //fastestAnswerTimeと、してしまうと、Dateクラスと勘違いしてしまう恐れ。
     private var fastestAnswerTime: TextView? = null
@@ -51,7 +53,7 @@ class WordListFragment: Fragment() {
         //DEMO: 単語テスト一覧：101-200を選択したと想定
         val dataset = CardWordDataImpl.generateWordCardList(wordListPosition = 1)
 
-        // Implement pager adapter and attach it to pager view
+        // ここ、括れるんじゃないか？？
         val ecPagerViewAdapter = object : ECPagerViewAdapter(context, dataset) {
             override fun instantiateCard(inflaterService: LayoutInflater, head: ViewGroup, list: ListView, data: ECCardData<*>) {
                 // Data object for current card
@@ -73,7 +75,7 @@ class WordListFragment: Fragment() {
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
 
-                var testListPosition = 1 //testListId = 0 or 1 or 2 ,DEMO:単語一覧101-200を選択した。後に、Bundleクラスから、getInt()メソッドを呼ぶ。
+                val testListPosition = 1 //testListId = 0 or 1 or 2 ,DEMO:単語一覧101-200を選択した。後に、Bundleクラスから、getInt()メソッドを呼ぶ。
                 var startPosition = 0
 
                 when (testListPosition) {
@@ -88,17 +90,24 @@ class WordListFragment: Fragment() {
                     }
                 }
                 var testCardData = CardWordDataImpl.fetchWordCardContents(startPosition,context)
-                
+
+                //word_listに関するコード
                 englishWord = res.findViewById(R.id.word_en_text)
                 japaneseWord = res.findViewById(R.id.word_jp_text)
                 englishSentence = res.findViewById(R.id.sentence_en_text)
                 japaneseSentence = res.findViewById(R.id.sentence_jp_text)
 
+                //test_listに関するコード
+                testNumberLabel = res.findViewById(R.id.test_number_label)
+                startTestButton = res.findViewById(R.id.start_test)
+                testNumberLabel.visibility = View.INVISIBLE
+                startTestButton.visibility = View.INVISIBLE
+
+
                 englishWord!!.text = testCardData.worden
                 japaneseWord!!.text = testCardData.wordjp
                 englishSentence!!.text = testCardData.exampleen
                 japaneseSentence!!.text = testCardData.examplejp
-
 
                 previousCorrectCount = res.findViewById(R.id.previous_correct_count)
                 averageAnswerTime = res.findViewById(R.id.average_answer_time)

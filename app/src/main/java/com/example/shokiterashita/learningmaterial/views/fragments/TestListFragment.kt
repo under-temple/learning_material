@@ -90,19 +90,18 @@ class TestListFragment: Fragment() {
 
                 val testCardData = CardDataImpl.fetchTestCardContents(startPosition,context)
 
-                testNumber = res.findViewById(R.id.test_number)
+                testNumber = res.findViewById(R.id.test_number_text)
                 previousCorrectCount = res.findViewById(R.id.previous_correct_count)
                 averageAnswerTime = res.findViewById(R.id.average_answer_time)
                 fastestAnswerTime = res.findViewById(R.id.fastest_answer_time)
 
                 var testListDataIdxStart = testCardData.idx_start.toString()
                 var testListDataTotalCount = testCardData.totalCount.toString()
-                // 必要ないフォースアンラップは消す
-                testNumber!!.text = testListDataIdxStart + "-" + testListDataTotalCount
+                testNumber.text = testListDataIdxStart + "-" + testListDataTotalCount
 
-                previousCorrectCount!!.text = testCardData.result.toString()
+                previousCorrectCount.text = testCardData.result.toString()
 //                averageAnswerTime!!.text = (testCardData.result!!.toInt() / testCardData.time!!.toInt()).toString()
-                fastestAnswerTime!!.text = testCardData.quicktime.toString()
+                fastestAnswerTime.text = testCardData.quicktime.toString()
 
 
                 startTestBtn = res.findViewById(R.id.start_test)
