@@ -1,31 +1,28 @@
 package com.example.shokiterashita.learningmaterial.views.fragments
 
-import android.app.Activity
-import android.support.v4.app.Fragment
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.util.Log
+import android.support.v4.app.Fragment
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ListView
 import android.widget.TextView
-
-
 import com.example.shokiterashita.learningmaterial.R
-//import com.example.shokiterashita.learningmaterial.viewmodel.CardDataImpl
-
-import android.util.TypedValue.COMPLEX_UNIT_DIP
-import android.widget.Button
-import com.example.shokiterashita.learningmaterial.views.lib.manager.extention.replaceFragment
-import com.ramotion.expandingcollection.*
+import com.ramotion.expandingcollection.ECCardData
+import com.ramotion.expandingcollection.ECPagerCard
+import com.ramotion.expandingcollection.ECPagerView
+import com.ramotion.expandingcollection.ECPagerViewAdapter
 import com.ramotion.expandingcollection.examples.simple.CardDataImpl
 
-class TestListFragment: Fragment() {
+/**
+ * Created by shokiterashita on 2017/08/17.
+ */
+class WordListFragment: Fragment() {
 
     private var ecPagerView: ECPagerView? = null
     lateinit var testNumber: TextView
@@ -35,21 +32,15 @@ class TestListFragment: Fragment() {
     lateinit var startTestBtn: Button
 
 
-
-
-
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_test_list, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_word_list, container, false)
 
-        ecPagerView = view.findViewById(R.id.ec_pager_element)
+        ecPagerView = view.findViewById(R.id.ec_word_pager_element)
 
         val dataset = CardDataImpl.generateTestCardList(testListPosition = 1, context = context)//DEMO: 単語テスト一覧：101-200を選択したと想定
 
@@ -70,7 +61,7 @@ class TestListFragment: Fragment() {
                 // add cardTitle : String
                 val cardTitle = TextView(activity.applicationContext)
                 cardTitle.text = cardData.cardTitle
-                cardTitle.setTextSize(COMPLEX_UNIT_DIP, 20f)
+                cardTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20f)
                 val layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
                 layoutParams.gravity = Gravity.CENTER
                 head.addView(cardTitle, layoutParams)

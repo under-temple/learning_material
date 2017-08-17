@@ -48,14 +48,6 @@ class CardListItemAdapter(context: Context, objects: List<String>) : ECCardConte
         }
         return rowView
     }
-
-//    override fun instantiateItem(container: ViewGroup?, position: Int): Any {
-//
-//
-//        return super.instantiateItem(container, position)
-//    }
-
-
     internal class ViewHolder {
         var itemText: TextView? = null
     }

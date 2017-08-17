@@ -1,13 +1,24 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.shokiterashita.learningmaterial.views.fragments.WordListFragment">
+    android:id="@+id/word_list">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.ramotion.expandingcollection.ECBackgroundSwitcherView
+        android:id="@+id/ec_bg_switcher_element"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.ramotion.expandingcollection.ECPagerView xmlns:ec="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/ec_word_pager_element"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_centerInParent="true"
+        ec:cardHeaderHeightExpanded="350dp"
+        ec:cardHeight="500dp"
+        ec:cardWidth="320dp">
 
-</FrameLayout>
+    </com.ramotion.expandingcollection.ECPagerView>
+
+
+</RelativeLayout>

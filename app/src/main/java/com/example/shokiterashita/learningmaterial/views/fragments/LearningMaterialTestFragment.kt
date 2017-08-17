@@ -67,7 +67,8 @@ class LearningMaterialTestFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_learning_material_test, container, false)
-        initTestContent = LessonMaterialManager.fetchTestListStartAndTotalCount(2) //DEMO: テスト選択画面にて、テスト２が選択されました。
+        var testId = arguments.getInt("testId")
+        initTestContent = LessonMaterialManager.fetchTestListStartAndTotalCount(testId) //TestListFragmentから、testIdを、受け取る。
 
         wordJP = initTestContent.wordjp.toString()
 

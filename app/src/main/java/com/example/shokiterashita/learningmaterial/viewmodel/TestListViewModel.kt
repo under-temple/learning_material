@@ -32,12 +32,10 @@ class CardDataImpl(val cardTitle: String,
         fun generateTestCardList(testListPosition: Int, context: Context): List<ECCardData<*>> {
             val list = ArrayList<ECCardData<*>>()
             LessonMaterialManager.setup(context)
-            //カード枚数が決まる。
 
             val firstTestListId = testListPosition + 1 + (testListPosition * 10)
             val lastTestListId = firstTestListId + 10
             val testListRange = firstTestListId..lastTestListId
-
 
             for (i in testListRange) {
                 var testListData = LessonMaterialManager.fetchTestList(i)
@@ -49,18 +47,19 @@ class CardDataImpl(val cardTitle: String,
 
         fun fetchTestCardContents(testListPosition: Int,context: Context): TOEICFlash600Test{
             LessonMaterialManager.setup(context)
-            var testCardContents = TOEICFlash600Test()
+//            var testCardContents = TOEICFlash600Test()
 
 //            val firstTestListId = testListPosition + 1 + (testListPosition * 10)
 //            val lastTestListId = firstTestListId + 10
 //            val testListRange = firstTestListId..lastTestListId
 
 //            for (i in testListRange) {
-            testCardContents = LessonMaterialManager.fetchTestList(testListPosition)
+//            testCardContents = LessonMaterialManager.fetchTestList(testListPosition)
 //                testCardContentsArray.add(testCardContents)
 //            }
 
-            return testCardContents
+//            return testCardContents
+            return LessonMaterialManager.fetchTestList(testListPosition)
 
         }
 
