@@ -1,5 +1,6 @@
 package com.example.shokiterashita.learningmaterial.views.fragments
 
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -13,23 +14,27 @@ import android.widget.FrameLayout
 import android.widget.ListView
 import android.widget.TextView
 import com.example.shokiterashita.learningmaterial.R
-import com.ramotion.expandingcollection.ECCardData
-import com.ramotion.expandingcollection.ECPagerCard
-import com.ramotion.expandingcollection.ECPagerView
-import com.ramotion.expandingcollection.ECPagerViewAdapter
-import com.ramotion.expandingcollection.examples.simple.CardDataImpl
+import com.ramotion.expandingcollection.*
+import com.ramotion.expandingcollection.examples.simple.CardWordDataImpl
 
 /**
  * Created by shokiterashita on 2017/08/17.
  */
+
 class WordListFragment: Fragment() {
 
     private var ecPagerView: ECPagerView? = null
-    lateinit var testNumber: TextView
-    lateinit var previousCorrectCount: TextView
-    lateinit var fastestAnswerTime: TextView
-    lateinit var averageAnswerTime: TextView
-    lateinit var startTestBtn: Button
+    private var englishWord: TextView? = null
+    private var japaneseWord: TextView? = null
+    private var japaneseSentence: TextView? = null
+    private var englishSentence: TextView? = null
+    private var previousCorrectCount: TextView? = null
+
+    //fastestAnswerTimeと、してしまうと、Dateクラスと勘違いしてしまう恐れ。
+    private var fastestAnswerTime: TextView? = null
+    private var averageAnswerTime: TextView? = null
+
+    private var showJp: Button? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,36 +45,35 @@ class WordListFragment: Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_word_list, container, false)
 
+        //後に、Bundleクラスから、値を取得する。
         ecPagerView = view.findViewById(R.id.ec_word_pager_element)
 
-        val dataset = CardDataImpl.generateTestCardList(testListPosition = 1, context = context)//DEMO: 単語テスト一覧：101-200を選択したと想定
-
+        //DEMO: 単語テスト一覧：101-200を選択したと想定
+        val dataset = CardWordDataImpl.generateWordCardList(wordListPosition = 1)
 
         // Implement pager adapter and attach it to pager view
         val ecPagerViewAdapter = object : ECPagerViewAdapter(context, dataset) {
             override fun instantiateCard(inflaterService: LayoutInflater, head: ViewGroup, list: ListView, data: ECCardData<*>) {
                 // Data object for current card
-                val cardData = data as CardDataImpl
+                val cardData = data as CardWordDataImpl
 
                 //Set adapter and items to current card content list
                 val listItems = cardData.listItems
                 val listItemAdapter = CardListItemAdapter(activity.applicationContext, listItems)
                 list.adapter = listItemAdapter
-                // Also some visual tuning can be done here
                 list.setBackgroundColor(Color.WHITE)
 
-                // add cardTitle : String
                 val cardTitle = TextView(activity.applicationContext)
                 cardTitle.text = cardData.cardTitle
                 cardTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20f)
                 val layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
                 layoutParams.gravity = Gravity.CENTER
-                head.addView(cardTitle, layoutParams)
             }
 
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
-                var testListPosition = 1 //testListId = 0 or 1 or 2 ,DEMO: in this case, testListId = 1 (show testList 101-200)
+
+                var testListPosition = 1 //testListId = 0 or 1 or 2 ,DEMO:単語一覧101-200を選択した。後に、Bundleクラスから、getInt()メソッドを呼ぶ。
                 var startPosition = 0
 
                 when (testListPosition) {
@@ -77,52 +81,38 @@ class WordListFragment: Fragment() {
                         startPosition = position + 1
                     }
                     1 -> {
-                        startPosition = position + 12
+                        startPosition = position + 101
                     }
                     2 -> {
-                        startPosition = position + 23
+                        startPosition = position + 201
                     }
                 }
+                var testCardData = CardWordDataImpl.fetchWordCardContents(startPosition,context)
+                
+                englishWord = res.findViewById(R.id.word_en_text)
+                japaneseWord = res.findViewById(R.id.word_jp_text)
+                englishSentence = res.findViewById(R.id.sentence_en_text)
+                japaneseSentence = res.findViewById(R.id.sentence_jp_text)
 
-                var testCardData = CardDataImpl.fetchTestCardContents(startPosition,context)
+                englishWord!!.text = testCardData.worden
+                japaneseWord!!.text = testCardData.wordjp
+                englishSentence!!.text = testCardData.exampleen
+                japaneseSentence!!.text = testCardData.examplejp
 
-                testNumber = res.findViewById(R.id.test_number)
+
                 previousCorrectCount = res.findViewById(R.id.previous_correct_count)
                 averageAnswerTime = res.findViewById(R.id.average_answer_time)
                 fastestAnswerTime = res.findViewById(R.id.fastest_answer_time)
 
-                var testListDataIdxStart = testCardData.idx_start.toString()
-                var testListDataTotalCount = testCardData.totalCount.toString()
-                testNumber!!.text = testListDataIdxStart + "-" + testListDataTotalCount
+                //クリック時に、日本語表示メソッドを作成する。
+                showJp = res.findViewById(R.id.show_word_jp_btn)
 
-                previousCorrectCount!!.text = testCardData.result.toString()
-//                averageAnswerTime!!.text = (testCardData.result!!.toInt() / testCardData.time!!.toInt()).toString()
-                fastestAnswerTime!!.text = testCardData.quicktime.toString()
-
-                startTestBtn = res.findViewById(R.id.start_test)
-                startTestBtn.setOnClickListener {
-
-                    var learningMaterial: LearningMaterialTestFragment = LearningMaterialTestFragment()
-                    var transaction = parentFragment.fragmentManager.beginTransaction()
-                    var args = Bundle()
-
-                    args.putInt("testId", startPosition)
-                    learningMaterial.arguments = args
-
-                    transaction.add(R.id.start_test,learningMaterial)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
-
-                }
                 return res
             }
         }
 
         ecPagerView!!.setPagerViewAdapter(ecPagerViewAdapter)
-
-        // Add background switcher to pager view
         ecPagerView!!.setBackgroundSwitcherView(view.findViewById(R.id.ec_bg_switcher_element))
-
 
         return view
     }

@@ -32,14 +32,8 @@ class TestListFragment: Fragment() {
     lateinit var previousCorrectCount: TextView
     lateinit var fastestAnswerTime: TextView
     lateinit var averageAnswerTime: TextView
+    // 変数名のルールは統一する
     lateinit var startTestBtn: Button
-
-
-
-
-
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,13 +42,12 @@ class TestListFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_test_list, container, false)
-
         ecPagerView = view.findViewById(R.id.ec_pager_element)
 
-        val dataset = CardDataImpl.generateTestCardList(testListPosition = 1, context = context)//DEMO: 単語テスト一覧：101-200を選択したと想定
+        //DEMO: 単語テスト一覧：101-200を選択したと想定
+        val dataset = CardDataImpl.generateTestCardList(testListPosition = 1)
 
-
-        // Implement pager adapter and attach it to pager view
+        //カードの発行枚数を算出するメソッド
         val ecPagerViewAdapter = object : ECPagerViewAdapter(context, dataset) {
             override fun instantiateCard(inflaterService: LayoutInflater, head: ViewGroup, list: ListView, data: ECCardData<*>) {
                 // Data object for current card
@@ -67,18 +60,20 @@ class TestListFragment: Fragment() {
                 // Also some visual tuning can be done here
                 list.setBackgroundColor(Color.WHITE)
 
-                // add cardTitle : String
                 val cardTitle = TextView(activity.applicationContext)
                 cardTitle.text = cardData.cardTitle
                 cardTitle.setTextSize(COMPLEX_UNIT_DIP, 20f)
                 val layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
                 layoutParams.gravity = Gravity.CENTER
-                head.addView(cardTitle, layoutParams)
             }
 
+            //カード一枚一枚の中身を、実装するメソッド
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
-                var testListPosition = 1 //testListId = 0 or 1 or 2 ,DEMO: in this case, testListId = 1 (show testList 101-200)
+                val learningMaterial = LearningMaterialTestFragment()
+
+                //testListId = 0 or 1 or 2 ,DEMO: in this case, testListId = 1 (show testList 101-200)
+                var testListPosition = 1
                 var startPosition = 0
 
                 when (testListPosition) {
@@ -93,7 +88,7 @@ class TestListFragment: Fragment() {
                     }
                 }
 
-                var testCardData = CardDataImpl.fetchTestCardContents(startPosition,context)
+                val testCardData = CardDataImpl.fetchTestCardContents(startPosition,context)
 
                 testNumber = res.findViewById(R.id.test_number)
                 previousCorrectCount = res.findViewById(R.id.previous_correct_count)
@@ -102,34 +97,33 @@ class TestListFragment: Fragment() {
 
                 var testListDataIdxStart = testCardData.idx_start.toString()
                 var testListDataTotalCount = testCardData.totalCount.toString()
+                // 必要ないフォースアンラップは消す
                 testNumber!!.text = testListDataIdxStart + "-" + testListDataTotalCount
 
                 previousCorrectCount!!.text = testCardData.result.toString()
 //                averageAnswerTime!!.text = (testCardData.result!!.toInt() / testCardData.time!!.toInt()).toString()
                 fastestAnswerTime!!.text = testCardData.quicktime.toString()
 
+
                 startTestBtn = res.findViewById(R.id.start_test)
                 startTestBtn.setOnClickListener {
 
-                    var learningMaterial: LearningMaterialTestFragment = LearningMaterialTestFragment()
-                    var transaction = parentFragment.fragmentManager.beginTransaction()
+                    var fragmentManager = fragmentManager.beginTransaction()
                     var args = Bundle()
-
                     args.putInt("testId", startPosition)
                     learningMaterial.arguments = args
 
-                    transaction.add(R.id.start_test,learningMaterial)
-                    transaction.addToBackStack(null)
-                    transaction.commit()
+                    fragmentManager.replace(R.id.test_list,learningMaterial)
+                    fragmentManager.commit()
 
                 }
+
                 return res
             }
         }
 
         ecPagerView!!.setPagerViewAdapter(ecPagerViewAdapter)
 
-        // Add background switcher to pager view
         ecPagerView!!.setBackgroundSwitcherView(view.findViewById(R.id.ec_bg_switcher_element))
 
 

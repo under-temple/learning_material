@@ -1,44 +1,59 @@
 package com.ramotion.expandingcollection.examples.simple
 
-import android.app.Application
-import com.ramotion.expandingcollection.ECCardData
 import android.content.Context
-import java.util.Arrays
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
-import com.example.shokiterashita.learningmaterial.views.lib.manager.TOEICFlash600Test
-import kotlin.collections.ArrayList
+import com.example.shokiterashita.learningmaterial.views.lib.manager.TOEICFlash600Word
+import com.ramotion.expandingcollection.ECCardData
+import java.util.*
 
-class CardDataImpl(val cardTitle: String,
+/**
+ * Created by shoki.terashita on 2017/08/17.
+ */
+
+class CardWordDataImpl(val cardTitle: String,
                    private val mainBackgroundResource: Int?,
                    private val headBackgroundResource: Int?,
                    private val listItems: List<String>) : ECCardData<String> {
 
     companion object {
 
-        fun generateTestCardList(testListPosition: Int): List<ECCardData<*>> {
+        //単語カードの発行枚数を算出するメソッド
+        fun generateWordCardList(wordListPosition: Int): List<ECCardData<*>> {
             val list = ArrayList<ECCardData<*>>()
 
-            val firstTestListId = testListPosition + 1 + (testListPosition * 10)
-            val lastTestListId = firstTestListId + 10
+            //0 -> 1  1-> 101 2-> 201 スマートな算出方法を、後で考える。
+            var firstTestListId = wordListPosition + (wordListPosition * 100)
+            if (firstTestListId == 0){
+                firstTestListId = 1
+            }
+
+            var lastTestListId = firstTestListId + 99
             val testListRange = firstTestListId..lastTestListId
 
             for (i in testListRange) {
-                list.add(CardDataImpl("", R.drawable.white, R.drawable.blackborder, createItemsList("Card 1")))
+                list.add(CardWordDataImpl("", R.drawable.white, R.drawable.blackborder, createItemsList("")))
             }
             return list
         }
 
-        fun fetchTestCardContents(testListPosition: Int,context: Context): TOEICFlash600Test{
+        fun fetchWordCardContents(wordListPosition: Int,context: Context): TOEICFlash600Word{
             LessonMaterialManager.setup(context)
-            return LessonMaterialManager.fetchTestList(testListPosition)
+            return LessonMaterialManager.fetchWordList(wordListPosition)
         }
-
 
         private fun createItemsList(cardName: String): List<String> {//使わないけど、消せない。
             return listOf("No","use")
         }
     }
+
+
+
+
+
+
+
+
 
 
 

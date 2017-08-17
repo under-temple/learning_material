@@ -8,17 +8,20 @@ import android.widget.Button
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
 import com.example.shokiterashita.learningmaterial.views.fragments.TestListFragment
+import com.example.shokiterashita.learningmaterial.views.fragments.WordListFragment
 import com.example.shokiterashita.learningmaterial.views.lib.manager.extention.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
     internal var learningMaterial: LearningMaterialTestFragment = LearningMaterialTestFragment()
     internal var testList: TestListFragment = TestListFragment()
+    internal var wordList: WordListFragment = WordListFragment()
 
     val fragmentManager = supportFragmentManager
 
     lateinit var testButton:Button
     lateinit var testListButton:Button
+    lateinit var wordListButton:Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         testButton = findViewById(R.id.toFragmentButton) as Button
         testListButton = findViewById(R.id.toTestListButton) as Button
+        wordListButton = findViewById(R.id.toWordListButton) as Button
+
 
         testButton.setOnClickListener {
             this.showFragment()
@@ -34,6 +39,9 @@ class MainActivity : AppCompatActivity() {
 
         testListButton.setOnClickListener {
             this.showTestList()
+        }
+        wordListButton.setOnClickListener {
+            this.showWordList()
         }
     }
 
@@ -50,6 +58,10 @@ class MainActivity : AppCompatActivity() {
     fun showTestList(){
 
         this.replaceFragment(R.id.content_layout, testList)
+    }
+    fun showWordList(){
+
+        this.replaceFragment(R.id.content_layout, wordList)
     }
 
 }

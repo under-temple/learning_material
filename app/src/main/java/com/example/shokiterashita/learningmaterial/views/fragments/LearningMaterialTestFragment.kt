@@ -1,5 +1,6 @@
 package com.example.shokiterashita.learningmaterial.views.fragments
 
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -51,10 +52,8 @@ class LearningMaterialTestFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LessonMaterialManager.setup(context)
-
+//        LessonMaterialManager.setup(context)
         subscriptions = CompositeSubscription()
-
     }
 
     override fun onDestroy() {
@@ -62,14 +61,16 @@ class LearningMaterialTestFragment : Fragment() {
         mSubscription?.unsubscribe()
     }
 
-
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_learning_material_test, container, false)
         var testId = arguments.getInt("testId")
+
+        LessonMaterialManager.setup(context)
         initTestContent = LessonMaterialManager.fetchTestListStartAndTotalCount(testId) //TestListFragmentから、testIdを、受け取る。
 
+        // wordJPがなんの事だかわからない
+        // answerWordJPとかにしておけば
         wordJP = initTestContent.wordjp.toString()
 
         testTitleTextView = view.findViewById(R.id.material_test_title)!!
@@ -95,17 +96,14 @@ class LearningMaterialTestFragment : Fragment() {
         choiceCButton.setOnClickListener {
             checkAnswer(choiceCButton.text)
         }
+        view.setBackgroundColor(Color.WHITE)
 
         return view
     }
 
-
-
-    override fun onDetach() {
-        super.onDetach()
-    }
-
-    fun checkAnswer(answerText: CharSequence){//ボタンタップ時に、呼ばれる。->時間切の場合、呼ばれない。
+    // privateつけましょう
+    // 改行、スペースが無駄なとこがおおおい
+    private fun checkAnswer(answerText: CharSequence){
         if (answerText == wordJP){
             correct()
         } else {
@@ -113,20 +111,21 @@ class LearningMaterialTestFragment : Fragment() {
         }
     }
 
-    fun correct(){
+    private fun correct(){
         Log.d("答えは","正解です")
         //瞬間回答・通常回答のロジック
         showNextTest(LessonMaterialManager.nextQuestion())
 
     }
-    fun inCorrect(){
+
+    private fun inCorrect(){
         Log.d("答えは","不正解です")
         //不正解のロジック
         showNextTest(LessonMaterialManager.nextQuestion())
 
     }
 
-    fun showNextTest(testContent:TOEICFlash600Word){
+    private fun showNextTest(testContent:TOEICFlash600Word){
         testWordTextView.text = testContent.worden
         choiceAButton.text = testContent.wordjp
         choiceBButton.text = testContent.option_1

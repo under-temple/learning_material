@@ -13,19 +13,16 @@ import io.realm.*
 object LessonMaterialManager {
     var lessonMaterialConfig:RealmConfiguration? = null
 
-    //ここらへんのクラス変数は、しかるべきアーキテクチャで宣言する。
+    //なぞの宣言。確認する。
     var testId:Int = 0
 //    lateinit var testList:TOEICFlash600Test
 
     fun setup(context: Context){
         try {
-
-            //"lesson_material.realm"という名前でContext.getFilesDir()の場所にファイルを作成している。
             lessonMaterialConfig = RealmConfiguration.Builder(context)
                     .name("lesson_material.realm")
                     .deleteRealmIfMigrationNeeded()
                     .build()
-//            Realm.getInstance(lessonMaterialConfig)
 
             loadFromJson(context)
 
@@ -64,14 +61,15 @@ object LessonMaterialManager {
         return testContent
     }
 
-    //単語テスト選択カードを表示するために、使用するメソッド
     fun fetchTestList(testListId:Int): TOEICFlash600Test{
         val realm = getLessonMaterial()
-        val testList = realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
-        return testList
+        return realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
     }
 
-
+    fun fetchWordList(testListId:Int): TOEICFlash600Word{
+        val realm = getLessonMaterial()
+        return realm.where(TOEICFlash600Word::class.java).equalTo("id", testListId).findFirst()
+    }
 
     fun nextQuestion():TOEICFlash600Word{
         val realm = getLessonMaterial()
@@ -82,11 +80,9 @@ object LessonMaterialManager {
         return testContent
 
     }
-
-
-
-
 }
+
+
 open class TOEICFlash600TestList : RealmObject() {
     open var list:RealmList<TOEICFlash600Test>? = null
 }
