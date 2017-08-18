@@ -32,8 +32,7 @@ class TestListFragment: Fragment() {
     lateinit var previousCorrectCount: TextView
     lateinit var fastestAnswerTime: TextView
     lateinit var averageAnswerTime: TextView
-    // 変数名のルールは統一する
-    lateinit var startTestBtn: Button
+    lateinit var startTestButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,8 +103,8 @@ class TestListFragment: Fragment() {
                 fastestAnswerTime.text = testCardData.quicktime.toString()
 
 
-                startTestBtn = res.findViewById(R.id.start_test)
-                startTestBtn.setOnClickListener {
+                startTestButton = res.findViewById(R.id.start_test)
+                startTestButton.setOnClickListener {
 
                     var fragmentManager = fragmentManager.beginTransaction()
                     var args = Bundle()

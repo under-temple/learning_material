@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.View
 import android.widget.Button
+import com.beardedhen.androidbootstrap.TypefaceProvider
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
 import com.example.shokiterashita.learningmaterial.views.fragments.TestListFragment
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        TypefaceProvider.registerDefaultIconSets()
 
         setContentView(R.layout.activity_main)
         testButton = findViewById(R.id.toFragmentButton) as Button

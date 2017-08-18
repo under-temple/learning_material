@@ -2,6 +2,8 @@ package com.example.shokiterashita.learningmaterial.views.fragments
 
 import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.TypedValue
@@ -9,13 +11,12 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
+import com.beardedhen.androidbootstrap.TypefaceProvider
 import com.example.shokiterashita.learningmaterial.R
 import com.ramotion.expandingcollection.*
 import com.ramotion.expandingcollection.examples.simple.CardWordDataImpl
+import java.net.URI
 
 /**
  * Created by shokiterashita on 2017/08/17.
@@ -25,8 +26,8 @@ class WordListFragment: Fragment() {
 
     private var ecPagerView: ECPagerView? = null
     private var englishWord: TextView? = null
-    private var japaneseWord: TextView? = null
-    private var japaneseSentence: TextView? = null
+    lateinit var japaneseWord: TextView
+    lateinit var japaneseSentence: TextView
     private var englishSentence: TextView? = null
     private var previousCorrectCount: TextView? = null
     lateinit var testNumberLabel: TextView
@@ -36,11 +37,13 @@ class WordListFragment: Fragment() {
     private var fastestAnswerTime: TextView? = null
     private var averageAnswerTime: TextView? = null
 
-    private var showJp: Button? = null
-
+    lateinit var showJpButton: ToggleButton
+    lateinit var pronounceButton: com.beardedhen.androidbootstrap.AwesomeTextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        TypefaceProvider.registerDefaultIconSets()
+
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
@@ -75,47 +78,57 @@ class WordListFragment: Fragment() {
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
 
-                val testListPosition = 1 //testListId = 0 or 1 or 2 ,DEMO:単語一覧101-200を選択した。後に、Bundleクラスから、getInt()メソッドを呼ぶ。
-                var startPosition = 0
+                //testListPosition = 0 or 1 or 2 ,DEMO:単語一覧101-200を選択した。後に、Bundleクラスから、getInt()メソッドを呼ぶ。
+                val testListPosition = 1
+                var wordCardId = 0
 
                 when (testListPosition) {
                     0 -> {
-                        startPosition = position + 1
+                        wordCardId = position + 1
                     }
                     1 -> {
-                        startPosition = position + 101
+                        wordCardId = position + 101
                     }
                     2 -> {
-                        startPosition = position + 201
+                        wordCardId = position + 201
                     }
                 }
-                var testCardData = CardWordDataImpl.fetchWordCardContents(startPosition,context)
+                var testCardData = CardWordDataImpl.fetchWordCardContents(wordCardId,context)
 
-                //word_listに関するコード
+                //word_listに関するに関するUIを、表示する
                 englishWord = res.findViewById(R.id.word_en_text)
                 japaneseWord = res.findViewById(R.id.word_jp_text)
                 englishSentence = res.findViewById(R.id.sentence_en_text)
                 japaneseSentence = res.findViewById(R.id.sentence_jp_text)
 
-                //test_listに関するコード
+                //test_listに関するUIを、非表示にする
                 testNumberLabel = res.findViewById(R.id.test_number_label)
                 startTestButton = res.findViewById(R.id.start_test)
                 testNumberLabel.visibility = View.INVISIBLE
                 startTestButton.visibility = View.INVISIBLE
 
 
+                //testCardDataから、データを取得し、ウィジェットに挿入
                 englishWord!!.text = testCardData.worden
-                japaneseWord!!.text = testCardData.wordjp
                 englishSentence!!.text = testCardData.exampleen
-                japaneseSentence!!.text = testCardData.examplejp
 
                 previousCorrectCount = res.findViewById(R.id.previous_correct_count)
                 averageAnswerTime = res.findViewById(R.id.average_answer_time)
                 fastestAnswerTime = res.findViewById(R.id.fastest_answer_time)
 
-                //クリック時に、日本語表示メソッドを作成する。
-                showJp = res.findViewById(R.id.show_word_jp_btn)
+                showJpButton = res.findViewById(R.id.show_word_jp_button)
+                showJpButton.setOnCheckedChangeListener { compoundButton, isClicked ->
 
+                    //現在表示しているカードを取得する。
+                    //クリックしたカードの序数は取得できる。
+                    //仮説：　序数番目を、再指定したらいけるのかもしれない？
+                    japaneseWord.text = CardWordDataImpl.showOrHiddenJapaneseWord(testCardData,isClicked)
+                }
+
+                pronounceButton = res.findViewById(R.id.pronounce_word_button)
+                pronounceButton.setOnClickListener{
+                    CardWordDataImpl.pronounceWord(context, wordCardId)
+                }
                 return res
             }
         }
