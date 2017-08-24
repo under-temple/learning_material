@@ -14,6 +14,7 @@ import android.widget.FrameLayout
 import android.widget.ListView
 import android.widget.TextView
 import com.example.shokiterashita.learningmaterial.R
+import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
 import com.ramotion.expandingcollection.*
 import com.ramotion.expandingcollection.examples.simple.CardWordDataImpl
 
@@ -89,6 +90,7 @@ class WordListFragment: Fragment() {
                         startPosition = position + 201
                     }
                 }
+                LessonMaterialManager.setup(context)
                 var testCardData = CardWordDataImpl.fetchWordCardContents(startPosition,context)
 
                 //word_listに関するコード
