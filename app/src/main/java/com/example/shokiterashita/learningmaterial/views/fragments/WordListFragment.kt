@@ -18,7 +18,6 @@ import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
 import com.ramotion.expandingcollection.*
 import com.ramotion.expandingcollection.examples.simple.CardWordDataImpl
-import java.net.URI
 
 /**
  * Created by shokiterashita on 2017/08/17.
@@ -80,12 +79,10 @@ class WordListFragment: Fragment() {
                 }
             }
 
-
             override fun setPrimaryItem(container: ViewGroup?, position: Int, `object`: Any?) {
                 super.setPrimaryItem(container, position, `object`)
 
             }
-
 
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
@@ -105,13 +102,9 @@ class WordListFragment: Fragment() {
                         wordCardId = position + 201
                     }
                 }
-<<<<<<< HEAD
-                LessonMaterialManager.setup(context)
-                var testCardData = CardWordDataImpl.fetchWordCardContents(startPosition,context)
-=======
-                var testCardData = CardWordDataImpl.fetchWordCardContents(wordCardId,context)
->>>>>>> abb8fbc05eaaa84a422323814b3424bd8ea43360
 
+                LessonMaterialManager.setup(context)
+                var testCardData = CardWordDataImpl.fetchWordCardContents(wordCardId,context)
 
                 //word_listに関するに関するUIを、表示する
                 englishWord = res.findViewById(R.id.word_en_text)

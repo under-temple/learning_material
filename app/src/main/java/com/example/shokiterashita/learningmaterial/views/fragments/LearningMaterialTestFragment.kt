@@ -68,8 +68,6 @@ class LearningMaterialTestFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_learning_material_test, container, false)
         var testId = arguments.getInt("testId")
 
-
-        //CountDownTimerの実装
         object : CountDownTimer(3000, 1000) {
             internal var countDownTimer = view.findViewById<TextView>(R.id.count_down_timer)
 
@@ -129,9 +127,6 @@ class LearningMaterialTestFragment : Fragment() {
 
     }
 
-
-
-
     private fun checkAnswer(answerText: CharSequence){
         if (answerText == answerWordJp){
             correct()
@@ -142,23 +137,17 @@ class LearningMaterialTestFragment : Fragment() {
 
     private fun correct(){
         Log.d("答えは","正解です")
-
-        //TODO:瞬間回答の判断ロジックを書く
         showNextTest(LessonMaterialManager.nextQuestion())
 
     }
 
     private fun inCorrect(){
         Log.d("答えは","不正解です")
-
-        //TODO: 出題順を、ランダムにする。
         showNextTest(LessonMaterialManager.nextQuestion())
-
     }
 
     private fun showNextTest(testContent:TOEICFlash600Word){
 
-        //TODO: 出題順を、ランダムにする。
         testWordTextView.text = testContent.worden
         choiceAButton.text = testContent.wordjp
         choiceBButton.text = testContent.option_1

@@ -12,8 +12,6 @@ import io.realm.*
 
 object LessonMaterialManager {
     var lessonMaterialConfig:RealmConfiguration? = null
-
-    //なぞの宣言。確認する。
     var testId:Int = 0
 //    lateinit var testList:TOEICFlash600Test
 
@@ -48,14 +46,10 @@ object LessonMaterialManager {
     }
 
 
-    //単語テストの開始〜終了を定めるために使用するメソッド
     fun fetchTestListStartAndTotalCount(testListId:Int): TOEICFlash600Word {
         val realm = getLessonMaterial()
         val testList = realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
-
-        testId = testList.idx_start!! //Demo: idx_start == 11
-        var testListTotalCount = testList.totalCount //Demo: total_count == 20
-
+        testId = testList.idx_start!!
         var testContent = realm.where(TOEICFlash600Word::class.java).equalTo("id", testId).findFirst()
 
         return testContent
