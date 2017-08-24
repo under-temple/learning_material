@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.widget.*
 import com.beardedhen.androidbootstrap.TypefaceProvider
 import com.example.shokiterashita.learningmaterial.R
+import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
 import com.ramotion.expandingcollection.*
 import com.ramotion.expandingcollection.examples.simple.CardWordDataImpl
 import java.net.URI
@@ -104,7 +105,12 @@ class WordListFragment: Fragment() {
                         wordCardId = position + 201
                     }
                 }
+<<<<<<< HEAD
+                LessonMaterialManager.setup(context)
+                var testCardData = CardWordDataImpl.fetchWordCardContents(startPosition,context)
+=======
                 var testCardData = CardWordDataImpl.fetchWordCardContents(wordCardId,context)
+>>>>>>> abb8fbc05eaaa84a422323814b3424bd8ea43360
 
 
                 //word_listに関するに関するUIを、表示する
