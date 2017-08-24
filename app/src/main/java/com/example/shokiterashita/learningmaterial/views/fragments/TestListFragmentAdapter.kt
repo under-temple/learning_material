@@ -15,6 +15,7 @@ import java.util.Random
 
 class CardListItemAdapter(context: Context, objects: List<String>) : ECCardContentListItemAdapter<String>(context, R.layout.fragment_test_list_item, objects) {
 
+    //本来カードクリック時に出現するitemリストのメソッド。tagを設定して、itemを取得している。
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val viewHolder: ViewHolder
         var rowView = convertView

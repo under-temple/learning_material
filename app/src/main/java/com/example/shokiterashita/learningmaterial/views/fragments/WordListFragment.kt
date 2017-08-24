@@ -6,6 +6,7 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -56,7 +57,6 @@ class WordListFragment: Fragment() {
         //DEMO: 単語テスト一覧：101-200を選択したと想定
         val dataset = CardWordDataImpl.generateWordCardList(wordListPosition = 1)
 
-        // ここ、括れるんじゃないか？？
         val ecPagerViewAdapter = object : ECPagerViewAdapter(context, dataset) {
             override fun instantiateCard(inflaterService: LayoutInflater, head: ViewGroup, list: ListView, data: ECCardData<*>) {
                 // Data object for current card
@@ -73,7 +73,18 @@ class WordListFragment: Fragment() {
                 cardTitle.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20f)
                 val layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
                 layoutParams.gravity = Gravity.CENTER
+
+                head.setOnClickListener{
+                    Log.d("test","${listItems}")
+                }
             }
+
+
+            override fun setPrimaryItem(container: ViewGroup?, position: Int, `object`: Any?) {
+                super.setPrimaryItem(container, position, `object`)
+
+            }
+
 
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
@@ -94,6 +105,7 @@ class WordListFragment: Fragment() {
                     }
                 }
                 var testCardData = CardWordDataImpl.fetchWordCardContents(wordCardId,context)
+
 
                 //word_listに関するに関するUIを、表示する
                 englishWord = res.findViewById(R.id.word_en_text)
@@ -117,12 +129,13 @@ class WordListFragment: Fragment() {
                 fastestAnswerTime = res.findViewById(R.id.fastest_answer_time)
 
                 showJpButton = res.findViewById(R.id.show_word_jp_button)
-                showJpButton.setOnCheckedChangeListener { compoundButton, isClicked ->
-
-                    //現在表示しているカードを取得する。
-                    //クリックしたカードの序数は取得できる。
-                    //仮説：　序数番目を、再指定したらいけるのかもしれない？
-                    japaneseWord.text = CardWordDataImpl.showOrHiddenJapaneseWord(testCardData,isClicked)
+//                showJpButton.setOnCheckedChangeListener { compoundButton, isClicked ->
+//
+//                    //選択したviewを取得するメソッドが必要。
+//                    japaneseWord.text = CardWordDataImpl.showOrHiddenJapaneseWord(testCardData,isClicked)
+//                }
+                showJpButton.setOnClickListener {
+                    japaneseSentence.text = testCardData.wordjp
                 }
 
                 pronounceButton = res.findViewById(R.id.pronounce_word_button)

@@ -1,8 +1,10 @@
 package com.example.shokiterashita.learningmaterial.views.fragments
 
+import android.content.Context
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
@@ -44,7 +46,7 @@ class LearningMaterialTestFragment : Fragment() {
     lateinit var choiceBButton: Button
     lateinit var choiceCButton: Button
     lateinit var initTestContent : TOEICFlash600Word
-    lateinit var wordJP: CharSequence
+    lateinit var answerWordJp: CharSequence
     private var subscriptions: CompositeSubscription? = null
     private var mSubscription: Subscription? = null
 
@@ -52,8 +54,8 @@ class LearningMaterialTestFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        LessonMaterialManager.setup(context)
         subscriptions = CompositeSubscription()
+
     }
 
     override fun onDestroy() {
@@ -66,12 +68,31 @@ class LearningMaterialTestFragment : Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_learning_material_test, container, false)
         var testId = arguments.getInt("testId")
 
-        LessonMaterialManager.setup(context)
-        initTestContent = LessonMaterialManager.fetchTestListStartAndTotalCount(testId) //TestListFragmentから、testIdを、受け取る。
 
-        // wordJPがなんの事だかわからない
-        // answerWordJPとかにしておけば
-        wordJP = initTestContent.wordjp.toString()
+        //CountDownTimerの実装
+        object : CountDownTimer(3000, 1000) {
+            internal var countDownTimer = view.findViewById<TextView>(R.id.count_down_timer)
+
+            override fun onTick(millisUntilFinished: Long) {
+                countDownTimer.text = (millisUntilFinished / 1000).toString()
+                clearField(view)
+            }
+            override fun onFinish() {
+                showTest(context,view,testId)
+            }
+        }.start()
+
+        return view
+    }
+
+    private fun showTest(context: Context, view: View, testId: Int){
+
+        LessonMaterialManager.setup(context)
+
+        //TestListFragmentから、testIdを、受け取る。
+        initTestContent = LessonMaterialManager.fetchTestListStartAndTotalCount(testId)
+
+        answerWordJp = initTestContent.wordjp.toString()
 
         testTitleTextView = view.findViewById(R.id.material_test_title)!!
         currentTestNumberTextView = view.findViewById(R.id.currentTestNumber)
@@ -97,14 +118,22 @@ class LearningMaterialTestFragment : Fragment() {
             checkAnswer(choiceCButton.text)
         }
         view.setBackgroundColor(Color.WHITE)
-
-        return view
     }
 
-    // privateつけましょう
-    // 改行、スペースが無駄なとこがおおおい
+    private fun clearField(view: View){
+        testWordTextView.text = ""
+        choiceAButton.text = ""
+        choiceBButton.text = ""
+        choiceCButton.text = ""
+        view.setBackgroundColor(R.color.blur)
+
+    }
+
+
+
+
     private fun checkAnswer(answerText: CharSequence){
-        if (answerText == wordJP){
+        if (answerText == answerWordJp){
             correct()
         } else {
             inCorrect()
@@ -113,19 +142,23 @@ class LearningMaterialTestFragment : Fragment() {
 
     private fun correct(){
         Log.d("答えは","正解です")
-        //瞬間回答・通常回答のロジック
+
+        //TODO:瞬間回答の判断ロジックを書く
         showNextTest(LessonMaterialManager.nextQuestion())
 
     }
 
     private fun inCorrect(){
         Log.d("答えは","不正解です")
-        //不正解のロジック
+
+        //TODO: 出題順を、ランダムにする。
         showNextTest(LessonMaterialManager.nextQuestion())
 
     }
 
     private fun showNextTest(testContent:TOEICFlash600Word){
+
+        //TODO: 出題順を、ランダムにする。
         testWordTextView.text = testContent.worden
         choiceAButton.text = testContent.wordjp
         choiceBButton.text = testContent.option_1
@@ -133,9 +166,11 @@ class LearningMaterialTestFragment : Fragment() {
 
         timerObservable.unsubscribe()
         timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe{
-            inCorrect()//5秒間何もなかったので、不正解になります。
-        }
 
+            //5秒間何もなかったので、不正解になります。
+            inCorrect()
+        }
     }
+
 }
 

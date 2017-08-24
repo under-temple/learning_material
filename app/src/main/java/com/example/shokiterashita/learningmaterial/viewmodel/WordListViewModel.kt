@@ -24,7 +24,6 @@ class CardWordDataImpl(val cardTitle: String,
         fun generateWordCardList(wordListPosition: Int): List<ECCardData<*>> {
             val list = ArrayList<ECCardData<*>>()
 
-            //0 -> 1  1-> 101 2-> 201 スマートな算出方法を、後で考える。
             var firstTestListId = wordListPosition + (wordListPosition * 100)
             if (firstTestListId == 0){
                 firstTestListId = 1
@@ -34,7 +33,7 @@ class CardWordDataImpl(val cardTitle: String,
             val testListRange = firstTestListId..lastTestListId
 
             for (i in testListRange) {
-                list.add(CardWordDataImpl("", R.drawable.white, R.drawable.blackborder, createItemsList("")))
+                list.add(CardWordDataImpl("i", R.drawable.white, R.drawable.blackborder, createItemsList("")))
             }
             return list
         }
@@ -66,6 +65,10 @@ class CardWordDataImpl(val cardTitle: String,
                 japaneseWord = "？"
             }
             return japaneseWord
+        }
+
+        fun showJapanese(id:Int):String {
+            return LessonMaterialManager.fetchWordList(id).wordjp.toString()
         }
 
     }

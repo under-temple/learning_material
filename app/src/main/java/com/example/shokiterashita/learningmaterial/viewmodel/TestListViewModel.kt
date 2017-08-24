@@ -47,6 +47,7 @@ class CardDataImpl(val cardTitle: String,
 
 
 
+
     override fun getMainBackgroundResource(): Int? {//親クラスが抽象クラスで、宣言しているため、このメソッドは消せない
         return mainBackgroundResource
     }
