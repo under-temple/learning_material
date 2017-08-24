@@ -1,6 +1,8 @@
 package com.ramotion.expandingcollection.examples.simple
 
 import android.content.Context
+import android.media.MediaPlayer
+import android.widget.TextView
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
 import com.example.shokiterashita.learningmaterial.views.lib.manager.TOEICFlash600Word
@@ -45,7 +47,31 @@ class CardWordDataImpl(val cardTitle: String,
         private fun createItemsList(cardName: String): List<String> {//使わないけど、消せない。
             return listOf("No","use")
         }
+
+        fun pronounceWord(context: Context, wordCardId: Int){
+
+            var pronounceId: Int = context.resources.getIdentifier("pronounce_${wordCardId}","raw", context.packageName)
+            var mp: MediaPlayer = MediaPlayer.create(context, pronounceId)
+            mp.start()
+
+        }
+
+        fun showOrHiddenJapaneseWord(testCardData:TOEICFlash600Word, isClicked:Boolean): String{
+            var japaneseWord:String
+
+            if (isClicked){
+                japaneseWord = testCardData.wordjp.toString()
+
+            } else {
+                japaneseWord = "？"
+            }
+            return japaneseWord
+        }
+
     }
+
+
+
 
 
 

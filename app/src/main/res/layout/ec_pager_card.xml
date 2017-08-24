@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.ramotion.expandingcollection.ECPagerCard
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/pager_card">
@@ -106,52 +107,93 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="60dp">
+        android:layout_marginTop="10dp">
         <TextView
             android:id="@+id/word_en_text"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textSize="32dp"
+            android:textColor="@color/colorBlack"/>
         <TextView
             android:id="@+id/word_jp_text"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginTop="20dp"
+            android:textSize="24dp"
+            android:textColor="@color/colorBlack"
+            android:text="？"/>
         <TextView
             android:id="@+id/sentence_en_text"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:textSize="12dp"
             android:layout_marginTop="30dp"/>
         <TextView
             android:id="@+id/sentence_jp_text"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"/>
-
+            android:textColor="@color/colorBlack"
+            android:textSize="12dp"
+            android:layout_marginTop="20dp"
+            android:text="？？？"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <LinearLayout android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="300dp">
 
-        <Button
-            android:id="@+id/show_word_jp_btn"
+        <ToggleButton
+            android:id="@+id/show_word_jp_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
-            android:text="日本語の意味を表示" />
-        <Button
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/colorWhite"
+            android:textOn="日本語を非表示"
+            android:textOff="日本語を表示"
+            android:textStyle="bold"
+            />
+
+        <!--<com.beardedhen.androidbootstrap.BootstrapButton-->
+            <!--android:id="@+id/show_word_jp_button"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="70dp"-->
+            <!--android:background="@color/colorPrimaryDark"-->
+            <!--android:textColor="@color/colorWhite"-->
+            <!--android:text="日本語の意味を表示"-->
+            <!--android:textStyle="bold"-->
+            <!--app:bootstrapBrand="primary"-->
+            <!--app:buttonMode="toggle"-->
+            <!--app:roundedCorners="true"/>-->
+
+        <!--fa-volume-up-->
+        <com.beardedhen.androidbootstrap.AwesomeTextView
             android:id="@+id/pronounce_word_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="ここにスピーカーアイコン" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:background="@color/colorWhite"
+            android:textSize="32dp"
+            android:textColor="@color/colorBlack"
+            app:typicon="ty_volume_up"
+
+            />
+
+        <!--<ImageButton-->
+            <!--android:id="@+id/pronounce_word_button"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_marginTop="30dp"-->
+            <!--android:background="@color/colorWhite"-->
+            <!--android:src="@drawable/pronounce_icon_small" />-->
 
 
     </LinearLayout>
