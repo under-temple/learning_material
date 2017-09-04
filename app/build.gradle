@@ -33,7 +33,6 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
     compile 'com.ramotion.expandingcollection:expanding-collection:0.9.0'
-    compile 'com.beardedhen:androidbootstrap:2.3.2'
 
     testCompile 'junit:junit:4.12'
 }
@@ -44,7 +43,6 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
     }
 }
 repositories {

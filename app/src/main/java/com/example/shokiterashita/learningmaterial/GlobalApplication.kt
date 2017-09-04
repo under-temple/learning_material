@@ -1,7 +1,7 @@
 package com.example.shokiterashita.learningmaterial
 
 import android.app.Application
-import com.beardedhen.androidbootstrap.TypefaceProvider
+//import com.beardedhen.androidbootstrap.TypefaceProvider
 
 
 
@@ -12,6 +12,6 @@ import com.beardedhen.androidbootstrap.TypefaceProvider
 class GlobalApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        TypefaceProvider.registerDefaultIconSets()
+//        TypefaceProvider.registerDefaultIconSets()
     }
 }

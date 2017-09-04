@@ -4,8 +4,8 @@ import android.content.Context
 import android.media.MediaPlayer
 import android.widget.TextView
 import com.example.shokiterashita.learningmaterial.R
-import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
-import com.example.shokiterashita.learningmaterial.views.lib.manager.TOEICFlash600Word
+import com.example.shokiterashita.learningmaterial.lib.manager.LessonMaterialManager
+import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Word
 import com.ramotion.expandingcollection.ECCardData
 import java.util.*
 
@@ -33,7 +33,7 @@ class CardWordDataImpl(val cardTitle: String,
             val testListRange = firstTestListId..lastTestListId
 
             for (i in testListRange) {
-                list.add(CardWordDataImpl("i", R.drawable.white, R.drawable.blackborder, createItemsList("")))
+                list.add(CardWordDataImpl("i", R.drawable.white, R.drawable.white, createItemsList("")))
             }
             return list
         }
@@ -55,30 +55,19 @@ class CardWordDataImpl(val cardTitle: String,
 
         }
 
-        fun showOrHiddenJapaneseWord(testCardData:TOEICFlash600Word, isClicked:Boolean): String{
-            var japaneseWord:String
 
-            if (isClicked){
-                japaneseWord = testCardData.wordjp.toString()
+        fun showOrHiddenJapaneseWord(wordCardData:TOEICFlash600Word, isClicked:Boolean): String = if(isClicked) wordCardData.wordjp.toString() else "?"
 
-            } else {
-                japaneseWord = "？"
-            }
-            return japaneseWord
-        }
+        fun showOrHiddenJapaneseSentense(wordCardData:TOEICFlash600Word, isClicked:Boolean): String = if(isClicked) wordCardData.examplejp.toString() else "? ? ?"
+
+
+
 
         fun showJapanese(id:Int):String {
             return LessonMaterialManager.fetchWordList(id).wordjp.toString()
         }
 
     }
-
-
-
-
-
-
-
 
 
 

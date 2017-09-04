@@ -1,15 +1,19 @@
-package com.ramotion.expandingcollection.examples.simple
+/*
+package com.ex.expandingcollection.examples.simple
+*/
+package com.example.shokiterashita.learningmaterial.viewModel
 
 import android.app.Application
 import com.ramotion.expandingcollection.ECCardData
 import android.content.Context
 import java.util.Arrays
 import com.example.shokiterashita.learningmaterial.R
-import com.example.shokiterashita.learningmaterial.views.lib.manager.LessonMaterialManager
-import com.example.shokiterashita.learningmaterial.views.lib.manager.TOEICFlash600Test
+import com.example.shokiterashita.learningmaterial.lib.manager.LessonMaterialManager
+import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Test
+import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Word
 import kotlin.collections.ArrayList
 
-class CardDataImpl(val cardTitle: String,
+class TestListViewModel(val cardTitle: String,
                    private val mainBackgroundResource: Int?,
                    private val headBackgroundResource: Int?,
                    private val listItems: List<String>) : ECCardData<String> {
@@ -24,7 +28,7 @@ class CardDataImpl(val cardTitle: String,
             val testListRange = firstTestListId..lastTestListId
 
             for (i in testListRange) {
-                list.add(CardDataImpl("", R.drawable.white, R.drawable.blackborder, createItemsList("Card 1")))
+                list.add(TestListViewModel("", R.drawable.white, R.drawable.blackborder, createItemsList("Card 1")))
             }
             return list
         }
@@ -34,10 +38,11 @@ class CardDataImpl(val cardTitle: String,
             return LessonMaterialManager.fetchTestList(testListPosition)
         }
 
-
         private fun createItemsList(cardName: String): List<String> {//使わないけど、消せない。
             return listOf("No","use")
         }
+
+
     }
 
 

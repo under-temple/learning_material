@@ -1,4 +1,4 @@
-package com.example.shokiterashita.learningmaterial.views.lib.manager
+package com.example.shokiterashita.learningmaterial.lib.manager
 /**
  * Created by shoki.terashita on 2017/07/21.
  */
@@ -12,9 +12,6 @@ import io.realm.*
 
 object LessonMaterialManager {
     var lessonMaterialConfig:RealmConfiguration? = null
-    var testId:Int = 0
-//    lateinit var testList:TOEICFlash600Test
-
     fun setup(context: Context){
         try {
             lessonMaterialConfig = RealmConfiguration.Builder(context)
@@ -40,19 +37,28 @@ object LessonMaterialManager {
         val realm = getLessonMaterial()
 
         realm.executeTransaction {
-            realm.createObjectFromJson(TOEICFlash600Test::class.java, testListJsonText)
-            realm.createObjectFromJson(TOEICFlash600Word::class.java, wordListJsonText)
+            realm.createObjectFromJson(TOEICFlash600TestList::class.java, testListJsonText)
+            realm.createObjectFromJson(TOEICFlash600WordList::class.java, wordListJsonText)
         }
     }
 
 
-    fun fetchTestListStartAndTotalCount(testListId:Int): TOEICFlash600Word {
+    fun fetchWordByTestCard(testListId:Int): TOEICFlash600Word {
         val realm = getLessonMaterial()
-        val testList = realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
-        testId = testList.idx_start!!
-        var testContent = realm.where(TOEICFlash600Word::class.java).equalTo("id", testId).findFirst()
 
-        return testContent
+        //test_list.jsonから、wordIdを取得する。
+        val testList = realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
+
+        var wordId = testList.idx_start!!
+        return realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst()
+
+    }
+
+    fun convertTestIDtoWordID(testId:Int): Int{
+
+        val realm = getLessonMaterial()
+        val TOEIC600TestId = realm.where(TOEICFlash600Test::class.java).equalTo("id", testId).findFirst().idx_start
+        return realm.where(TOEICFlash600Word::class.java).equalTo("id", TOEIC600TestId).findFirst().id!!
     }
 
     fun fetchTestList(testListId:Int): TOEICFlash600Test{
@@ -65,15 +71,11 @@ object LessonMaterialManager {
         return realm.where(TOEICFlash600Word::class.java).equalTo("id", testListId).findFirst()
     }
 
-    fun nextQuestion():TOEICFlash600Word{
-        val realm = getLessonMaterial()
-        testId = testId + 1
-
-        var testContent = realm.where(TOEICFlash600Word::class.java).equalTo("id", testId).findFirst()
-        Log.d("testContent","${testContent}")
-        return testContent
-
-    }
+//    fun nextQuestion(testId : Int):TOEICFlash600Word{
+//        val realm = getLessonMaterial()
+//        testId = testId + 1
+//        return testContent = realm.where(TOEICFlash600Word::class.java).equalTo("id", testId).findFirst()
+//    }
 }
 
 
@@ -95,7 +97,7 @@ open class TOEICFlash600Test:RealmObject(){
 }
 
 open class TOEICFlash600WordList : RealmObject() {
-    open var list:RealmList<TOEICFlash600Word>? = null //1 対 多
+    open var list:RealmList<TOEICFlash600Word>? = null
 }
 
 
