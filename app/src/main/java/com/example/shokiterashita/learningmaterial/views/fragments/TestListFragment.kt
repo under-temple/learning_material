@@ -138,12 +138,12 @@ class TestListFragment: Fragment() {
                     fragmentManager.replace(R.id.test_list,learningMaterial)
                     fragmentManager.commit()
                 }
+
                 return res
             }
         }
 
         ecPagerView!!.setPagerViewAdapter(ecPagerViewAdapter)
-
         ecPagerView!!.setBackgroundSwitcherView(view.findViewById(R.id.ec_bg_switcher_element))
 
 

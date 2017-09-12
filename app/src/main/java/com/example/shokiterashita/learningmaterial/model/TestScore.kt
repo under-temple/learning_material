@@ -17,11 +17,11 @@ object TestScore{
         var prefs = context.getSharedPreferences("TEST_SCORE",Context.MODE_PRIVATE)
         var editor = prefs.edit()
 
-        var existAnswerTimeMillis = prefs.getLong("${wordId}_answerTimeMillis",0)
+        //oldValueに値が入っていない場合、defaultが0になるため、newValueが格納されない。
+        var existAnswerTimeMillis = prefs.getLong("${wordId}_answerTimeMillis",5000)
         if (newAnswerTimeMillis < existAnswerTimeMillis){
-            editor.putLong("${wordId}_AnswerTimeMillis",newAnswerTimeMillis)
+            editor.putLong("${wordId}_answerTimeMillis",newAnswerTimeMillis)
         }
-
 
         var correctAnswerCount = prefs.getInt("${wordId}_correctAnswerCount",0)
         //fun updateTestScoreが呼ばれるたびに、+1 する。but 値ごとに、管理すべし。
@@ -45,7 +45,7 @@ object TestScore{
     fun getFastestAnswerTimeSeconds(wordId: Int,context: Context): Double{
 
         var prefs = context.getSharedPreferences("TEST_SCORE",Context.MODE_PRIVATE)
-        return prefs.getLong("${wordId}_AnswerTimeMillis",0)/1000.0
+        return prefs.getLong("${wordId}_answerTimeMillis",0)/1000.0
     }
 
     fun getCorrectAnswerCount(wordId: Int,context: Context): Int{

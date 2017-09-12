@@ -13,12 +13,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import java.util.List
 //import com.beardedhen.androidbootstrap.TypefaceProvider
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.lib.extention.WordListCard
 import com.example.shokiterashita.learningmaterial.lib.manager.LessonMaterialManager
+import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Test
+import com.example.shokiterashita.learningmaterial.model.TestScore
 import com.ramotion.expandingcollection.*
 import com.ramotion.expandingcollection.examples.simple.CardWordDataImpl
+
+import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Word
 
 /**
  * Created by shokiterashita on 2017/08/17.
@@ -33,17 +38,17 @@ class WordListFragment: Fragment() {
     private var averageAnswerTimeTextView: TextView? = null
     private val ecPagerCardArr = arrayOfNulls<ECPagerCard>(100)
 
+    lateinit var instantAnswerLabel: TextView
+
     var englishWord: TextView? = null
     var japaneseWord: TextView? = null
-    var japaneseSentence: TextView? = null
     var englishSentence: TextView? = null
     var previousCorrectCount: TextView? = null
     var testNumberLabel: TextView? = null
 
-    var startTestButton: Button? = null
-    var showJpButton: ToggleButton? = null
-    var pronounceButton: ImageButton? = null
-
+    lateinit var startTestButton: Button
+    lateinit var showJpButton: ToggleButton
+    lateinit var pronounceButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,13 +62,13 @@ class WordListFragment: Fragment() {
         ecPagerView = view.findViewById(R.id.ec_word_pager_element)
 
         //DEMO: 単語テスト一覧：101-200を選択したと想定
-        val dataset = CardWordDataImpl.generateWordCardList(wordListPosition = 1)
+        val dataset = CardWordDataImpl.generateWordCardList(wordListPosition = 0)
+
 
         val ecPagerViewAdapter = object : ECPagerViewAdapter(context, dataset) {
             override fun instantiateCard(inflaterService: LayoutInflater, head: ViewGroup, list: ListView, data: ECCardData<*>) {
 
-                val cardData = data as CardWordDataImpl
-
+                var cardData = data as CardWordDataImpl
                 val listItems = cardData.listItems
                 val listItemAdapter = CardListItemAdapter(activity.applicationContext, listItems)
                 list.adapter = listItemAdapter
@@ -78,62 +83,72 @@ class WordListFragment: Fragment() {
 
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
 
-                //ここで、WordListCardクラスを、利用したい。
                 val res = super.instantiateItem(container, position) as ECPagerCard
+                val realm = LessonMaterialManager.getLessonMaterial()
 
-                 var testNumberLabel: TextView? = null
-                 var startTestButton: Button? = null
-                 var showJpButton: ToggleButton? = null
-                 var pronounceButton: ImageButton? = null
 
-                //testListPosition = 0 or 1 or 2 ,DEMO:単語一覧101-200を選択した。後に、Bundleクラスから、getInt()メソッドを呼ぶ。
+                //DEMO:単語一覧101-200を選択したとする。後に、Bundleクラスから、getInt()メソッドを呼ぶ。
                 val testListPosition = 1
-                var wordCardId = 0
+                var wordId = 0
                 when (testListPosition) {
                     0 -> {
-                        wordCardId = position + 1
+                        wordId = position + 1
                     }
                     1 -> {
-                        wordCardId = position + 101
+                        wordId = position + 101
                     }
                     2 -> {
-                        wordCardId = position + 201
+                        wordId = position + 201
                     }
                 }
 
-                LessonMaterialManager.setup(context)
-                var testCardData = CardWordDataImpl.fetchWordCardContents(wordCardId,context)
 
-                //word_listに関するに関するUIを、表示する
+                LessonMaterialManager.setup(context)
+                var testCardData = CardWordDataImpl.fetchWordCardContents(wordId,context)
+                var fastestAnswerTimeSeconds = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().fastestAnsewrTimeSeconds
+
+
                 englishWord = res.findViewById(R.id.word_en_text)
                 japaneseWord = res.findViewById(R.id.word_jp_text)
                 englishSentence = res.findViewById(R.id.sentence_en_text)
-
-                //test_listに関するUIを、非表示にする
-                testNumberLabel = res.findViewById(R.id.test_number_label)
-                startTestButton = res.findViewById(R.id.start_test)
-                testNumberLabel!!.visibility = View.INVISIBLE
-                startTestButton!!.visibility = View.INVISIBLE
-
-                englishWord!!.text = testCardData.worden
-                englishSentence!!.text = testCardData.exampleen
 
                 previousCorrectCount = res.findViewById(R.id.previous_correct_count)
                 averageAnswerTimeTextView = res.findViewById(R.id.average_answer_time)
                 fastestAnswerTimeTextView = res.findViewById(R.id.fastest_answer_time)
 
-                //右隣のcardに、wordjpが表示されてしまう。
+                    //test_listに関するUIを、非表示にする
+                testNumberLabel = res.findViewById(R.id.test_number_label)
+                startTestButton = res.findViewById(R.id.start_test)
+                testNumberLabel!!.visibility = View.INVISIBLE
+                startTestButton.visibility = View.INVISIBLE
+
+                    //word_listに関するに関するUIに、値を挿入する。
+                englishWord!!.text = testCardData.worden
+                englishSentence!!.text = testCardData.exampleen
+
+
+
                 showJpButton = res.findViewById(R.id.show_word_jp_button)
                 showJpButton.setOnCheckedChangeListener { showJpButton, isClicked ->
-
                     ecPagerCardArr[position]!!.findViewById<TextView>(R.id.word_jp_text).text = CardWordDataImpl.showOrHiddenJapaneseWord(testCardData,isClicked)
                     ecPagerCardArr[position]!!.findViewById<TextView>(R.id.sentence_jp_text).text = CardWordDataImpl.showOrHiddenJapaneseSentense(testCardData,isClicked)
                 }
-                
-                //発音機能がなぜか起動しない。-> Git histroryを確認する。
+
+                //fastestAnswerTimeSecondsを、optional bindingすべし。
+                if (0 < fastestAnswerTimeSeconds!! && fastestAnswerTimeSeconds!! <= 1.50){
+
+                    instantAnswerLabel = res.findViewById(R.id.instant_answer_label)
+                    instantAnswerLabel.text = "瞬間回答"
+                }
+
+                //TODO: Realm から、ANSWER_DATA を取得する。
+                previousCorrectCount!!.text = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().correctAnswerCount.toString()
+                averageAnswerTimeTextView!!.text = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().averageAnsewrTimeSeconds.toString()
+                fastestAnswerTimeTextView!!.text = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().fastestAnsewrTimeSeconds.toString()
+
                 pronounceButton = res.findViewById(R.id.pronounce_word_button)
                 pronounceButton.setOnClickListener{
-                    CardWordDataImpl.pronounceWord(context, wordCardId)
+                    CardWordDataImpl.pronounceWord(context, wordId)
                 }
                 ecPagerCardArr[position] = res
 
@@ -143,6 +158,7 @@ class WordListFragment: Fragment() {
 
         ecPagerView!!.setPagerViewAdapter(ecPagerViewAdapter)
         ecPagerView!!.setBackgroundSwitcherView(view.findViewById(R.id.ec_bg_switcher_element))
+
 
         return view
     }

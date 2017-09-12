@@ -20,20 +20,21 @@ class CardWordDataImpl(val cardTitle: String,
 
     companion object {
 
-        //単語カードの発行枚数を算出するメソッド
-        fun generateWordCardList(wordListPosition: Int): List<ECCardData<*>> {
+        //List -> ArrayListに変更
+        fun generateWordCardList(wordListPosition: Int): MutableList<ECCardData<*>> {
+
+            //ArrayListは、javaのクラス
             val list = ArrayList<ECCardData<*>>()
 
+            //以下のコードは、必要ない説 9/7
             var firstTestListId = wordListPosition + (wordListPosition * 100)
-            if (firstTestListId == 0){
-                firstTestListId = 1
-            }
+            if (firstTestListId == 0) firstTestListId = 1
 
             var lastTestListId = firstTestListId + 99
             val testListRange = firstTestListId..lastTestListId
 
             for (i in testListRange) {
-                list.add(CardWordDataImpl("i", R.drawable.white, R.drawable.white, createItemsList("")))
+                list.add(CardWordDataImpl("$i", R.drawable.white, R.drawable.white, createItemsList("")))
             }
             return list
         }
@@ -43,7 +44,7 @@ class CardWordDataImpl(val cardTitle: String,
             return LessonMaterialManager.fetchWordList(wordListPosition)
         }
 
-        private fun createItemsList(cardName: String): List<String> {//使わないけど、消せない。
+        fun createItemsList(cardName: String): List<String> {//使わないけど、消せない。
             return listOf("No","use")
         }
 
@@ -52,20 +53,11 @@ class CardWordDataImpl(val cardTitle: String,
             var pronounceId: Int = context.resources.getIdentifier("pronounce_${wordCardId}","raw", context.packageName)
             var mp: MediaPlayer = MediaPlayer.create(context, pronounceId)
             mp.start()
-
         }
-
 
         fun showOrHiddenJapaneseWord(wordCardData:TOEICFlash600Word, isClicked:Boolean): String = if(isClicked) wordCardData.wordjp.toString() else "?"
 
         fun showOrHiddenJapaneseSentense(wordCardData:TOEICFlash600Word, isClicked:Boolean): String = if(isClicked) wordCardData.examplejp.toString() else "? ? ?"
-
-
-
-
-        fun showJapanese(id:Int):String {
-            return LessonMaterialManager.fetchWordList(id).wordjp.toString()
-        }
 
     }
 

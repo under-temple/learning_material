@@ -138,26 +138,22 @@ class LearningMaterialTestFragment : Fragment() {
             endMeasureTimeMillis = System.currentTimeMillis()
             answerTimeMillis = endMeasureTimeMillis - beginMeasureTimeMillis
 
+            //TODO: 回答時間データを、Realm 書き込みをする。
             TestScore.updateTestScore(wordId,answerTimeMillis,context)
-
             correct()
         } else {
             inCorrect()
         }
     }
 
+    //correct(), incorrect()は、不要説あったが、timeoutを考慮すると、incorrect()があった方が、便利。
     private fun correct(){
         Log.d("答えは","正解です")
         showNextTest(LessonMaterialManager.fetchWordList(wordId++))
-
-        //獲得成功。
-        Log.d("前回までの正解数","${TestScore.getCorrectAnswerCount(wordId,context)}")
     }
 
     private fun inCorrect(){
         Log.d("答えは","不正解です")
-
-        //計測時間をリセットする。checkAnswer()に書かない理由は、タイムアウトによる不正解も考慮するため。
         beginMeasureTimeMillis = 0
         showNextTest(LessonMaterialManager.fetchWordList(wordId++))
     }

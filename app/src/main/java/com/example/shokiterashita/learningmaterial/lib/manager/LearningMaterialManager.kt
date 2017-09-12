@@ -42,18 +42,6 @@ object LessonMaterialManager {
         }
     }
 
-
-    fun fetchWordByTestCard(testListId:Int): TOEICFlash600Word {
-        val realm = getLessonMaterial()
-
-        //test_list.jsonから、wordIdを取得する。
-        val testList = realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
-
-        var wordId = testList.idx_start!!
-        return realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst()
-
-    }
-
     fun convertTestIDtoWordID(testId:Int): Int{
 
         val realm = getLessonMaterial()
@@ -112,5 +100,9 @@ open class TOEICFlash600Word:RealmObject(){
     open var option_1:String? = null
     open var option_2:String? = null
     open var exampleen:String? = null
+
+    open var fastestAnsewrTimeSeconds:Double? = null
+    open var averageAnsewrTimeSeconds:Double? = null
+    open var correctAnswerCount:Int? = null
 }
 
