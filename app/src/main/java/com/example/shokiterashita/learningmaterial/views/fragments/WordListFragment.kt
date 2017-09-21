@@ -68,6 +68,7 @@ class WordListFragment: Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_word_list, container, false)
+
         wordCardArr = CardWordDataImpl.fetchLearningWordCardArr(context,1)
 
         ecPagerCardCount = wordCardArr?.size ?: 0
@@ -146,7 +147,6 @@ class WordListFragment: Fragment() {
         ecPagerView!!.setPagerViewAdapter(ecPagerViewAdapter)
         ecPagerView!!.setBackgroundSwitcherView(view.findViewById(R.id.ec_bg_switcher_element))
 
-        //TODO: カードレイアウトとFragmentを、別個にして取り出す。-> 「学習中」「全て」において生成メソッドを使い分ける。
         learningWordButton.setOnClickListener {
 
             //単語リスト101-200を選択した想定
@@ -154,29 +154,29 @@ class WordListFragment: Fragment() {
         }
 
         allWordButton.setOnClickListener {
-            ecPagerViewAdapter.startUpdate(container)
 
-            wordCardArr = CardWordDataImpl.fetchAllWordCardArr(context,2)
-            updateCardArr(wordCardArr!!)
+            //addFragment# replaceFragmentで、エラーが発生しているので、一旦、従来の方法で画面遷移を行う。
+            //fragmentの部品化を学ぶ。
+            val fragment = AllWordListFragment()
+//            addFragment(R.id.card_word_list, fragment)
 
-            ecPagerViewAdapter.notifyDataSetChanged()
-            ecPagerViewAdapter.finishUpdate(container)
+            var fragmentManager = fragmentManager.beginTransaction()
+            fragmentManager.replace(R.id.card_word_list,fragment)
+            fragmentManager.commit()
         }
 
         return view
     }
 
-
-    fun updateCardArr(wordCardArr: MutableList<TOEICFlash600Word>){
-
-        //viewを変更するには、カード枚数（dataset）と、wordCardArrの変更が必要。
-        this.wordCardArr = wordCardArr
-        dataset = CardWordDataImpl.generateWordCardList(wordCardArr.indices)
-
-    }
-
-    fun updateCardLayout(){
-
-    }
+//    fun Fragment.addFragment(id:Int, fragment:Fragment){
+//        if(fragmentManager.backStackEntryCount > 0 && fragmentManager.fragments.contains(fragment)){
+//            this.replaceFragment(id, fragment)
+//            return
+//        }
+//        val transaction = fragmentManager.beginTransaction()
+//        transaction.add(id, fragment)
+//        transaction.addToBackStack(null)
+//        transaction.commit()
+//    }
 
 }
