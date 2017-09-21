@@ -153,7 +153,7 @@ class WordListFragment: Fragment() {
 //            addFragment(R.id.card_word_list, fragment)
 
             var fragmentManager = fragmentManager.beginTransaction()
-            fragmentManager.replace(R.id.card_word_list,fragment)
+            fragmentManager.replace(R.id.ec_word_pager_element,fragment)
             fragmentManager.commit()
         }
 
