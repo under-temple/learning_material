@@ -2,6 +2,7 @@ package com.ramotion.expandingcollection.examples.simple
 
 import android.content.Context
 import android.media.MediaPlayer
+import android.util.Log
 import android.widget.TextView
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.lib.manager.LessonMaterialManager
@@ -21,22 +22,43 @@ class CardWordDataImpl(val cardTitle: String,
     companion object {
 
         //List -> ArrayListに変更
-        fun generateWordCardList(wordListPosition: Int): MutableList<ECCardData<*>> {
-
-            //ArrayListは、javaのクラス
+        fun generateWordCardList(cardRange: IntRange): MutableList<ECCardData<*>> {
             val list = ArrayList<ECCardData<*>>()
-
-            //以下のコードは、必要ない説 9/7
-            var firstTestListId = wordListPosition + (wordListPosition * 100)
-            if (firstTestListId == 0) firstTestListId = 1
-
-            var lastTestListId = firstTestListId + 99
-            val testListRange = firstTestListId..lastTestListId
-
-            for (i in testListRange) {
+            for (i in cardRange) {
                 list.add(CardWordDataImpl("$i", R.drawable.white, R.drawable.white, createItemsList("")))
             }
             return list
+        }
+
+
+        fun fetchAllWordCardArr(context: Context, wordListId: Int) : MutableList<TOEICFlash600Word>{
+            LessonMaterialManager.setup(context)
+            val realm = LessonMaterialManager.getLessonMaterial()
+            var allWordCardArr: MutableList<TOEICFlash600Word> = when (wordListId) {
+                0 -> realm.where(TOEICFlash600Word::class.java).lessThanOrEqualTo("id", 100).findAll()
+
+                1 -> realm.where(TOEICFlash600Word::class.java).between("id", 101, 200).findAll()
+
+                2 -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).findAll()
+
+                else -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).findAll()
+            }
+            return allWordCardArr
+        }
+        fun fetchLearningWordCardArr(context: Context, wordListId: Int) : MutableList<TOEICFlash600Word>{
+            LessonMaterialManager.setup(context)
+            val realm = LessonMaterialManager.getLessonMaterial()
+            var learningWordCardArr: MutableList<TOEICFlash600Word> = when (wordListId) {
+                0 -> realm.where(TOEICFlash600Word::class.java).lessThanOrEqualTo("id", 100).greaterThanOrEqualTo("fastestAnsewrTimeSeconds", 1.50).findAll()
+
+                1 -> realm.where(TOEICFlash600Word::class.java).between("id", 101, 200).greaterThanOrEqualTo("fastestAnsewrTimeSeconds", 1.50).findAll()
+
+                2 -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).greaterThanOrEqualTo("fastestAnsewrTimeSeconds", 1.50).findAll()
+
+                else -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).findAll()
+            }
+
+            return learningWordCardArr
         }
 
         fun fetchWordCardContents(wordListPosition: Int,context: Context): TOEICFlash600Word{
@@ -60,9 +82,6 @@ class CardWordDataImpl(val cardTitle: String,
         fun showOrHiddenJapaneseSentense(wordCardData:TOEICFlash600Word, isClicked:Boolean): String = if(isClicked) wordCardData.examplejp.toString() else "? ? ?"
 
     }
-
-
-
 
 
 

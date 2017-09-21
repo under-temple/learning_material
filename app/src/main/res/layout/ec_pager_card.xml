@@ -41,56 +41,6 @@
         android:layout_marginTop="300dp">
 
 
-        <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:orientation="horizontal">-->
-            <!--<TextView-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="前回正解数 :" />-->
-            <!--<TextView-->
-                <!--android:id="@+id/previous_correct_count"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content" />-->
-        <!--</LinearLayout>-->
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:orientation="horizontal">-->
-             <!--<TextView-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="最速正答時間 :" />-->
-             <!--<TextView-->
-                <!--android:id="@+id/fastest_answer_time"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content" />-->
-        <!--</LinearLayout>-->
-
-
-        <!--<LinearLayout-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:orientation="horizontal">-->
-              <!--<TextView-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="平均回答時間 :" />-->
-              <!--<TextView-->
-                <!--android:id="@+id/average_answer_time"-->
-                <!--android:layout_gravity="center_horizontal"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content" />-->
-        <!--</LinearLayout>-->
-
-
         <Button
             android:id="@+id/start_test"
             android:layout_width="wrap_content"
@@ -117,42 +67,56 @@
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"/>
 
-            <TextView
-                android:id="@+id/word_en_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textColor="@color/colorBlack"
-                android:textSize="32dp" />
+        <TextView
+            android:id="@+id/word_en_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/textColor"
+            android:textSize="32dp" />
 
-            <TextView
-                android:id="@+id/word_jp_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:text="？"
-                android:textColor="@color/colorBlack"
-                android:textSize="24dp" />
+        <TextView
+            android:id="@+id/word_jp_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="？"
+            android:textColor="@color/textColor"
+            android:textSize="24dp" />
 
-            <TextView
-                android:id="@+id/sentence_en_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
-                android:textColor="@color/colorBlack"
-                android:textSize="12dp" />
+        <TextView
+            android:id="@+id/sentence_en_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/textColor"
+            android:textSize="12dp" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/sentence_jp_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:text="？？？"
-                android:textColor="@color/colorBlack"
+                android:textColor="@color/textColor"
                 android:textSize="12dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
+                android:text="@string/underbar"/>
+
+        </LinearLayout>
+
+
+
     </LinearLayout>
 
     <LinearLayout android:layout_width="wrap_content"
@@ -164,6 +128,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
             <TextView
                 android:layout_gravity="center_horizontal"
@@ -180,6 +145,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
             <TextView
                 android:layout_gravity="center_horizontal"
@@ -197,6 +163,7 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
             <TextView
                 android:layout_gravity="center_horizontal"
@@ -210,57 +177,61 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <ToggleButton
-            android:id="@+id/show_word_jp_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:background="@color/colorPrimaryDark"
-            android:textColor="@color/colorWhite"
-            android:textOn="日本語を非表示"
-            android:textOff="日本語を表示"
-            android:textStyle="bold"
-            />
-
-        <!--<com.beardedhen.androidbootstrap.BootstrapButton-->
-            <!--android:id="@+id/show_word_jp_button"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="70dp"-->
-            <!--android:background="@color/colorPrimaryDark"-->
-            <!--android:textColor="@color/colorWhite"-->
-            <!--android:text="日本語の意味を表示"-->
-            <!--android:textStyle="bold"-->
-            <!--app:bootstrapBrand="primary"-->
-            <!--app:buttonMode="toggle"-->
-            <!--app:roundedCorners="true"/>-->
-
-        <!--fa-volume-up-->
-        <!--<TextView-->
-            <!--android:id="@+id/pronounce_word_button"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_marginTop="30dp"-->
-            <!--android:background="@color/colorWhite"-->
-            <!--android:textSize="32dp"-->
-            <!--android:textColor="@color/colorBlack"-->
-            <!--/>-->
-        <!---->
-
-
         <ImageButton
             android:id="@+id/pronounce_word_button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
             android:background="@color/colorWhite"
-            android:src="@drawable/pronounce_icon_small" />
+            android:src="@drawable/playvoice_small" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp"
+            android:weightSum="1">
+
+            <ToggleButton
+                android:id="@+id/show_word_jp_button"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/corner_radius"
+                android:layout_marginRight="16dp"
+                android:textOn="日本語を非表示"
+                android:textOff="日本語を表示"
+                android:layout_weight="1.78" />
+
+            <LinearLayout
+                android:layout_width="81dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/corner_radius"
+                android:layout_gravity="center_horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:src="@drawable/checkicon_2"
+                    />
+
+
+                <TextView
+                    android:id="@+id/next_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:layout_gravity="center"
+                    android:text="覚えた"
+                    android:background="@drawable/corner_radius"
+                    />
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </LinearLayout>
-
-
-
-
 </com.ramotion.expandingcollection.ECPagerCard>
-

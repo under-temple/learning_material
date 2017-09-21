@@ -1,5 +1,6 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/word_list">
@@ -17,6 +18,34 @@
         ec:cardHeaderHeightExpanded="350dp"
         ec:cardHeight="500dp"
         ec:cardWidth="280dp">
+
+
+        <info.hoang8f.android.segmented.SegmentedGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            segmentedgroup:sc_tint_color="@color/textColor"
+            segmentedgroup:sc_checked_text_color="@color/colorWhite">
+
+            <RadioButton
+                android:id="@+id/learning_word_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="学習中"
+                android:checked="true"
+                android:textColor="@color/textColor"
+                style="@style/RadioButton" />
+
+            <RadioButton
+                android:id="@+id/all_word_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="全て"
+                android:textColor="@color/textColor"
+                style="@style/RadioButton" />
+        </info.hoang8f.android.segmented.SegmentedGroup>
 
     </com.ramotion.expandingcollection.ECPagerView>
 

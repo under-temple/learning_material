@@ -30,9 +30,9 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.Subscription
 import rx.functions.Func1
 import android.widget.Toast
-import com.example.shokiterashita.learningmaterial.model.TestScore
 import com.jakewharton.rxbinding.view.RxView
 import com.example.shokiterashita.learningmaterial.viewModel.TestListViewModel
+import io.realm.Realm
 import rx.functions.Action1
 import java.security.PrivateKey
 import java.util.concurrent.TimeUnit
@@ -55,7 +55,7 @@ class LearningMaterialTestFragment : Fragment() {
 
     private var beginMeasureTimeMillis: Long = 0
     private var endMeasureTimeMillis: Long = 0
-    private var answerTimeMillis: Long = 0
+    private var answerTimeSeconds: Double = 0.0
     private var wordId: Int = 0
     var prefs: SharedPreferences? = null
     var timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe()
@@ -136,10 +136,11 @@ class LearningMaterialTestFragment : Fragment() {
 
         if (answerWordJp == choicedButtonText){
             endMeasureTimeMillis = System.currentTimeMillis()
-            answerTimeMillis = endMeasureTimeMillis - beginMeasureTimeMillis
+            answerTimeSeconds = (endMeasureTimeMillis - beginMeasureTimeMillis)/1000.0
 
-            //TODO: 回答時間データを、Realm 書き込みをする。
-            TestScore.updateTestScore(wordId,answerTimeMillis,context)
+            LessonMaterialManager.updateAnswerData(context,wordId,answerTimeSeconds)
+
+//            TestScore.updateTestScore(wordId,answerTimeMillis,context)
             correct()
         } else {
             inCorrect()
@@ -176,6 +177,5 @@ class LearningMaterialTestFragment : Fragment() {
             inCorrect()
         }
     }
-
 }
 

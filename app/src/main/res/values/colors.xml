@@ -6,6 +6,8 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000</color>
     <color name="blur">#7f888888</color>
+    <color name="textColor">#525252</color>
+    <color name="appColor">#2e3751</color>
 
 
 

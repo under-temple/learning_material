@@ -7,6 +7,7 @@ import android.util.Log
 import io.realm.annotations.PrimaryKey
 
 import com.example.shokiterashita.learningmaterial.R
+import com.ramotion.expandingcollection.ECCardData
 import io.realm.*
 
 
@@ -41,6 +42,12 @@ object LessonMaterialManager {
             realm.createObjectFromJson(TOEICFlash600WordList::class.java, wordListJsonText)
         }
     }
+    fun generateEcPagerCardArr(context: Context): MutableList<TOEICFlash600Word>{
+        setup(context)
+        var realm = Realm.getInstance(lessonMaterialConfig)
+        return realm.where(TOEICFlash600Word::class.java).findAll()
+
+    }
 
     fun convertTestIDtoWordID(testId:Int): Int{
 
@@ -59,11 +66,28 @@ object LessonMaterialManager {
         return realm.where(TOEICFlash600Word::class.java).equalTo("id", testListId).findFirst()
     }
 
-//    fun nextQuestion(testId : Int):TOEICFlash600Word{
-//        val realm = getLessonMaterial()
-//        testId = testId + 1
-//        return testContent = realm.where(TOEICFlash600Word::class.java).equalTo("id", testId).findFirst()
-//    }
+    fun updateAnswerData(context: Context, wordId: Int, answerTimeSeconds:Double){
+        setup(context)
+        val realm = getLessonMaterial()
+        realm.executeTransaction {
+            val realmData = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst()
+
+            var existingAnswerTimeSeconds = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().fastestAnsewrTimeSeconds
+            if (existingAnswerTimeSeconds == 0.0) {
+                realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().fastestAnsewrTimeSeconds = answerTimeSeconds
+            } else if (existingAnswerTimeSeconds > answerTimeSeconds ) {
+                realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().fastestAnsewrTimeSeconds = answerTimeSeconds
+            }
+
+            var correctCount = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().correctAnswerCount
+            realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().correctAnswerCount++
+
+            var averageAnswerTime = realmData.averageAnsewrTimeSeconds
+            realmData.averageAnsewrTimeSeconds = (averageAnswerTime + answerTimeSeconds)/(correctCount + 1)
+        }
+    }
+
+
 }
 
 
@@ -101,8 +125,10 @@ open class TOEICFlash600Word:RealmObject(){
     open var option_2:String? = null
     open var exampleen:String? = null
 
-    open var fastestAnsewrTimeSeconds:Double? = null
-    open var averageAnsewrTimeSeconds:Double? = null
-    open var correctAnswerCount:Int? = null
+    open var fastestAnsewrTimeSeconds:Double = 0.0
+    open var averageAnsewrTimeSeconds:Double = 0.0
+    open var correctAnswerCount:Int = 0
+
+
 }
 
