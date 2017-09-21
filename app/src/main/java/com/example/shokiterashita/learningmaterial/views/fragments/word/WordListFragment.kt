@@ -1,29 +1,19 @@
-package com.example.shokiterashita.learningmaterial.views.fragments
+package com.example.shokiterashita.learningmaterial.views.fragments.word
 
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.media.MediaPlayer
-import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.util.Log
-import android.util.TypedValue
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import java.util.List
 //import com.beardedhen.androidbootstrap.TypefaceProvider
 import com.example.shokiterashita.learningmaterial.R
-import com.example.shokiterashita.learningmaterial.views.lib.extention.WordListCard
-import com.example.shokiterashita.learningmaterial.lib.manager.LessonMaterialManager
-import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Test
 import com.ramotion.expandingcollection.*
 import com.ramotion.expandingcollection.examples.simple.CardWordDataImpl
 
 import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Word
-import org.w3c.dom.Text
+import com.example.shokiterashita.learningmaterial.views.fragments.AllWordListFragment
 
 /**
  * Created by shokiterashita on 2017/08/17.
@@ -59,7 +49,7 @@ class WordListFragment: Fragment() {
     lateinit var showJpButton: ToggleButton
     lateinit var pronounceButton: ImageButton
 
-    lateinit var ecPagerViewAdapter:ECPagerViewAdapter
+    lateinit var ecPagerViewAdapter: ECPagerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,7 +59,7 @@ class WordListFragment: Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_word_list, container, false)
 
-        wordCardArr = CardWordDataImpl.fetchLearningWordCardArr(context,1)
+        wordCardArr = CardWordDataImpl.fetchLearningWordCardArr(context, 1)
 
         ecPagerCardCount = wordCardArr?.size ?: 0
         ecPagerView = view.findViewById(R.id.ec_word_pager_element)
@@ -121,12 +111,14 @@ class WordListFragment: Fragment() {
 
                 showJpButton = res.findViewById(R.id.show_word_jp_button)
                 showJpButton.setOnCheckedChangeListener { showJpButton, isClicked ->
-                    ecPagerCardArr[position]!!.findViewById<TextView>(R.id.word_jp_text).text = CardWordDataImpl.showOrHiddenJapaneseWord(TOEIC600Word!!,isClicked)
-                    ecPagerCardArr[position]!!.findViewById<TextView>(R.id.sentence_jp_text).text = CardWordDataImpl.showOrHiddenJapaneseSentense(TOEIC600Word!!,isClicked)
+                    ecPagerCardArr[position]!!.findViewById<TextView>(R.id.word_jp_text).text = CardWordDataImpl.showOrHiddenJapaneseWord(TOEIC600Word!!, isClicked)
+                    ecPagerCardArr[position]!!.findViewById<TextView>(R.id.sentence_jp_text).text = CardWordDataImpl.showOrHiddenJapaneseSentense(TOEIC600Word!!, isClicked)
                 }
 
                 var fastestAnswerTimeSeconds = TOEIC600Word!!.fastestAnsewrTimeSeconds
-                if (0 < fastestAnswerTimeSeconds && fastestAnswerTimeSeconds <= 1.50){
+                if (fastestAnswerTimeSeconds == null) {
+
+                }else if (0 < fastestAnswerTimeSeconds && fastestAnswerTimeSeconds <= 1.50){
                     instantAnswerLabel.text = "瞬間回答"
                     instantAnswerIcon.setImageResource(R.drawable.master_small)
                 }
@@ -150,7 +142,7 @@ class WordListFragment: Fragment() {
         learningWordButton.setOnClickListener {
 
             //単語リスト101-200を選択した想定
-            wordCardArr = CardWordDataImpl.fetchLearningWordCardArr(context,1)
+            wordCardArr = CardWordDataImpl.fetchLearningWordCardArr(context, 1)
         }
 
         allWordButton.setOnClickListener {

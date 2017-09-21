@@ -70,20 +70,27 @@ object LessonMaterialManager {
         setup(context)
         val realm = getLessonMaterial()
         realm.executeTransaction {
-            val realmData = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst()
+            val wordData = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst()
 
+            // fastestAnsewrTimeSeconds の更新
             var existingAnswerTimeSeconds = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().fastestAnsewrTimeSeconds
-            if (existingAnswerTimeSeconds == 0.0) {
-                realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().fastestAnsewrTimeSeconds = answerTimeSeconds
-            } else if (existingAnswerTimeSeconds > answerTimeSeconds ) {
-                realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().fastestAnsewrTimeSeconds = answerTimeSeconds
+            if (existingAnswerTimeSeconds == null){
+                wordData.fastestAnsewrTimeSeconds = answerTimeSeconds
+            }else if (existingAnswerTimeSeconds > answerTimeSeconds ) {
+                wordData.fastestAnsewrTimeSeconds = answerTimeSeconds
             }
 
-            var correctCount = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().correctAnswerCount
-            realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().correctAnswerCount++
+            // correctAnswerCount の更新
+            var correctCount = wordData.correctAnswerCount
+            wordData.correctAnswerCount++
 
-            var averageAnswerTime = realmData.averageAnsewrTimeSeconds
-            realmData.averageAnsewrTimeSeconds = (averageAnswerTime + answerTimeSeconds)/(correctCount + 1)
+            // averageAnsewrTimeSeconds の更新
+            var averageAnswerTime = wordData.averageAnsewrTimeSeconds
+            if (averageAnswerTime == null){
+                wordData.averageAnsewrTimeSeconds = answerTimeSeconds
+            }else{
+                wordData.averageAnsewrTimeSeconds = (averageAnswerTime + answerTimeSeconds)/(correctCount + 1)
+            }
         }
     }
 
@@ -125,10 +132,9 @@ open class TOEICFlash600Word:RealmObject(){
     open var option_2:String? = null
     open var exampleen:String? = null
 
-    open var fastestAnsewrTimeSeconds:Double = 0.0
-    open var averageAnsewrTimeSeconds:Double = 0.0
+    open var fastestAnsewrTimeSeconds:Double? = null
+    open var averageAnsewrTimeSeconds:Double? = null
     open var correctAnswerCount:Int = 0
-
 
 }
 

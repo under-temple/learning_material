@@ -48,13 +48,11 @@ class CardWordDataImpl(val cardTitle: String,
         fun fetchLearningWordCardArr(context: Context, wordListId: Int) : MutableList<TOEICFlash600Word>{
             LessonMaterialManager.setup(context)
             val realm = LessonMaterialManager.getLessonMaterial()
+            val query = realm.where(TOEICFlash600Word::class.java).isNull("fastestAnsewrTimeSeconds").or().greaterThanOrEqualTo("fastestAnsewrTimeSeconds", 1.50)
             var learningWordCardArr: MutableList<TOEICFlash600Word> = when (wordListId) {
-                0 -> realm.where(TOEICFlash600Word::class.java).lessThanOrEqualTo("id", 100).greaterThanOrEqualTo("fastestAnsewrTimeSeconds", 1.50).findAll()
-
-                1 -> realm.where(TOEICFlash600Word::class.java).between("id", 101, 200).greaterThanOrEqualTo("fastestAnsewrTimeSeconds", 1.50).findAll()
-
-                2 -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).greaterThanOrEqualTo("fastestAnsewrTimeSeconds", 1.50).findAll()
-
+                0 -> query.lessThanOrEqualTo("id", 100).findAll()
+                1 -> query.between("id", 101, 200).findAll()
+                2 -> query.greaterThanOrEqualTo("id", 201).findAll()
                 else -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).findAll()
             }
 

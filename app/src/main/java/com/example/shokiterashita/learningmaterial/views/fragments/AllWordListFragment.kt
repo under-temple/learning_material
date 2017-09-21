@@ -92,7 +92,9 @@ class AllWordListFragment: Fragment(){
                 }
 
                 var fastestAnswerTimeSeconds = TOEIC600Word!!.fastestAnsewrTimeSeconds
-                if (0 < fastestAnswerTimeSeconds && fastestAnswerTimeSeconds <= 1.50){
+                if (fastestAnswerTimeSeconds == null){
+
+                }else if (0 < fastestAnswerTimeSeconds && fastestAnswerTimeSeconds <= 1.50){
                     instantAnswerLabel.text = "瞬間回答"
                     instantAnswerIcon.setImageResource(R.drawable.master_small)
                 }
