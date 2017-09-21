@@ -14,7 +14,7 @@ import java.util.*
  * Created by shoki.terashita on 2017/08/17.
  */
 
-class CardWordDataImpl(val cardTitle: String,
+class WordListViewModel(val cardTitle: String,
                    private val mainBackgroundResource: Int?,
                    private val headBackgroundResource: Int?,
                    private val listItems: List<String>) : ECCardData<String> {
@@ -25,7 +25,7 @@ class CardWordDataImpl(val cardTitle: String,
         fun generateWordCardList(cardRange: IntRange): MutableList<ECCardData<*>> {
             val list = ArrayList<ECCardData<*>>()
             for (i in cardRange) {
-                list.add(CardWordDataImpl("$i", R.drawable.white, R.drawable.white, createItemsList("")))
+                list.add(WordListViewModel("$i", R.drawable.white, R.drawable.white, createItemsList("")))
             }
             return list
         }
@@ -48,20 +48,16 @@ class CardWordDataImpl(val cardTitle: String,
         fun fetchLearningWordCardArr(context: Context, wordListId: Int) : MutableList<TOEICFlash600Word>{
             LessonMaterialManager.setup(context)
             val realm = LessonMaterialManager.getLessonMaterial()
-            val query = realm.where(TOEICFlash600Word::class.java).isNull("fastestAnsewrTimeSeconds").or().greaterThanOrEqualTo("fastestAnsewrTimeSeconds", 1.50)
+            val query = realm.where(TOEICFlash600Word::class.java).isNull("fastestAnswerTimeSeconds").or().greaterThanOrEqualTo("fastestAnswerTimeSeconds", 1.50)
             var learningWordCardArr: MutableList<TOEICFlash600Word> = when (wordListId) {
                 0 -> query.lessThanOrEqualTo("id", 100).findAll()
-                1 -> query.between("id", 101, 200).findAll()
-                2 -> query.greaterThanOrEqualTo("id", 201).findAll()
+                1 -> realm.where(TOEICFlash600Word::class.java).between("id", 101, 200).beginGroup().isNull("fastestAnswerTimeSeconds").or().greaterThanOrEqualTo("fastestAnswerTimeSeconds", 1.50).endGroup().findAll()
+                2 -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).beginGroup().isNull("fastestAnswerTimeSeconds").or().greaterThanOrEqualTo("fastestAnswerTimeSeconds", 1.50).endGroup().findAll()
+
                 else -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).findAll()
             }
 
             return learningWordCardArr
-        }
-
-        fun fetchWordCardContents(wordListPosition: Int,context: Context): TOEICFlash600Word{
-            LessonMaterialManager.setup(context)
-            return LessonMaterialManager.fetchWordList(wordListPosition)
         }
 
         fun createItemsList(cardName: String): List<String> {//使わないけど、消せない。

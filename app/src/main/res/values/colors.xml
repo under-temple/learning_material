@@ -8,7 +8,5 @@
     <color name="blur">#7f888888</color>
     <color name="textColor">#525252</color>
     <color name="appColor">#2e3751</color>
-
-
-
+    <color name="clearColor">#00ffffff</color>
 </resources>

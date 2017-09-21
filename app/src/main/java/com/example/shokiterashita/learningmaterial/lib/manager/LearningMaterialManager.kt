@@ -73,11 +73,11 @@ object LessonMaterialManager {
             val wordData = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst()
 
             // fastestAnsewrTimeSeconds の更新
-            var existingAnswerTimeSeconds = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().fastestAnsewrTimeSeconds
+            var existingAnswerTimeSeconds = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().fastestAnswerTimeSeconds
             if (existingAnswerTimeSeconds == null){
-                wordData.fastestAnsewrTimeSeconds = answerTimeSeconds
+                wordData.fastestAnswerTimeSeconds = answerTimeSeconds
             }else if (existingAnswerTimeSeconds > answerTimeSeconds ) {
-                wordData.fastestAnsewrTimeSeconds = answerTimeSeconds
+                wordData.fastestAnswerTimeSeconds = answerTimeSeconds
             }
 
             // correctAnswerCount の更新
@@ -85,11 +85,11 @@ object LessonMaterialManager {
             wordData.correctAnswerCount++
 
             // averageAnsewrTimeSeconds の更新
-            var averageAnswerTime = wordData.averageAnsewrTimeSeconds
+            var averageAnswerTime = wordData.averageAnswerTimeSeconds
             if (averageAnswerTime == null){
-                wordData.averageAnsewrTimeSeconds = answerTimeSeconds
+                wordData.averageAnswerTimeSeconds = answerTimeSeconds
             }else{
-                wordData.averageAnsewrTimeSeconds = (averageAnswerTime + answerTimeSeconds)/(correctCount + 1)
+                wordData.averageAnswerTimeSeconds = (averageAnswerTime + answerTimeSeconds)/(correctCount + 1)
             }
         }
     }
@@ -132,8 +132,8 @@ open class TOEICFlash600Word:RealmObject(){
     open var option_2:String? = null
     open var exampleen:String? = null
 
-    open var fastestAnsewrTimeSeconds:Double? = null
-    open var averageAnsewrTimeSeconds:Double? = null
+    open var fastestAnswerTimeSeconds:Double? = null
+    open var averageAnswerTimeSeconds:Double? = null
     open var correctAnswerCount:Int = 0
 
 }

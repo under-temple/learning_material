@@ -1,4 +1,4 @@
-package com.example.shokiterashita.learningmaterial.views.fragments
+package com.example.shokiterashita.learningmaterial.views.fragments.word
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -13,7 +13,7 @@ import com.ramotion.expandingcollection.ECCardData
 import com.ramotion.expandingcollection.ECPagerCard
 import com.ramotion.expandingcollection.ECPagerView
 import com.ramotion.expandingcollection.ECPagerViewAdapter
-import com.ramotion.expandingcollection.examples.simple.CardWordDataImpl
+import com.ramotion.expandingcollection.examples.simple.WordListViewModel
 
 /**
  * Created by shokiterashita on 2017/09/20.
@@ -46,17 +46,15 @@ class AllWordListFragment: Fragment(){
         super.onCreate(savedInstanceState)
     }
 
-    //TODO: WordListFragmentで実装したカードの生成方法を、ここに移植する。
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.card_word_list, container, false)
 
-        wordCardArr = CardWordDataImpl.fetchAllWordCardArr(context,1)
+        wordCardArr = WordListViewModel.fetchAllWordCardArr(context,2)
         ecPagerCardCount = wordCardArr?.size ?: 0
 
-        ecPagerView = view.findViewById(R.id.ec_word_pager_element)
-
+        ecPagerView = view.findViewById(R.id.all_word_pager_element)
         cardRange = wordCardArr?.let { it.indices }
-        dataset = CardWordDataImpl.generateWordCardList(cardRange!!)
+        dataset = WordListViewModel.generateWordCardList(cardRange!!)
 
         ecPagerViewAdapter = object : ECPagerViewAdapter(context, dataset) {
             override fun instantiateCard(inflaterService: LayoutInflater, head: ViewGroup, list: ListView, data: ECCardData<*>) {
@@ -87,26 +85,28 @@ class AllWordListFragment: Fragment(){
 
                 showJpButton = res.findViewById(R.id.show_word_jp_button)
                 showJpButton.setOnCheckedChangeListener { showJpButton, isClicked ->
-                    ecPagerCardArr[position]!!.findViewById<TextView>(R.id.word_jp_text).text = CardWordDataImpl.showOrHiddenJapaneseWord(TOEIC600Word!!,isClicked)
-                    ecPagerCardArr[position]!!.findViewById<TextView>(R.id.sentence_jp_text).text = CardWordDataImpl.showOrHiddenJapaneseSentense(TOEIC600Word!!,isClicked)
+                    ecPagerCardArr[position]!!.findViewById<TextView>(R.id.word_jp_text).text = WordListViewModel.showOrHiddenJapaneseWord(TOEIC600Word!!,isClicked)
+                    ecPagerCardArr[position]!!.findViewById<TextView>(R.id.sentence_jp_text).text = WordListViewModel.showOrHiddenJapaneseSentense(TOEIC600Word!!,isClicked)
                 }
 
-                var fastestAnswerTimeSeconds = TOEIC600Word!!.fastestAnsewrTimeSeconds
+                var fastestAnswerTimeSeconds = TOEIC600Word!!.fastestAnswerTimeSeconds
                 if (fastestAnswerTimeSeconds == null){
 
                 }else if (0 < fastestAnswerTimeSeconds && fastestAnswerTimeSeconds <= 1.50){
+                    instantAnswerLabel = res.findViewById(R.id.instant_answer_label)
+                    instantAnswerIcon = res.findViewById(R.id.instant_answer_icon)
                     instantAnswerLabel.text = "瞬間回答"
                     instantAnswerIcon.setImageResource(R.drawable.master_small)
                 }
 
-                previousCorrectCount!!.text = TOEIC600Word!!.correctAnswerCount.toString()
-                averageAnswerTimeTextView!!.text = TOEIC600Word!!.averageAnsewrTimeSeconds.toString()
-                fastestAnswerTimeTextView!!.text = TOEIC600Word!!.fastestAnsewrTimeSeconds.toString()
+                previousCorrectCount!!.text = TOEIC600Word.correctAnswerCount.toString()
+                averageAnswerTimeTextView!!.text = TOEIC600Word.fastestAnswerTimeSeconds.toString()
+                fastestAnswerTimeTextView!!.text = TOEIC600Word.fastestAnswerTimeSeconds.toString()
 
                 pronounceButton = res.findViewById(R.id.pronounce_word_button)
                 pronounceButton.setOnClickListener{
                     var wordId = TOEIC600Word?.let { it.id } ?: 0
-                    CardWordDataImpl.pronounceWord(context, wordId)
+                    WordListViewModel.pronounceWord(context, wordId)
                 }
                 ecPagerCardArr[position] = res
                 return res

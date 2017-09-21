@@ -1,196 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<com.ramotion.expandingcollection.ECPagerCard
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+    android:background="@color/clearColor"
+    android:clickable="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/card_word_list">
+    android:id="@+id/word_list">
 
-    <com.ramotion.expandingcollection.ECPagerCardContentList
-        android:layout_width="291dp"
-        android:layout_height="458dp"
-        android:layout_gravity="center_horizontal">
+    <com.ramotion.expandingcollection.ECBackgroundSwitcherView
+        android:layout_marginTop="50dp"
+        android:id="@+id/ec_bg_switcher_element"
+        android:background="@color/clearColor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    </com.ramotion.expandingcollection.ECPagerCardContentList>
-
-
-    <LinearLayout
-        android:id="@+id/word_list_frame"
+    <com.ramotion.expandingcollection.ECPagerView xmlns:ec="http://schemas.android.com/apk/res-auto"
+        android:layout_marginTop="50dp"
+        android:id="@+id/all_word_pager_element"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:background="@drawable/border_black">
+        android:layout_centerInParent="true"
+        ec:cardHeight="500dp"
+        ec:cardWidth="280dp">
+    </com.ramotion.expandingcollection.ECPagerView>
 
-        <TextView
-            android:id="@+id/instant_answer_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"/>
-
-        <TextView
-            android:id="@+id/word_en_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/textColor"
-            android:textSize="32dp" />
-
-        <TextView
-            android:id="@+id/word_jp_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:text="？"
-            android:textColor="@color/textColor"
-            android:textSize="24dp" />
-
-        <TextView
-            android:id="@+id/sentence_en_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
-            android:textColor="@color/textColor"
-            android:textSize="12dp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/sentence_jp_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/textColor"
-                android:textSize="12dp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/textColor"
-                android:text="@string/underbar"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="250dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="前回正解数 :" />
-            <TextView
-                android:id="@+id/previous_correct_count"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="最速正答時間 :" />
-            <TextView
-                android:id="@+id/fastest_answer_time"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="平均回答時間 :" />
-            <TextView
-                android:id="@+id/average_answer_time"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/pronounce_word_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/colorWhite"
-            android:src="@drawable/playvoice_small" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="40dp"
-            android:weightSum="1">
-
-            <ToggleButton
-                android:id="@+id/show_word_jp_button"
-                android:layout_width="140dp"
-                android:layout_height="match_parent"
-                android:textColor="@color/colorWhite"
-                android:background="@drawable/corner_radius"
-                android:layout_marginRight="16dp"
-                android:textOn="日本語を非表示"
-                android:textOff="日本語を表示"
-                android:layout_weight="1.78" />
-
-            <LinearLayout
-                android:layout_width="81dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/corner_radius"
-                android:layout_gravity="center_horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:src="@drawable/checkicon_2"/>
-
-
-                <TextView
-                    android:id="@+id/next_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWhite"
-                    android:layout_gravity="center"
-                    android:text="覚えた"
-                    android:background="@drawable/corner_radius"/>
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-</com.ramotion.expandingcollection.ECPagerCard>
+</RelativeLayout>
