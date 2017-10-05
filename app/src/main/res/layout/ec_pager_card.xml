@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.ramotion.expandingcollection.ECPagerCard
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/border_black"
     android:id="@+id/pager_card">
 
     <com.ramotion.expandingcollection.ECPagerCardContentList
@@ -16,6 +17,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/test_number_label_linear_layout"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="60dp">
@@ -24,32 +26,304 @@
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="単語No." />
+            android:text="単語No."
+            android:textColor="@color/textColor"
+            android:textSize="30dp"/>
 
         <TextView
             android:id="@+id/test_number_text"
             android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:textSize="30dp"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        android:visibility="invisible">
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/test_status_chart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
+
+
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="300dp">
+        android:id="@+id/problem_procedure_linear_layout"
+        android:layout_marginTop="350dp">
 
-
-        <Button
-            android:id="@+id/start_test"
+        <info.hoang8f.android.segmented.SegmentedGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            segmentedgroup:sc_tint_color="@color/textColor"
+            segmentedgroup:sc_checked_text_color="@color/colorWhite">
+
+            <RadioButton
+                android:id="@+id/learning_word_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="通常順"
+                android:checked="true"
+                android:textColor="@color/textColor"
+                style="@style/RadioButton" />
+
+            <RadioButton
+                android:id="@+id/all_word_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ランダム順"
+                android:textColor="@color/textColor"
+                style="@style/RadioButton" />
+        </info.hoang8f.android.segmented.SegmentedGroup>
+
+        <Button
+            android:id="@+id/start_test_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_radius"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorWhite"
             android:layout_marginTop="30dp"
             android:text="テストをはじめる" />
-
     </LinearLayout>
 
+    <LinearLayout android:layout_width="wrap_content"
+        android:id="@+id/test_data_linear_layout"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="250dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
+                android:text="前回正解数 :" />
+            <TextView
+                android:id="@+id/previous_correct_count"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
+                android:text="最速正答時間 :" />
+            <TextView
+                android:id="@+id/fastest_answer_time"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
+                android:text="平均回答時間 :" />
+            <TextView
+                android:id="@+id/average_answer_time"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"/>
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/pronounce_word_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/colorWhite"
+            android:src="@drawable/playvoice_small" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:id="@+id/word_list_buttons_linear_layout"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="40dp"
+            android:weightSum="1">
+
+            <ToggleButton
+                android:id="@+id/show_word_jp_button"
+                android:layout_width="140dp"
+                android:layout_height="match_parent"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/corner_radius"
+                android:layout_marginRight="16dp"
+                android:textOn="日本語を非表示"
+                android:textOff="日本語を表示"
+                android:layout_weight="1.78" />
+
+            <LinearLayout
+                android:layout_width="81dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/corner_radius"
+                android:layout_gravity="center_horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:src="@drawable/checkicon_2"
+                    />
+
+                <Button
+                    android:id="@+id/next_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorWhite"
+                    android:layout_gravity="center"
+                    android:text="覚えた"
+                    android:background="@drawable/corner_radius"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--テストを受けに行くカードのレイアウト-->
+    <LinearLayout
+        android:id="@+id/take_test_icon_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        android:weightSum="1">
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_marginBottom="150dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/testcard_laurel_image_view"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/take_test_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="120dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="60dp"
+                android:textColor="@color/colorWhite"
+                android:shadowColor="@color/appColor"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="5"
+                android:id="@+id/test_first_word_id_text_view"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="60dp"
+                android:textColor="@color/colorWhite"
+                android:shadowColor="@color/appColor"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="5"
+                android:text="-"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="60dp"
+                android:textColor="@color/colorWhite"
+                android:shadowColor="@color/appColor"
+                android:shadowDx="3"
+                android:shadowDy="3"
+                android:shadowRadius="5"
+                android:id="@+id/test_last_word_id_text_view"/>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/testcard_welldone_text_view"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24dp"
+            android:layout_marginTop="100dp"
+            android:text="Well done!"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:text="ここまでの単語は覚えれましたか?"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dp"
+            android:text="テストを受けてみましょう"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/testcard_take_test_button"
+            android:background="@drawable/corner_radius"
+            android:text="テストを受けに行く"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/colorWhite" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/word_list_frame"
@@ -57,26 +331,25 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:background="@drawable/border_black">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/instant_answer_icon"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:id="@+id/instant_answer_icon" />
+                android:layout_height="match_parent" />
+
             <TextView
                 android:id="@+id/instant_answer_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </LinearLayout>
-
 
         <TextView
             android:id="@+id/word_en_text"
@@ -110,6 +383,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/sentence_jp_text"
                 android:layout_width="wrap_content"
@@ -118,126 +392,14 @@
                 android:layout_marginTop="20dp"
                 android:textColor="@color/textColor"
                 android:textSize="12dp" />
+
             <TextView
+                android:id="@+id/underline_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/textColor"
-                android:text="@string/underbar"/>
-
+                android:text="@string/underbar"
+                android:textColor="@color/textColor" />
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="250dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="前回正解数 :" />
-            <TextView
-                android:id="@+id/previous_correct_count"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="最速正答時間 :" />
-            <TextView
-                android:id="@+id/fastest_answer_time"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="平均回答時間 :" />
-            <TextView
-                android:id="@+id/average_answer_time"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <ImageButton
-            android:id="@+id/pronounce_word_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginTop="30dp"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/colorWhite"
-            android:src="@drawable/playvoice_small" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="40dp"
-            android:weightSum="1">
-
-            <ToggleButton
-                android:id="@+id/show_word_jp_button"
-                android:layout_width="140dp"
-                android:layout_height="match_parent"
-                android:textColor="@color/colorWhite"
-                android:background="@drawable/corner_radius"
-                android:layout_marginRight="16dp"
-                android:textOn="日本語を非表示"
-                android:textOff="日本語を表示"
-                android:layout_weight="1.78" />
-
-            <LinearLayout
-                android:layout_width="81dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/corner_radius"
-                android:layout_gravity="center_horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:src="@drawable/checkicon_2"
-                    />
-
-
-                <TextView
-                    android:id="@+id/next_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWhite"
-                    android:layout_gravity="center"
-                    android:text="覚えた"
-                    android:background="@drawable/corner_radius"
-                    />
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
 </com.ramotion.expandingcollection.ECPagerCard>

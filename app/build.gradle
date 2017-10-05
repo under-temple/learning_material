@@ -34,6 +34,7 @@ dependencies {
     compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
     compile 'com.ramotion.expandingcollection:expanding-collection:0.9.0'
     compile 'info.hoang8f:android-segmented:1.0.6'
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 
     testCompile 'junit:junit:4.12'
 }

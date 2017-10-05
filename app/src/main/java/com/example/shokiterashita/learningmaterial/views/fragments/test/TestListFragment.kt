@@ -1,12 +1,8 @@
-package com.example.shokiterashita.learningmaterial.views.fragments
+package com.example.shokiterashita.learningmaterial.views.fragments.test
 
-import android.app.Activity
 import android.support.v4.app.Fragment
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -18,9 +14,10 @@ import com.example.shokiterashita.learningmaterial.R
 
 import android.util.TypedValue.COMPLEX_UNIT_DIP
 import android.widget.*
-import com.example.shokiterashita.learningmaterial.viewModel.TestListViewModel
-import com.example.shokiterashita.learningmaterial.views.lib.extention.WordListCard
-import com.example.shokiterashita.learningmaterial.views.lib.manager.extention.replaceFragment
+import com.example.shokiterashita.learningmaterial.viewmodel.TestListViewModel
+import com.example.shokiterashita.learningmaterial.views.fragments.CardListItemAdapter
+import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
+import com.github.mikephil.charting.charts.PieChart
 import com.ramotion.expandingcollection.*
 
 class TestListFragment: Fragment() {
@@ -32,13 +29,12 @@ class TestListFragment: Fragment() {
     lateinit var fastestAnswerTime: TextView
     lateinit var averageAnswerTime: TextView
     lateinit var startTestButton: Button
+    lateinit var testStatusChart: PieChart
 
     var englishWord: TextView? = null
     var japaneseWord: TextView? = null
     var japaneseSentence: TextView? = null
     var englishSentence: TextView? = null
-
-    var showJpButton: ToggleButton? = null
     var pronounceButton: ImageButton? = null
     lateinit var wordListFrame: LinearLayout
 
@@ -54,36 +50,21 @@ class TestListFragment: Fragment() {
         //DEMO: 単語テスト一覧：101-200を選択したと想定
         val dataset = TestListViewModel.generateTestCardList(testListPosition = 1)
 
-        //カードの発行枚数を算出するメソッド
         val ecPagerViewAdapter = object : ECPagerViewAdapter(context, dataset) {
             override fun instantiateCard(inflaterService: LayoutInflater, head: ViewGroup, list: ListView, data: ECCardData<*>) {
-                // Data object for current card
-                val cardData = data as TestListViewModel
-
-                //Set adapter and items to current card content list
-                val listItems = cardData.listItems
-                val listItemAdapter = CardListItemAdapter(activity.applicationContext, listItems)
-                list.adapter = listItemAdapter
-                // Also some visual tuning can be done here
-                list.setBackgroundColor(Color.WHITE)
-
-                val cardTitle = TextView(activity.applicationContext)
-                cardTitle.text = cardData.cardTitle
-                cardTitle.setTextSize(COMPLEX_UNIT_DIP, 20f)
                 val layoutParams = FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT)
                 layoutParams.gravity = Gravity.CENTER
             }
 
-            //カード一枚一枚の中身を、実装するメソッド
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
                 val learningMaterial = LearningMaterialTestFragment()
 
                 //testListId = 0 or 1 or 2 ,DEMO: in this case, testListId = 1 (show testList 101-200)
-                var testListPosition = 1
+                var testListGroup = 1
                 var startPosition = 0
 
-                when (testListPosition) {
+                when (testListGroup) {
                     0 -> {
                         startPosition = position + 1
                     }
@@ -105,14 +86,21 @@ class TestListFragment: Fragment() {
                 previousCorrectCount.text = testCardData.result.toString()
 //                averageAnswerTime!!.text = (testCardData.result!!.toInt() / testCardData.time!!.toInt()).toString()
                 fastestAnswerTime.text = testCardData.quicktime.toString()
-                startTestButton = res.findViewById(R.id.start_test)
+                startTestButton = res.findViewById(R.id.start_test_button)
 
-                //WordListのUI部品を表示する。
+                //WordListのレイアウトを、インスタンス化する。
+                var takeTestLinearLayout = res.findViewById<LinearLayout>(R.id.take_test_linear_layout)
+                var takeTestIconLinearLayout = res.findViewById<LinearLayout>(R.id.take_test_icon_linear_layout)
+                var wordListButtonsLinearLayout = res.findViewById<LinearLayout>(R.id.word_list_buttons_linear_layout)
+                takeTestLinearLayout.visibility = View.INVISIBLE
+                takeTestIconLinearLayout.visibility = View.INVISIBLE
+                wordListButtonsLinearLayout.visibility = View.INVISIBLE
+
+
                 englishWord = res.findViewById(R.id.word_en_text)
                 japaneseWord = res.findViewById(R.id.word_jp_text)
                 englishSentence = res.findViewById(R.id.sentence_en_text)
                 japaneseSentence = res.findViewById(R.id.sentence_jp_text)
-                showJpButton = res.findViewById(R.id.show_word_jp_button)
                 pronounceButton = res.findViewById(R.id.pronounce_word_button)
                 wordListFrame = res.findViewById(R.id.word_list_frame)
 
@@ -121,13 +109,25 @@ class TestListFragment: Fragment() {
                 japaneseWord?.visibility = View.INVISIBLE
                 englishSentence?.visibility = View.INVISIBLE
                 japaneseSentence?.visibility = View.INVISIBLE
-                showJpButton?.visibility = View.INVISIBLE
                 pronounceButton?.visibility = View.INVISIBLE
-                wordListFrame?.visibility = View.INVISIBLE
+                wordListFrame.visibility = View.INVISIBLE
 
                 var testListDataIdxStart = testCardData.idx_start.toString()
                 var testListDataTotalCount = testCardData.totalCount.toString()
                 testNumber.text = testListDataIdxStart + "-" + testListDataTotalCount
+
+
+                //PieChartのインスタンスをとる。
+
+                //TODO: テストの成績を取得する
+                //取得方法：単語No.101-110 ... 101-110　//前回正解数
+                //test_listモデルのカラムにあるresultを更新する。 //最速正答時間
+                //test_listモデルのカラムにあるtime, quicktimeを更新する。 //平均回答時間
+                //結局は、モデルから取得することになる。-> テスト画面から取得する必要あり。
+                //ここで、ランダムリストを作成しなければいけない。
+
+                testStatusChart = res.findViewById(R.id.test_status_chart)
+
 
                 //テストページで表示する。
                 startTestButton.setOnClickListener {
@@ -138,14 +138,12 @@ class TestListFragment: Fragment() {
                     fragmentManager.replace(R.id.test_list,learningMaterial)
                     fragmentManager.commit()
                 }
-
                 return res
             }
         }
 
         ecPagerView!!.setPagerViewAdapter(ecPagerViewAdapter)
         ecPagerView!!.setBackgroundSwitcherView(view.findViewById(R.id.ec_bg_switcher_element))
-
 
         return view
     }

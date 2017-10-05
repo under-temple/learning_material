@@ -9,7 +9,7 @@ import android.widget.*
 //import com.beardedhen.androidbootstrap.TypefaceProvider
 import com.example.shokiterashita.learningmaterial.R
 import com.ramotion.expandingcollection.*
-import com.ramotion.expandingcollection.examples.simple.WordListViewModel
+import com.ex.expandingcollection.examples.simple.WordListViewModel
 
 import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Word
 
@@ -22,7 +22,7 @@ class WordListFragment: Fragment() {
     //ECPagerCardのサブクラスのインスタンス
     private var ecPagerView: ECPagerView? = null
     private var wordCardArr: MutableList<TOEICFlash600Word>? = null
-    private var ecPagerCardCount:Int = 100
+    private var ecPagerCardCount:Int = 111
     private var dataset: MutableList<ECCardData<*>>? = null
     private var cardRange: IntRange? = null
     lateinit var learningWordButton: RadioButton
@@ -37,8 +37,8 @@ class WordListFragment: Fragment() {
         val view = inflater!!.inflate(R.layout.fragment_word_list, container, false)
 
         wordCardArr = WordListViewModel.fetchLearningWordCardArr(context, 1)
-
         ecPagerCardCount = wordCardArr?.size ?: 0
+
         ecPagerView = view.findViewById(R.id.ec_word_pager_element)
         learningWordButton = view.findViewById(R.id.learning_word_button)
         allWordButton = view.findViewById(R.id.all_word_button)
@@ -46,16 +46,21 @@ class WordListFragment: Fragment() {
         cardRange = wordCardArr?.let { it.indices }
         dataset = WordListViewModel.generateWordCardList(cardRange!!)
 
+        val fragment = LearningWordListFragment()
+        val fragmentManager = childFragmentManager.beginTransaction()
+        fragmentManager.replace(R.id.ec_word_pager_element,fragment)
+        fragmentManager.commit()
+
         learningWordButton.setOnClickListener {
             val fragment = LearningWordListFragment()
-            var fragmentManager = childFragmentManager.beginTransaction()
+            val fragmentManager = childFragmentManager.beginTransaction()
             fragmentManager.replace(R.id.ec_word_pager_element,fragment)
             fragmentManager.commit()
         }
 
         allWordButton.setOnClickListener {
             val fragment = AllWordListFragment()
-            var fragmentManager = childFragmentManager.beginTransaction()
+            val fragmentManager = childFragmentManager.beginTransaction()
             fragmentManager.replace(R.id.ec_word_pager_element,fragment)
             fragmentManager.commit()
         }

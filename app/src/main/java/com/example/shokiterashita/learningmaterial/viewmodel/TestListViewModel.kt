@@ -1,7 +1,7 @@
 /*
 package com.ex.expandingcollection.examples.simple
 */
-package com.example.shokiterashita.learningmaterial.viewModel
+package com.example.shokiterashita.learningmaterial.viewmodel
 
 import android.app.Application
 import com.ramotion.expandingcollection.ECCardData
@@ -28,7 +28,7 @@ class TestListViewModel(val cardTitle: String,
             val testListRange = firstTestListId..lastTestListId
 
             for (i in testListRange) {
-                list.add(TestListViewModel("", R.drawable.white, R.drawable.blackborder, createItemsList("Card 1")))
+                list.add(TestListViewModel("", R.drawable.white, R.drawable.blackborder, createItemsList()))
             }
             return list
         }
@@ -38,45 +38,10 @@ class TestListViewModel(val cardTitle: String,
             return LessonMaterialManager.fetchTestList(testListPosition)
         }
 
-        private fun createItemsList(cardName: String): List<String> {//使わないけど、消せない。
+        //使わないけど、消せない。
+        private fun createItemsList(): List<String> {
             return listOf("No","use")
         }
-
-        //viewmodelに記述しなくても、managerで事足りる&&アーキテクチャ的見解からしても、問題ない？？
-//        fun update(context: Context){
-//            //average, fastest, correctCount
-//            LessonMaterialManager.setup(context)
-//            val realm = LessonMaterialManager.getLessonMaterial()
-//
-//            realm.executeTransaction {
-//                //ここに、更新する処理を記述する。
-//            }
-//
-//        }
-
-        fun updateTestScore(wordId: Int, newAnswerTimeMillis: Long, context: Context){
-
-            var prefs = context.getSharedPreferences("TEST_SCORE",Context.MODE_PRIVATE)
-            var editor = prefs.edit()
-
-            //oldValueに値が入っていない場合、defaultが0になるため、newValueが格納されない。
-            var existAnswerTimeMillis = prefs.getLong("${wordId}_answerTimeMillis",5000)
-            if (newAnswerTimeMillis < existAnswerTimeMillis){
-                editor.putLong("${wordId}_answerTimeMillis",newAnswerTimeMillis)
-            }
-
-            var correctAnswerCount = prefs.getInt("${wordId}_correctAnswerCount",0)
-            //fun updateTestScoreが呼ばれるたびに、+1 する。but 値ごとに、管理すべし。
-            editor.putInt("${wordId}_correctAnswerCount",correctAnswerCount+1)
-
-
-            var averageAnswerTimeMillis = prefs.getLong("${wordId}_averageAnswerTimeMillis",0)
-            averageAnswerTimeMillis = (averageAnswerTimeMillis + newAnswerTimeMillis)/(correctAnswerCount + 1)
-            editor.putLong("${wordId}_averageAnswerTimeMillis",averageAnswerTimeMillis)
-
-            editor.apply()
-        }
-
 
     }
 

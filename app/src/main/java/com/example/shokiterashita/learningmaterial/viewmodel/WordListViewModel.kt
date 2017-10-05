@@ -1,4 +1,6 @@
-package com.ramotion.expandingcollection.examples.simple
+//package com.example.shokiterashita.learningmaterial.viewmodel
+package com.ex.expandingcollection.examples.simple
+
 
 import android.content.Context
 import android.media.MediaPlayer
@@ -6,6 +8,7 @@ import android.util.Log
 import android.widget.TextView
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.lib.manager.LessonMaterialManager
+import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Test
 import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Word
 import com.ramotion.expandingcollection.ECCardData
 import java.util.*
@@ -21,7 +24,6 @@ class WordListViewModel(val cardTitle: String,
 
     companion object {
 
-        //List -> ArrayListに変更
         fun generateWordCardList(cardRange: IntRange): MutableList<ECCardData<*>> {
             val list = ArrayList<ECCardData<*>>()
             for (i in cardRange) {
@@ -50,29 +52,48 @@ class WordListViewModel(val cardTitle: String,
             val realm = LessonMaterialManager.getLessonMaterial()
             val query = realm.where(TOEICFlash600Word::class.java).isNull("fastestAnswerTimeSeconds").or().greaterThanOrEqualTo("fastestAnswerTimeSeconds", 1.50)
             var learningWordCardArr: MutableList<TOEICFlash600Word> = when (wordListId) {
+
                 0 -> query.lessThanOrEqualTo("id", 100).findAll()
                 1 -> realm.where(TOEICFlash600Word::class.java).between("id", 101, 200).beginGroup().isNull("fastestAnswerTimeSeconds").or().greaterThanOrEqualTo("fastestAnswerTimeSeconds", 1.50).endGroup().findAll()
                 2 -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).beginGroup().isNull("fastestAnswerTimeSeconds").or().greaterThanOrEqualTo("fastestAnswerTimeSeconds", 1.50).endGroup().findAll()
-
                 else -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).findAll()
-            }
 
+            }
             return learningWordCardArr
         }
 
-        fun createItemsList(cardName: String): List<String> {//使わないけど、消せない。
+        fun fetchTestCardArr(context: Context, testFirstWordId: Int, testLastWordId:Int) :TOEICFlash600Test{
+
+            LessonMaterialManager.setup(context)
+            val realm = LessonMaterialManager.getLessonMaterial()
+            return realm.where(TOEICFlash600Test::class.java).equalTo("idx_start",testFirstWordId).equalTo("totalCount",testLastWordId).findFirst()
+        }
+
+
+
+        //使わないけど、消せない。
+        fun createItemsList(cardName: String): List<String> {
             return listOf("No","use")
         }
 
         fun pronounceWord(context: Context, wordCardId: Int){
 
             var pronounceId: Int = context.resources.getIdentifier("pronounce_${wordCardId}","raw", context.packageName)
-            var mp: MediaPlayer = MediaPlayer.create(context, pronounceId)
-            mp.start()
+//            var mp: MediaPlayer = MediaPlayer.create(context, pronounceId)
+            var mp: MediaPlayer = MediaPlayer.create(context,pronounceId)
+//            mp.prepareAsync()
+
+            try {
+                mp.start()
+            }catch (e:Exception){
+               Log.d("Error", e.toString())
+            }
+            Log.d("starttest", "${mp.isPlaying}")
+
         }
 
-        fun showOrHiddenJapaneseWord(wordCardData:TOEICFlash600Word, isClicked:Boolean): String = if(isClicked) wordCardData.wordjp.toString() else "?"
 
+        fun showOrHiddenJapaneseWord(wordCardData:TOEICFlash600Word, isClicked:Boolean): String = if(isClicked) wordCardData.wordjp.toString() else "?"
         fun showOrHiddenJapaneseSentense(wordCardData:TOEICFlash600Word, isClicked:Boolean): String = if(isClicked) wordCardData.examplejp.toString() else "? ? ?"
 
     }

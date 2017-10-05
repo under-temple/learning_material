@@ -31,12 +31,11 @@ import rx.Subscription
 import rx.functions.Func1
 import android.widget.Toast
 import com.jakewharton.rxbinding.view.RxView
-import com.example.shokiterashita.learningmaterial.viewModel.TestListViewModel
 import io.realm.Realm
 import rx.functions.Action1
 import java.security.PrivateKey
+import com.example.shokiterashita.learningmaterial.viewmodel.TestListViewModel
 import java.util.concurrent.TimeUnit
-import javax.xml.datatype.DatatypeConstants.SECONDS
 
 //バグ：事実：テスト画面の始めのカードビューにて、ファーストタッチを反応しない。仮説：同じ問題が二度表示されている？
 class LearningMaterialTestFragment : Fragment() {
@@ -57,9 +56,19 @@ class LearningMaterialTestFragment : Fragment() {
     private var endMeasureTimeMillis: Long = 0
     private var answerTimeSeconds: Double = 0.0
     private var wordId: Int = 0
+
+    private var TOEIC600WordArray = ArrayList<TOEICFlash600Word>()
+
+
+    private var correctCount: Int = 0
+    private var averageTime: Double = 0.0
+    private var quickTime: Double = 0.0
+
+
     var prefs: SharedPreferences? = null
     var timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe()
 
+    //TODO: テストをやめても、RxJavaが止まらない。
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         subscriptions = CompositeSubscription()
@@ -73,7 +82,14 @@ class LearningMaterialTestFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_learning_material_test, container, false)
+
+        //testIdを取得する。
         var testId = arguments.getInt("testId")
+
+        //問題数の取得
+        var testCounts = LessonMaterialManager.fetchTestCounts(context,testId)
+
+
         prefs = context.getSharedPreferences("TEST_SCORE", Context.MODE_PRIVATE)
         wordId = LessonMaterialManager.convertTestIDtoWordID(testId)
         view.setBackgroundColor(Color.WHITE)
@@ -138,17 +154,25 @@ class LearningMaterialTestFragment : Fragment() {
             endMeasureTimeMillis = System.currentTimeMillis()
             answerTimeSeconds = (endMeasureTimeMillis - beginMeasureTimeMillis)/1000.0
 
-            LessonMaterialManager.updateAnswerData(context,wordId,answerTimeSeconds)
 
-//            TestScore.updateTestScore(wordId,answerTimeMillis,context)
+
+            //updateTestScoreメソッドを作成する。
+            //updateTestScoreメソッドを呼び出す。
+            //wordDataと違う点は、一問一問のデータではなく、101-110のように指定範囲のデータであること。
+            LessonMaterialManager.updateCorrectAnswerData(context,wordId,answerTimeSeconds)
             correct()
+
         } else {
+
+            LessonMaterialManager.updateInCorrectAnswerData(context,wordId)
             inCorrect()
         }
     }
 
-    //correct(), incorrect()は、不要説あったが、timeoutを考慮すると、incorrect()があった方が、便利。
     private fun correct(){
+
+        //updateTestScoreメソッドを作成する。
+        //updateTestScoreメソッドを呼び出す。
         Log.d("答えは","正解です")
         showNextTest(LessonMaterialManager.fetchWordList(wordId++))
     }
@@ -159,8 +183,7 @@ class LearningMaterialTestFragment : Fragment() {
         showNextTest(LessonMaterialManager.fetchWordList(wordId++))
     }
 
-    //showNextTestメソッドには、testId+1 を引数に持ったTOEICFlash600wordを渡す。
-    private fun showNextTest(TOEICFlash600Word:TOEICFlash600Word){
+    private fun showNextTest(TOEICFlash600Word:TOEICFlash600Word) {
 
         //なぜ、checkAnswerより先に、これが呼ばれるのだろうか。
         beginMeasureTimeMillis = System.currentTimeMillis()
@@ -171,7 +194,7 @@ class LearningMaterialTestFragment : Fragment() {
         choiceCButton.text = TOEICFlash600Word.option_2
 
         timerObservable.unsubscribe()
-        timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe{
+        timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
 
             //ここで、inCorrectメソッドを呼ぶと、_testIdの値が加算されないまま、次の問題へ移ってします。
             inCorrect()

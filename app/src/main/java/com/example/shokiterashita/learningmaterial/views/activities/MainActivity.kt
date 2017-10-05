@@ -6,7 +6,7 @@ import android.widget.Button
 //import com.beardedhen.androidbootstrap.TypefaceProvider
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
-import com.example.shokiterashita.learningmaterial.views.fragments.TestListFragment
+import com.example.shokiterashita.learningmaterial.views.fragments.test.TestListFragment
 import com.example.shokiterashita.learningmaterial.views.fragments.word.WordListFragment
 import com.example.shokiterashita.learningmaterial.views.lib.manager.extention.replaceFragment
 
