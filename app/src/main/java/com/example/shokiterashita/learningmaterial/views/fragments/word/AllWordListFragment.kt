@@ -96,7 +96,7 @@ class AllWordListFragment: Fragment(){
 
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
-                var TOEIC600Word = wordCardWithTestArr?.let { it.get(position) }
+                var TOEIC600Word = wordCardWithTestArr?.get(position)
                 val learningMaterial = LearningMaterialTestFragment()
 
                 if (TOEIC600Word.testFirstWordId != null){
@@ -219,18 +219,10 @@ class AllWordListFragment: Fragment(){
                     nextButton = res.findViewById(R.id.next_button)
                     nextButton.setOnClickListener {
 
-                        var tmp:Float = 53.5f
-
-//                        ecPagerView?.onScreenStateChanged(0)
                         ecPagerView?.setOnScrollChangeListener { view, i1, i2, i3, i4 ->
                             Log.d("vi1の値",i1.toString())
                         }
                         ecPagerView?.onScreenStateChanged(1)
-//                        ecPagerView?.onPageScrolled(0, 0.025510205f, 955)
-//                        ecPagerView?.right = 1440
-//                        ecPagerView?.
-
-//                        ecPagerView?.onPageSelected(0)
                         ecPagerView?.setOnCardSelectedListener { prevPageIndex, nextPageIndex, v3 ->
                             //　ページ変更時に呼ばれる
                             //わかったこと
@@ -252,6 +244,7 @@ class AllWordListFragment: Fragment(){
     }
 }
 
-fun ECPagerView.showPage(page:Int){
-    // 特定のページを表示する処理
-}
+//
+//fun ECPagerView.showPage(page:Int){
+//    // 特定のページを表示する処理
+//}

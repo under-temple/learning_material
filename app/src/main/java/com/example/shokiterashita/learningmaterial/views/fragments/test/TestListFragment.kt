@@ -7,7 +7,7 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import com.github.mikephil.charting.data.PieData
 
 import com.example.shokiterashita.learningmaterial.R
 //import com.example.shokiterashita.learningmaterial.viewmodel.CardDataImpl
@@ -18,6 +18,8 @@ import com.example.shokiterashita.learningmaterial.viewmodel.TestListViewModel
 import com.example.shokiterashita.learningmaterial.views.fragments.CardListItemAdapter
 import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
 import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.data.PieDataSet
+import com.github.mikephil.charting.data.PieEntry
 import com.ramotion.expandingcollection.*
 
 class TestListFragment: Fragment() {
@@ -30,6 +32,8 @@ class TestListFragment: Fragment() {
     lateinit var averageAnswerTime: TextView
     lateinit var startTestButton: Button
     lateinit var testStatusChart: PieChart
+    lateinit var normalOrderButton: RadioButton
+    lateinit var randomOrderButton: RadioButton
 
     var englishWord: TextView? = null
     var japaneseWord: TextView? = null
@@ -88,6 +92,22 @@ class TestListFragment: Fragment() {
                 fastestAnswerTime.text = testCardData.quicktime.toString()
                 startTestButton = res.findViewById(R.id.start_test_button)
 
+                //出題順を確定する書き方。
+                normalOrderButton = res.findViewById(R.id.normal_order_button)
+                randomOrderButton = res.findViewById(R.id.random_order_button)
+
+                normalOrderButton.setOnClickListener {
+                    //メンバ変数で、管理する。
+
+                }
+
+                randomOrderButton.setOnClickListener{
+                    //メンバ変数で、管理する。
+
+                }
+
+
+
                 //WordListのレイアウトを、インスタンス化する。
                 var takeTestLinearLayout = res.findViewById<LinearLayout>(R.id.take_test_linear_layout)
                 var takeTestIconLinearLayout = res.findViewById<LinearLayout>(R.id.take_test_icon_linear_layout)
@@ -125,15 +145,33 @@ class TestListFragment: Fragment() {
                 //test_listモデルのカラムにあるtime, quicktimeを更新する。 //平均回答時間
                 //結局は、モデルから取得することになる。-> テスト画面から取得する必要あり。
                 //ここで、ランダムリストを作成しなければいけない。
-
                 testStatusChart = res.findViewById(R.id.test_status_chart)
 
+                var correctCount = 80f
+                var totalTestCount = 10f
 
-                //テストページで表示する。
+                var graphData = listOf(PieEntry(correctCount), PieEntry(totalTestCount))
+                var set = PieDataSet(graphData, "正解数")
+                set.setColor(R.color.appColor)
+
+                val data : PieData = PieData(set)
+
+                testStatusChart.data = data
+
+                testStatusChart.isDrawHoleEnabled = true //中心部に穴を開ける
+                testStatusChart.holeRadius = 40f //穴の比率
+                testStatusChart.setHoleColor(Color.LTGRAY) //穴の中の色
+
+                testStatusChart.transparentCircleRadius = 60f //透過させる半径
+                testStatusChart.isRotationEnabled = false//ドラッグで回転を許可しない
+
+
+
                 startTestButton.setOnClickListener {
                     var fragmentManager = fragmentManager.beginTransaction()
                     var args = Bundle()
                     args.putInt("testId", startPosition)
+                    args.putBoolean("isNormalOrder", true)
                     learningMaterial.arguments = args
                     fragmentManager.replace(R.id.test_list,learningMaterial)
                     fragmentManager.commit()

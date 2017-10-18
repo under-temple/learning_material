@@ -35,6 +35,9 @@ import io.realm.Realm
 import rx.functions.Action1
 import java.security.PrivateKey
 import com.example.shokiterashita.learningmaterial.viewmodel.TestListViewModel
+import com.example.shokiterashita.learningmaterial.views.activities.MainActivity
+import com.example.shokiterashita.learningmaterial.views.fragments.test.TestListFragment
+import com.example.shokiterashita.learningmaterial.views.fragments.word.WordListFragment
 import java.util.concurrent.TimeUnit
 
 //バグ：事実：テスト画面の始めのカードビューにて、ファーストタッチを反応しない。仮説：同じ問題が二度表示されている？
@@ -57,12 +60,14 @@ class LearningMaterialTestFragment : Fragment() {
     private var answerTimeSeconds: Double = 0.0
     private var wordId: Int = 0
 
-    private var TOEIC600WordArray = ArrayList<TOEICFlash600Word>()
 
+    private var TOEIC600WordArray = ArrayList<TOEICFlash600Word>()
+    private var isNormalOrder = true
+    var BEGIN = 0
 
     private var correctCount: Int = 0
-    private var averageTime: Double = 0.0
-    private var quickTime: Double = 0.0
+    private var averageTime: Double? = null
+    private var quickTime: Double? = null
 
 
     var prefs: SharedPreferences? = null
@@ -71,11 +76,16 @@ class LearningMaterialTestFragment : Fragment() {
     //TODO: テストをやめても、RxJavaが止まらない。
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        var testId = arguments.getInt("testId")
+        TOEIC600WordArray = LessonMaterialManager.generateTestWordArray(context,testId)
+        wordId = LessonMaterialManager.convertTestIDtoWordID(testId)
         subscriptions = CompositeSubscription()
     }
 
     override fun onDestroy() {
+
         super.onDestroy()
+        var testId = arguments.getInt("testId")
         mSubscription?.unsubscribe()
     }
 
@@ -83,15 +93,15 @@ class LearningMaterialTestFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_learning_material_test, container, false)
 
-        //testIdを取得する。
-        var testId = arguments.getInt("testId")
 
-        //問題数の取得
-        var testCounts = LessonMaterialManager.fetchTestCounts(context,testId)
+        if (isNormalOrder){
+            //ここで、通常出題順
 
+        }
 
+        // maybe need not
         prefs = context.getSharedPreferences("TEST_SCORE", Context.MODE_PRIVATE)
-        wordId = LessonMaterialManager.convertTestIDtoWordID(testId)
+
         view.setBackgroundColor(Color.WHITE)
         clearField(view)
 
@@ -102,10 +112,11 @@ class LearningMaterialTestFragment : Fragment() {
                 countDownTimer.text = (millisUntilFinished / 1000).toString()
             }
             override fun onFinish() {
-                showTest(context,view)
+                showTest(view)
                 countDownTimer.visibility = View.INVISIBLE
             }
         }.start()
+
         return view
     }
 
@@ -125,9 +136,11 @@ class LearningMaterialTestFragment : Fragment() {
         choiceCButton.text = ""
     }
 
-    private fun showTest(context: Context, view: View){
+    private fun showTest(view: View){
         LessonMaterialManager.setup(context)
-        var TOEIC600Words = LessonMaterialManager.fetchWordList(wordId)
+
+        var END = TOEIC600WordArray.size - 1
+        var TOEIC600Words = TOEIC600WordArray[BEGIN]
 
         answerWordJp = TOEIC600Words.wordjp.toString()
         testWordTextView.text = TOEIC600Words.worden
@@ -144,6 +157,18 @@ class LearningMaterialTestFragment : Fragment() {
         choiceCButton.setOnClickListener {
             checkAnswer(choiceCButton.text)
         }
+
+        BEGIN++
+
+        if (BEGIN == END) {
+
+            var home = TestListFragment()
+            //here accurate test data
+            val fragmentManager = fragmentManager.beginTransaction()
+            fragmentManager.add(R.id.test_list,home)
+            fragmentManager.commit()
+        }
+
         view.setBackgroundColor(Color.WHITE)
         beginMeasureTimeMillis = System.currentTimeMillis()
     }
@@ -154,12 +179,9 @@ class LearningMaterialTestFragment : Fragment() {
             endMeasureTimeMillis = System.currentTimeMillis()
             answerTimeSeconds = (endMeasureTimeMillis - beginMeasureTimeMillis)/1000.0
 
-
-
-            //updateTestScoreメソッドを作成する。
-            //updateTestScoreメソッドを呼び出す。
-            //wordDataと違う点は、一問一問のデータではなく、101-110のように指定範囲のデータであること。
+            //updateCorrectAnswerDataメソッドは、wordDataを更新する。
             LessonMaterialManager.updateCorrectAnswerData(context,wordId,answerTimeSeconds)
+            updateTestScore(answerTimeSeconds)
             correct()
 
         } else {
@@ -171,16 +193,15 @@ class LearningMaterialTestFragment : Fragment() {
 
     private fun correct(){
 
-        //updateTestScoreメソッドを作成する。
-        //updateTestScoreメソッドを呼び出す。
         Log.d("答えは","正解です")
-        showNextTest(LessonMaterialManager.fetchWordList(wordId++))
+        showTest(view!!)
+//        showNextTest(LessonMaterialManager.fetchWordList(wordId++))
     }
 
     private fun inCorrect(){
         Log.d("答えは","不正解です")
         beginMeasureTimeMillis = 0
-        showNextTest(LessonMaterialManager.fetchWordList(wordId++))
+        showTest(view!!)
     }
 
     private fun showNextTest(TOEICFlash600Word:TOEICFlash600Word) {
@@ -199,6 +220,30 @@ class LearningMaterialTestFragment : Fragment() {
             //ここで、inCorrectメソッドを呼ぶと、_testIdの値が加算されないまま、次の問題へ移ってします。
             inCorrect()
         }
+    }
+
+    private fun updateTestScore(answerTimeSeconds: Double){
+
+        correctCount += 1
+
+
+        if (averageTime == null){
+            averageTime = answerTimeSeconds
+        } else {
+
+            //平均タイムを算出するロジック
+            averageTime = averageTime!! * (correctCount - 1) + answerTimeSeconds / correctCount
+        }
+
+        //最速タイムを更新するアルゴリズム
+        if (quickTime == null){
+            quickTime = answerTimeSeconds
+        }else{
+            if (quickTime!! > answerTimeSeconds){
+                quickTime = answerTimeSeconds
+            }
+        }
+
     }
 }
 

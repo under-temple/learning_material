@@ -48,8 +48,10 @@
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/test_status_chart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:visibility="visible" />
 
 
     </LinearLayout>
@@ -76,7 +78,7 @@
             segmentedgroup:sc_checked_text_color="@color/colorWhite">
 
             <RadioButton
-                android:id="@+id/learning_word_button"
+                android:id="@+id/normal_order_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="通常順"
@@ -85,7 +87,7 @@
                 style="@style/RadioButton" />
 
             <RadioButton
-                android:id="@+id/all_word_button"
+                android:id="@+id/random_order_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ランダム順"

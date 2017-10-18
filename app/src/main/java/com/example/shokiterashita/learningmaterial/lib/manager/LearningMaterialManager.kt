@@ -106,11 +106,25 @@ object LessonMaterialManager {
 
     }
 
-    fun fetchTestCounts(context: Context, testId: Int): Int{
+    fun generateTestWordArray(context: Context, testId: Int) :ArrayList<TOEICFlash600Word>{
         setup(context)
         val realm = getLessonMaterial()
+        var TOEIC600WordArray = ArrayList<TOEICFlash600Word>()
+
         var query = realm.where(TOEICFlash600Test::class.java).equalTo("id", testId).findFirst()
-        return query.totalCount!! - query.idx_start!! + 1
+        query.idx_start
+
+        for (i in query.idx_start!! .. query.totalCount!!){
+
+            var TOEIC600Word = realm.where(TOEICFlash600Word::class.java).equalTo("id", i).findFirst()
+            TOEIC600WordArray.add(TOEIC600Word)
+
+        }
+
+
+
+
+        return TOEIC600WordArray
     }
 
 
