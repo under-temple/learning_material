@@ -42,7 +42,6 @@ class TestListViewModel(val cardTitle: String,
         private fun createItemsList(): List<String> {
             return listOf("No","use")
         }
-
     }
 
 

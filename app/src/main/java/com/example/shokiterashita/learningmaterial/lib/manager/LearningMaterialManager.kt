@@ -61,6 +61,12 @@ object LessonMaterialManager {
         return realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
     }
 
+    fun fetchTestCard(context: Context,testListId:Int): TOEICFlash600Test{
+        setup(context)
+        val realm = getLessonMaterial()
+        return realm.where(TOEICFlash600Test::class.java).equalTo("id", testListId).findFirst()
+    }
+
     fun fetchWordList(testListId:Int): TOEICFlash600Word{
         val realm = getLessonMaterial()
         return realm.where(TOEICFlash600Word::class.java).equalTo("id", testListId).findFirst()
@@ -103,7 +109,6 @@ object LessonMaterialManager {
             val wordData = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst()
             wordData.isCorrect = false
         }
-
     }
 
 
@@ -113,7 +118,7 @@ object LessonMaterialManager {
         realm.executeTransaction {
             val TOEIC600Test = realm.where(TOEICFlash600Test::class.java).equalTo("id", testId).findFirst()
 
-            // modelにdouble型のカラムを追加すればいけそう。
+            TOEIC600Test.isTakeTest = true
             TOEIC600Test.fastestTime = quickTime
             TOEIC600Test.averageTime = averageTime
             TOEIC600Test.result = correctCount
@@ -156,6 +161,7 @@ open class TOEICFlash600Test:RealmObject(){
     open var typetest:Int? = null
     open var typeshow:Int? = null
 
+    open var isTakeTest:Boolean = false
     open var averageTime:Double? = null
     open var fastestTime:Double? = null
 

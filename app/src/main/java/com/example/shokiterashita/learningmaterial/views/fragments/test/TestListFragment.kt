@@ -90,15 +90,13 @@ class TestListFragment: Fragment() {
                 fastestAnswerTime = res.findViewById(R.id.fastest_answer_time)
 
 
-                //modelの中身を変えたので、nullでも値が取得できそう。
-                if (testCardData.quicktime == 0 && testCardData.result == 0 && testCardData.time == 0){
+                if (testCardData.isTakeTest == false){
 
                     previousCorrectCount.text = "未回答"
                     averageAnswerTime.text = "未回答"
                     fastestAnswerTime.text = "未回答"
 
                 } else {
-
                     previousCorrectCount.text = testCardData.result.toString()
                     averageAnswerTime.text = String.format("%.2f", testCardData.averageTime)
                     fastestAnswerTime.text = String.format("%.2f", testCardData.fastestTime)
@@ -110,8 +108,6 @@ class TestListFragment: Fragment() {
                 randomOrderButton = res.findViewById(R.id.random_order_button)
                 normalOrderButton.setOnClickListener { }
                 randomOrderButton.setOnClickListener{ }
-
-
 
                 //WordListのレイアウトを、インスタンス化する。
                 var takeTestLinearLayout = res.findViewById<LinearLayout>(R.id.take_test_linear_layout)
