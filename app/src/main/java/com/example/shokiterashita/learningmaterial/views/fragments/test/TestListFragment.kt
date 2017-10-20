@@ -3,17 +3,20 @@ package com.example.shokiterashita.learningmaterial.views.fragments.test
 import android.support.v4.app.Fragment
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.github.mikephil.charting.data.PieData
+import com.github.mikephil.charting.animation.Easing
 
 import com.example.shokiterashita.learningmaterial.R
 //import com.example.shokiterashita.learningmaterial.viewmodel.CardDataImpl
 
 import android.util.TypedValue.COMPLEX_UNIT_DIP
 import android.widget.*
+import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Test
 import com.example.shokiterashita.learningmaterial.viewmodel.TestListViewModel
 import com.example.shokiterashita.learningmaterial.views.fragments.CardListItemAdapter
 import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
@@ -41,6 +44,7 @@ class TestListFragment: Fragment() {
     var englishSentence: TextView? = null
     var pronounceButton: ImageButton? = null
     lateinit var wordListFrame: LinearLayout
+    private var TEST_COUNT = 10f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,8 +67,6 @@ class TestListFragment: Fragment() {
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
                 val learningMaterial = LearningMaterialTestFragment()
-
-                //testListId = 0 or 1 or 2 ,DEMO: in this case, testListId = 1 (show testList 101-200)
                 var testListGroup = 1
                 var startPosition = 0
 
@@ -87,24 +89,27 @@ class TestListFragment: Fragment() {
                 averageAnswerTime = res.findViewById(R.id.average_answer_time)
                 fastestAnswerTime = res.findViewById(R.id.fastest_answer_time)
 
-                previousCorrectCount.text = testCardData.result.toString()
-//                averageAnswerTime!!.text = (testCardData.result!!.toInt() / testCardData.time!!.toInt()).toString()
-                fastestAnswerTime.text = testCardData.quicktime.toString()
+
+                //modelの中身を変えたので、nullでも値が取得できそう。
+                if (testCardData.quicktime == 0 && testCardData.result == 0 && testCardData.time == 0){
+
+                    previousCorrectCount.text = "未回答"
+                    averageAnswerTime.text = "未回答"
+                    fastestAnswerTime.text = "未回答"
+
+                } else {
+
+                    previousCorrectCount.text = testCardData.result.toString()
+                    averageAnswerTime.text = String.format("%.2f", testCardData.averageTime)
+                    fastestAnswerTime.text = String.format("%.2f", testCardData.fastestTime)
+                }
+
                 startTestButton = res.findViewById(R.id.start_test_button)
 
-                //出題順を確定する書き方。
                 normalOrderButton = res.findViewById(R.id.normal_order_button)
                 randomOrderButton = res.findViewById(R.id.random_order_button)
-
-                normalOrderButton.setOnClickListener {
-                    //メンバ変数で、管理する。
-
-                }
-
-                randomOrderButton.setOnClickListener{
-                    //メンバ変数で、管理する。
-
-                }
+                normalOrderButton.setOnClickListener { }
+                randomOrderButton.setOnClickListener{ }
 
 
 
@@ -116,7 +121,7 @@ class TestListFragment: Fragment() {
                 takeTestIconLinearLayout.visibility = View.INVISIBLE
                 wordListButtonsLinearLayout.visibility = View.INVISIBLE
 
-
+                //WordListのViewを非表示にする。引数に'res'を渡せば、関数でくくれそう。
                 englishWord = res.findViewById(R.id.word_en_text)
                 japaneseWord = res.findViewById(R.id.word_jp_text)
                 englishSentence = res.findViewById(R.id.sentence_en_text)
@@ -124,7 +129,6 @@ class TestListFragment: Fragment() {
                 pronounceButton = res.findViewById(R.id.pronounce_word_button)
                 wordListFrame = res.findViewById(R.id.word_list_frame)
 
-                //WordListのViewを非表示にする。
                 englishWord?.visibility = View.INVISIBLE
                 japaneseWord?.visibility = View.INVISIBLE
                 englishSentence?.visibility = View.INVISIBLE
@@ -136,36 +140,36 @@ class TestListFragment: Fragment() {
                 var testListDataTotalCount = testCardData.totalCount.toString()
                 testNumber.text = testListDataIdxStart + "-" + testListDataTotalCount
 
-
-                //PieChartのインスタンスをとる。
-
-                //TODO: テストの成績を取得する
-                //取得方法：単語No.101-110 ... 101-110　//前回正解数
-                //test_listモデルのカラムにあるresultを更新する。 //最速正答時間
-                //test_listモデルのカラムにあるtime, quicktimeを更新する。 //平均回答時間
-                //結局は、モデルから取得することになる。-> テスト画面から取得する必要あり。
-                //ここで、ランダムリストを作成しなければいけない。
                 testStatusChart = res.findViewById(R.id.test_status_chart)
+                var correctCount = testCardData.result!!.toFloat()
 
-                var correctCount = 80f
-                var totalTestCount = 10f
+                //マジックナンバーなので、変数に置き換える。
+                var totalTestCount = TEST_COUNT
+                var inCorrectCount = totalTestCount - correctCount
+                val entries = ArrayList<PieEntry>()
 
-                var graphData = listOf(PieEntry(correctCount), PieEntry(totalTestCount))
-                var set = PieDataSet(graphData, "正解数")
-                set.setColor(R.color.appColor)
+                entries.add(PieEntry(correctCount))
+                entries.add(PieEntry(inCorrectCount))
+                var colors:IntArray = intArrayOf(R.color.appColor, R.color.colorLightGray)
+                var dataSet = PieDataSet(entries, "正解数")
+                dataSet.setColors(colors, context)
 
-                val data : PieData = PieData(set)
+                dataSet.isHighlightEnabled = false
 
+                val data = PieData(dataSet)
+                data.setValueTextColor(Color.TRANSPARENT)
                 testStatusChart.data = data
+                testStatusChart.isDrawHoleEnabled = true
+                testStatusChart.setUsePercentValues(false)
+                testStatusChart.legend.isEnabled = false
+                testStatusChart.description.isEnabled = false
 
-                testStatusChart.isDrawHoleEnabled = true //中心部に穴を開ける
-                testStatusChart.holeRadius = 40f //穴の比率
-                testStatusChart.setHoleColor(Color.LTGRAY) //穴の中の色
-
-                testStatusChart.transparentCircleRadius = 60f //透過させる半径
-                testStatusChart.isRotationEnabled = false//ドラッグで回転を許可しない
-
-
+                testStatusChart.holeRadius = 95f
+                testStatusChart.setHoleColor(Color.TRANSPARENT)
+                testStatusChart.transparentCircleRadius = 60f
+                testStatusChart.isRotationEnabled = false
+                testStatusChart.animateXY(2000, 2000)
+                testStatusChart.invalidate()
 
                 startTestButton.setOnClickListener {
                     var fragmentManager = fragmentManager.beginTransaction()

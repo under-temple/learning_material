@@ -106,6 +106,20 @@ object LessonMaterialManager {
 
     }
 
+
+    fun updateTestData(context:Context, testId: Int, correctCount: Int, quickTime: Double, averageTime: Double){
+        setup(context)
+        val realm = getLessonMaterial()
+        realm.executeTransaction {
+            val TOEIC600Test = realm.where(TOEICFlash600Test::class.java).equalTo("id", testId).findFirst()
+
+            // modelにdouble型のカラムを追加すればいけそう。
+            TOEIC600Test.fastestTime = quickTime
+            TOEIC600Test.averageTime = averageTime
+            TOEIC600Test.result = correctCount
+        }
+    }
+
     fun generateTestWordArray(context: Context, testId: Int) :ArrayList<TOEICFlash600Word>{
         setup(context)
         val realm = getLessonMaterial()
@@ -118,16 +132,9 @@ object LessonMaterialManager {
 
             var TOEIC600Word = realm.where(TOEICFlash600Word::class.java).equalTo("id", i).findFirst()
             TOEIC600WordArray.add(TOEIC600Word)
-
         }
-
-
-
-
         return TOEIC600WordArray
     }
-
-
 }
 
 
@@ -136,6 +143,8 @@ open class TOEICFlash600TestList : RealmObject() {
 }
 
 open class TOEICFlash600Test:RealmObject(){
+
+    //test_list.jsonの初期値が0であるが故に、nullは入らない。
     @PrimaryKey
     open var id:Int? = null
 
@@ -146,6 +155,11 @@ open class TOEICFlash600Test:RealmObject(){
     open var quicktime:Int? = null
     open var typetest:Int? = null
     open var typeshow:Int? = null
+
+    open var averageTime:Double? = null
+    open var fastestTime:Double? = null
+
+
 }
 
 open class TOEICFlash600WordList : RealmObject() {

@@ -59,6 +59,8 @@ class LearningMaterialTestFragment : Fragment() {
     private var endMeasureTimeMillis: Long = 0
     private var answerTimeSeconds: Double = 0.0
     private var wordId: Int = 0
+    private var testId: Int = 0
+
 
 
     private var TOEIC600WordArray = ArrayList<TOEICFlash600Word>()
@@ -66,9 +68,8 @@ class LearningMaterialTestFragment : Fragment() {
     var BEGIN = 0
 
     private var correctCount: Int = 0
-    private var averageTime: Double? = null
-    private var quickTime: Double? = null
-
+    private var averageTime: Double = 0.0
+    private var quickTime: Double = 0.0
 
     var prefs: SharedPreferences? = null
     var timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe()
@@ -76,7 +77,7 @@ class LearningMaterialTestFragment : Fragment() {
     //TODO: テストをやめても、RxJavaが止まらない。
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        var testId = arguments.getInt("testId")
+        testId = arguments.getInt("testId")
         TOEIC600WordArray = LessonMaterialManager.generateTestWordArray(context,testId)
         wordId = LessonMaterialManager.convertTestIDtoWordID(testId)
         subscriptions = CompositeSubscription()
@@ -85,7 +86,7 @@ class LearningMaterialTestFragment : Fragment() {
     override fun onDestroy() {
 
         super.onDestroy()
-        var testId = arguments.getInt("testId")
+//        var testId = arguments.getInt("testId")
         mSubscription?.unsubscribe()
     }
 
@@ -96,9 +97,7 @@ class LearningMaterialTestFragment : Fragment() {
 
         if (isNormalOrder){
             //ここで、通常出題順
-
         }
-
         // maybe need not
         prefs = context.getSharedPreferences("TEST_SCORE", Context.MODE_PRIVATE)
 
@@ -161,9 +160,11 @@ class LearningMaterialTestFragment : Fragment() {
         BEGIN++
 
         if (BEGIN == END) {
-
             var home = TestListFragment()
-            //here accurate test data
+
+            //テストデータの更新　この時点では、correctCount, quickTime, averageTime全てにおいて、数値を取得できている。
+            LessonMaterialManager.updateTestData(context, testId, correctCount, quickTime, averageTime)
+
             val fragmentManager = fragmentManager.beginTransaction()
             fragmentManager.add(R.id.test_list,home)
             fragmentManager.commit()
@@ -224,26 +225,22 @@ class LearningMaterialTestFragment : Fragment() {
 
     private fun updateTestScore(answerTimeSeconds: Double){
 
+        //TODO: 初期値が0でも、値を更新するプログラムを書く。
         correctCount += 1
 
-
-        if (averageTime == null){
+        if (averageTime == 0.0){
             averageTime = answerTimeSeconds
         } else {
-
-            //平均タイムを算出するロジック
-            averageTime = averageTime!! * (correctCount - 1) + answerTimeSeconds / correctCount
+            averageTime = (averageTime * (correctCount - 1) + answerTimeSeconds) / correctCount
         }
 
-        //最速タイムを更新するアルゴリズム
-        if (quickTime == null){
+        if (quickTime == 0.0){
             quickTime = answerTimeSeconds
-        }else{
-            if (quickTime!! > answerTimeSeconds){
+        } else {
+            if (quickTime > answerTimeSeconds){
                 quickTime = answerTimeSeconds
             }
         }
 
     }
 }
-

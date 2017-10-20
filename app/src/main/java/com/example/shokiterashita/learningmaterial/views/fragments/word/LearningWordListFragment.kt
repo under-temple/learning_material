@@ -153,7 +153,6 @@ class LearningWordListFragment: Fragment(){
                 } else {
 
                     //TODO: R.id.next_buttonを実装する。タップ時に、次のカードへ遷移するシステムを組む。
-                    //word_listに関するに関するUIをインスタンス化する。
                     englishWord = res.findViewById(R.id.word_en_text)
                     japaneseWord = res.findViewById(R.id.word_jp_text)
                     englishSentence = res.findViewById(R.id.sentence_en_text)
