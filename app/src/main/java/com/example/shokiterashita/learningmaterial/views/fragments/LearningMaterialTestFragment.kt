@@ -39,6 +39,7 @@ import com.example.shokiterashita.learningmaterial.views.activities.MainActivity
 import com.example.shokiterashita.learningmaterial.views.fragments.test.TestListFragment
 import com.example.shokiterashita.learningmaterial.views.fragments.word.WordListFragment
 import org.w3c.dom.Text
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 class LearningMaterialTestFragment : Fragment() {
@@ -140,15 +141,51 @@ class LearningMaterialTestFragment : Fragment() {
     //問題が始まるさいに、呼ばれるメソッド
     private fun showTest(view: View){
 
-        //currentTestNumber= 1 を表示する -> 加算する & 表示する。
+        //配列内をシャッフルする。F
+        Collections.shuffle(TOEIC600WordArray)
         var TOEIC600Words = TOEIC600WordArray[BEGIN]
 
         currentTestNumberTextView.text = currentTestNumbers.toString()
         answerWordJp = TOEIC600Words.wordjp.toString()
         testWordTextView.text = TOEIC600Words.worden
-        choiceAButton.text = TOEIC600Words.wordjp
-        choiceBButton.text = TOEIC600Words.option_1
-        choiceCButton.text = TOEIC600Words.option_2
+
+        //コレクション内の要素をランダムに取得する方法を聞く。
+        val rnd = Random()
+        var tmp = rnd.nextInt(6)
+
+        when (tmp) {
+            0 -> {
+                choiceAButton.text = TOEIC600Words.wordjp
+                choiceBButton.text = TOEIC600Words.option_1
+                choiceCButton.text = TOEIC600Words.option_2
+            }
+            1 -> {
+                choiceAButton.text = TOEIC600Words.wordjp
+                choiceBButton.text = TOEIC600Words.option_2
+                choiceCButton.text = TOEIC600Words.option_1
+            }
+            2 -> {
+                choiceAButton.text = TOEIC600Words.option_1
+                choiceBButton.text = TOEIC600Words.wordjp
+                choiceCButton.text = TOEIC600Words.option_2
+            }
+            3 -> {
+                choiceAButton.text = TOEIC600Words.option_2
+                choiceBButton.text = TOEIC600Words.wordjp
+                choiceCButton.text = TOEIC600Words.option_1
+            }
+            4 -> {
+                choiceAButton.text = TOEIC600Words.option_1
+                choiceBButton.text = TOEIC600Words.option_2
+                choiceCButton.text = TOEIC600Words.wordjp
+            }
+            else -> {
+                choiceAButton.text = TOEIC600Words.option_2
+                choiceBButton.text = TOEIC600Words.option_1
+                choiceCButton.text = TOEIC600Words.wordjp
+            }
+
+        }
 
         choiceAButton.setOnClickListener {
             checkAnswer(choiceAButton.text)
@@ -186,7 +223,6 @@ class LearningMaterialTestFragment : Fragment() {
     }
 
     private fun correct(){
-
         Log.d("答えは","正解です")
         var END = TOEIC600WordArray.size
 
@@ -217,23 +253,23 @@ class LearningMaterialTestFragment : Fragment() {
         }
     }
 
-    private fun showNextTest(TOEICFlash600Word:TOEICFlash600Word) {
-
-        //なぜ、checkAnswerより先に、これが呼ばれるのだろうか。
-        beginMeasureTimeMillis = System.currentTimeMillis()
-        answerWordJp = TOEICFlash600Word.wordjp!!
-        testWordTextView.text = TOEICFlash600Word.worden
-        choiceAButton.text = TOEICFlash600Word.wordjp
-        choiceBButton.text = TOEICFlash600Word.option_1
-        choiceCButton.text = TOEICFlash600Word.option_2
-
-        timerObservable.unsubscribe()
-        timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
-
-            //ここで、inCorrectメソッドを呼ぶと、_testIdの値が加算されないまま、次の問題へ移ってします。
-            inCorrect()
-        }
-    }
+//    private fun showNextTest(TOEICFlash600Word:TOEICFlash600Word) {
+//
+//        //なぜ、checkAnswerより先に、これが呼ばれるのだろうか。
+//        beginMeasureTimeMillis = System.currentTimeMillis()
+//        answerWordJp = TOEICFlash600Word.wordjp!!
+//        testWordTextView.text = TOEICFlash600Word.worden
+//        choiceAButton.text = TOEICFlash600Word.wordjp
+//        choiceBButton.text = TOEICFlash600Word.option_1
+//        choiceCButton.text = TOEICFlash600Word.option_2
+//
+//        timerObservable.unsubscribe()
+//        timerObservable = Observable.interval(5, TimeUnit.SECONDS).observeOn(AndroidSchedulers.mainThread()).subscribe {
+//
+//            //ここで、inCorrectメソッドを呼ぶと、_testIdの値が加算されないまま、次の問題へ移ってします。
+//            inCorrect()
+//        }
+//    }
 
     private fun updateTestScore(answerTimeSeconds: Double){
 

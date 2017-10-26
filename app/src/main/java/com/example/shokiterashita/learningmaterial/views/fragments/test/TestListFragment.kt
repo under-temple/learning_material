@@ -90,7 +90,7 @@ class TestListFragment: Fragment() {
                 fastestAnswerTime = res.findViewById(R.id.fastest_answer_time)
 
 
-                if (testCardData.isTakeTest == false){
+                if (testCardData.isFinished == false){
 
                     previousCorrectCount.text = "未回答"
                     averageAnswerTime.text = "未回答"
@@ -106,6 +106,8 @@ class TestListFragment: Fragment() {
 
                 normalOrderButton = res.findViewById(R.id.normal_order_button)
                 randomOrderButton = res.findViewById(R.id.random_order_button)
+
+                //テスト画面に、ランダム順かノーマル順かを示す値を渡す。
                 normalOrderButton.setOnClickListener { }
                 randomOrderButton.setOnClickListener{ }
 
@@ -117,7 +119,6 @@ class TestListFragment: Fragment() {
                 takeTestIconLinearLayout.visibility = View.INVISIBLE
                 wordListButtonsLinearLayout.visibility = View.INVISIBLE
 
-                //WordListのViewを非表示にする。引数に'res'を渡せば、関数でくくれそう。
                 englishWord = res.findViewById(R.id.word_en_text)
                 japaneseWord = res.findViewById(R.id.word_jp_text)
                 englishSentence = res.findViewById(R.id.sentence_en_text)
@@ -138,9 +139,11 @@ class TestListFragment: Fragment() {
 
                 testStatusChart = res.findViewById(R.id.test_status_chart)
                 var correctCount = testCardData.result!!.toFloat()
-
-                //マジックナンバーなので、変数に置き換える。
                 var totalTestCount = TEST_COUNT
+
+                if(testCardData.totalCount!! - testCardData.idx_start!! + 1 >= 100 ){
+                    totalTestCount = 100f
+                }
                 var inCorrectCount = totalTestCount - correctCount
                 val entries = ArrayList<PieEntry>()
 

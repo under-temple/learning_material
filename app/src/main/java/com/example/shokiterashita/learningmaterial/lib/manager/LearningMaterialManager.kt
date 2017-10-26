@@ -118,7 +118,7 @@ object LessonMaterialManager {
         realm.executeTransaction {
             val TOEIC600Test = realm.where(TOEICFlash600Test::class.java).equalTo("id", testId).findFirst()
 
-            TOEIC600Test.isTakeTest = true
+            TOEIC600Test.isFinished = true
             TOEIC600Test.fastestTime = quickTime
             TOEIC600Test.averageTime = averageTime
             TOEIC600Test.result = correctCount
@@ -156,12 +156,8 @@ open class TOEICFlash600Test:RealmObject(){
     open var idx_start:Int? = null
     open var result:Int? = null
     open var totalCount:Int? = null
-    open var time:Int? = null
-    open var quicktime:Int? = null
-    open var typetest:Int? = null
-    open var typeshow:Int? = null
-
-    open var isTakeTest:Boolean = false
+    
+    open var isFinished:Boolean = false
     open var averageTime:Double? = null
     open var fastestTime:Double? = null
 
