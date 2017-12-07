@@ -73,24 +73,27 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             segmentedgroup:sc_tint_color="@color/textColor"
             segmentedgroup:sc_checked_text_color="@color/colorWhite">
 
             <RadioButton
                 android:id="@+id/normal_order_button"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="通常順"
                 android:checked="true"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:textColor="@color/textColor"
                 style="@style/RadioButton" />
-
             <RadioButton
                 android:id="@+id/random_order_button"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:text="ランダム順"
+                android:text="ランダム"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
                 android:textColor="@color/textColor"
                 style="@style/RadioButton" />
         </info.hoang8f.android.segmented.SegmentedGroup>
@@ -102,7 +105,9 @@
             android:background="@drawable/corner_radius"
             android:layout_gravity="center_horizontal"
             android:textColor="@color/colorWhite"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
             android:text="テストをはじめる" />
     </LinearLayout>
 

@@ -156,7 +156,7 @@ open class TOEICFlash600Test:RealmObject(){
     open var idx_start:Int? = null
     open var result:Int? = null
     open var totalCount:Int? = null
-    
+
     open var isFinished:Boolean = false
     open var averageTime:Double? = null
     open var fastestTime:Double? = null

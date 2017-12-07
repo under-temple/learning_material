@@ -18,6 +18,7 @@ import android.util.TypedValue.COMPLEX_UNIT_DIP
 import android.widget.*
 import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Test
 import com.example.shokiterashita.learningmaterial.viewmodel.TestListViewModel
+import com.example.shokiterashita.learningmaterial.views.fragments.BlackSheetFragment
 import com.example.shokiterashita.learningmaterial.views.fragments.CardListItemAdapter
 import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
 import com.github.mikephil.charting.charts.PieChart
@@ -38,6 +39,7 @@ class TestListFragment: Fragment() {
     lateinit var normalOrderButton: RadioButton
     lateinit var randomOrderButton: RadioButton
 
+
     var englishWord: TextView? = null
     var japaneseWord: TextView? = null
     var japaneseSentence: TextView? = null
@@ -45,6 +47,8 @@ class TestListFragment: Fragment() {
     var pronounceButton: ImageButton? = null
     lateinit var wordListFrame: LinearLayout
     private var TEST_COUNT = 10f
+    private var isNormalOrder = true
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -107,9 +111,12 @@ class TestListFragment: Fragment() {
                 normalOrderButton = res.findViewById(R.id.normal_order_button)
                 randomOrderButton = res.findViewById(R.id.random_order_button)
 
-                //テスト画面に、ランダム順かノーマル順かを示す値を渡す。
-                normalOrderButton.setOnClickListener { }
-                randomOrderButton.setOnClickListener{ }
+                normalOrderButton.setOnClickListener {
+                    isNormalOrder = true
+                }
+                randomOrderButton.setOnClickListener{
+                    isNormalOrder = false
+                }
 
                 //WordListのレイアウトを、インスタンス化する。
                 var takeTestLinearLayout = res.findViewById<LinearLayout>(R.id.take_test_linear_layout)
@@ -174,7 +181,7 @@ class TestListFragment: Fragment() {
                     var fragmentManager = fragmentManager.beginTransaction()
                     var args = Bundle()
                     args.putInt("testId", startPosition)
-                    args.putBoolean("isNormalOrder", true)
+                    args.putBoolean("isNormalOrder", isNormalOrder)
                     learningMaterial.arguments = args
                     fragmentManager.replace(R.id.test_list,learningMaterial)
                     fragmentManager.commit()

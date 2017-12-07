@@ -5,9 +5,14 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000</color>
+    <color name="colorSheerBlack">#bb000000</color>
     <color name="colorLightGray">#aaa</color>
     <color name="blur">#7f888888</color>
     <color name="textColor">#525252</color>
     <color name="appColor">#2e3751</color>
     <color name="clearColor">#00ffffff</color>
+    <color name="correctSelectColor">#515b9a90</color>
+    <color name="instantAnswerColor">#9fa118</color>
+    <color name="correctAnswerTimeColor">#6f95a9</color>
+
 </resources>

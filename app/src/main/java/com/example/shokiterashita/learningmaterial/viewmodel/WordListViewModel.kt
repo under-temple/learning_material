@@ -88,7 +88,6 @@ class WordListViewModel(val cardTitle: String,
             }catch (e:Exception){
                Log.d("Error", e.toString())
             }
-            Log.d("starttest", "${mp.isPlaying}")
 
         }
 

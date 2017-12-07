@@ -14,4 +14,5 @@ import com.example.shokiterashita.learningmaterial.R;
 public class LearningMaterialTestResultFragment extends Fragment {
 
 
+
 }

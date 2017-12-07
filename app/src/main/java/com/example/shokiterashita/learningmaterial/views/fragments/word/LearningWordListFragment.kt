@@ -61,7 +61,6 @@ class LearningWordListFragment: Fragment(){
 
         wordCardArr = WordListViewModel.fetchLearningWordCardArr(context,1)
 
-        //謎に、クラッシュしている。
         var tmp = 1
         var tmpRange = when (tmp){
             0 -> 1..100
@@ -76,7 +75,6 @@ class LearningWordListFragment: Fragment(){
             val data = wordCardArr?.filter { it.id == i }?.firstOrNull()
             data?.let { wordCardWithTestArr.add(it) }
 
-            Log.d("test", i.toString())
             if (i % 10 == 0){
 
                 val testCard = TOEICFlash600Word()
