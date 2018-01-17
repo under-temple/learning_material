@@ -3,23 +3,17 @@ package com.example.shokiterashita.learningmaterial.views.fragments.test
 import android.support.v4.app.Fragment
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.animation.Easing
 
 import com.example.shokiterashita.learningmaterial.R
 //import com.example.shokiterashita.learningmaterial.viewmodel.CardDataImpl
 
-import android.util.TypedValue.COMPLEX_UNIT_DIP
 import android.widget.*
-import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Test
 import com.example.shokiterashita.learningmaterial.viewmodel.TestListViewModel
-import com.example.shokiterashita.learningmaterial.views.fragments.BlackSheetFragment
-import com.example.shokiterashita.learningmaterial.views.fragments.CardListItemAdapter
 import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieDataSet

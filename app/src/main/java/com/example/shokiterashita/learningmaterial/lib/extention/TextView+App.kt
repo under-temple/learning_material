@@ -72,29 +72,16 @@ fun TextView.animateScaleAndAlpha(){
 fun TextView.animateVerticalShake(){
 
     var handler = Handler()
-
-//    val translationUp800Y = PropertyValuesHolder.ofFloat("translationY", 0.0f, 800f)
-//    val translationUp400Y = PropertyValuesHolder.ofFloat("translationY", 0.0f, 400f)
-//    val translationUp200Y = PropertyValuesHolder.ofFloat("translationY", 200f, 400f)
-//    val translationUp100Y = PropertyValuesHolder.ofFloat("translationY", 300f, 400f)
-//
-//    val translationDown400Y = PropertyValuesHolder.ofFloat("translationY", 400f, 0.0f)
-//    val translationDown200Y = PropertyValuesHolder.ofFloat("translationY", 400f, 200f)
-//    val translationDown100Y = PropertyValuesHolder.ofFloat("translationY", 400f, 300f)
-//    val absolute300Y = PropertyValuesHolder.ofFloat("translationY", 300f)
-
     val translationUp800Y = PropertyValuesHolder.ofFloat("translationY", 0.0f, 800f)
-    val translationUp400Y = PropertyValuesHolder.ofFloat("translationY", 0.0f, 600f)
-    val translationUp200Y = PropertyValuesHolder.ofFloat("translationY", 400f, 600f)
-    val translationUp100Y = PropertyValuesHolder.ofFloat("translationY", 500f, 600f)
+    val translationUp400Y = PropertyValuesHolder.ofFloat("translationY", 0.0f, 200f)
+    val translationUp200Y = PropertyValuesHolder.ofFloat("translationY", 100f, 300f)
+    val translationUp100Y = PropertyValuesHolder.ofFloat("translationY", 200f, 300f)
 
-    val translationDown400Y = PropertyValuesHolder.ofFloat("translationY", 600f, 0.0f)
-    val translationDown200Y = PropertyValuesHolder.ofFloat("translationY", 600f, 400f)
-    val translationDown100Y = PropertyValuesHolder.ofFloat("translationY", 600f, 500f)
-    val absolute300Y = PropertyValuesHolder.ofFloat("translationY", 500f)
+    val translationDown400Y = PropertyValuesHolder.ofFloat("translationY", 300f, 0.0f)
+    val translationDown200Y = PropertyValuesHolder.ofFloat("translationY", 300f, 100f)
+    val translationDown100Y = PropertyValuesHolder.ofFloat("translationY", 300f, 100f)
+    val absolute300Y = PropertyValuesHolder.ofFloat("translationY", 200f)
 
-
-    //拡大しつつ薄まる系
     val alphaShow = PropertyValuesHolder.ofFloat("alpha", 0.0f, 1.0f)
     val alphaHide = PropertyValuesHolder.ofFloat("alpha", 1.0f, 0.0f)
     val animX = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 2.0f)
@@ -147,7 +134,32 @@ fun TextView.animateVerticalShake(){
         expandingAnimator.start()
     }, 1000)
 
-
-
 }
 
+fun TextView.animateVerticalBounce(){
+
+    var handler = Handler()
+    val verticalBounce = PropertyValuesHolder.ofFloat("translationY", 0.0f, 200f, 0.0f)
+    val bounceAnimator = ObjectAnimator.ofPropertyValuesHolder(this, verticalBounce)
+    val interpolator = OvershootInterpolator()
+
+    val alphaHide = PropertyValuesHolder.ofFloat("alpha", 1.0f, 0.0f)
+
+    val animX = PropertyValuesHolder.ofFloat("scaleX", 1.0f, 1.4f)
+    val animY = PropertyValuesHolder.ofFloat("scaleY", 1.0f, 1.4f)
+    val hideAnimator = ObjectAnimator.ofPropertyValuesHolder(this, alphaHide)
+    val expandingAnimator = ObjectAnimator.ofPropertyValuesHolder(this, animX, animY)
+    expandingAnimator.interpolator = interpolator
+    expandingAnimator.duration = 1000
+    hideAnimator.duration = 500
+
+    handler.postDelayed({ expandingAnimator.start() }, 1200)
+    handler.postDelayed({ hideAnimator.start() }, 1500)
+
+    bounceAnimator.interpolator = interpolator
+    bounceAnimator.duration = 1000
+
+    handler.postDelayed({
+        bounceAnimator.start()
+    }, 200)
+}

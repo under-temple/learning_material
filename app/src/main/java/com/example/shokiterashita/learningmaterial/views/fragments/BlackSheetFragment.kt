@@ -1,21 +1,14 @@
 package com.example.shokiterashita.learningmaterial.views.fragments
 
-import android.net.sip.SipAudioCall
-import android.net.wifi.p2p.WifiP2pManager
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodSession
 import android.widget.TextView
-import com.example.shokiterashita.learningmaterial.CountDownListener
 import com.example.shokiterashita.learningmaterial.R
-import com.example.shokiterashita.learningmaterial.lib.extention.animateScaleAndAlpha
-import com.example.shokiterashita.learningmaterial.lib.extention.animateShake
-import com.example.shokiterashita.learningmaterial.lib.extention.animateVerticalShake
-import java.util.*
+import com.example.shokiterashita.learningmaterial.lib.extention.animateVerticalBounce
 
 /**
  * Created by shokiterashita on 2017/11/10.
@@ -47,28 +40,40 @@ class BlackSheetFragment : Fragment() {
 
         if (isStart){
             finishTextView.visibility = View.INVISIBLE
+
+            object : CountDownTimer(3800, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    countDownTimerTextView.text = (millisUntilFinished / 1000).toString()
+                }
+                override fun onFinish() {
+                    countDownTimerTextView.visibility = View.INVISIBLE
+                    fragmentManager.popBackStack()
+                    if (isStart){
+                        listner?.onFinish()
+                    }
+                }
+            }.start()
+
         } else {
-            finishTextView.animateVerticalShake()
+            finishTextView.animateVerticalBounce()
             countDownTimerTextView.visibility = View.INVISIBLE
             roundView.visibility = View.INVISIBLE
-        }
 
-        object : CountDownTimer(4000, 1000) {
-            override fun onTick(millisUntilFinished: Long) {
-                countDownTimerTextView.text = (millisUntilFinished / 1000).toString()
-            }
-            override fun onFinish() {
-                countDownTimerTextView.visibility = View.INVISIBLE
-                fragmentManager.popBackStack()
-
-                if (isStart){
-                    listner?.onFinish()
+            object : CountDownTimer(2500, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    countDownTimerTextView.text = (millisUntilFinished / 1000).toString()
                 }
+                override fun onFinish() {
+                    countDownTimerTextView.visibility = View.INVISIBLE
+                    fragmentManager.popBackStack()
 
-            }
-        }.start()
+                    if (isStart){
+                        listner?.onFinish()
+                    }
 
-
+                }
+            }.start()
+        }
         return view
     }
 

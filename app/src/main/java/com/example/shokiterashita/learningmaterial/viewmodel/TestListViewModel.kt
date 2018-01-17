@@ -48,10 +48,6 @@ class TestListViewModel(val cardTitle: String,
 
 
 
-
-
-
-
     override fun getMainBackgroundResource(): Int? {
         return mainBackgroundResource
     }

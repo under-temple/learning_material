@@ -16,6 +16,7 @@ import com.ramotion.expandingcollection.ECPagerView
 import com.ramotion.expandingcollection.ECPagerViewAdapter
 import com.ex.expandingcollection.examples.simple.WordListViewModel
 import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
+import com.github.mikephil.charting.charts.PieChart
 
 /**
  * Created by shokiterashita on 2017/09/20.
@@ -50,6 +51,10 @@ class LearningWordListFragment: Fragment(){
     lateinit var showJpButton: ToggleButton
     lateinit var pronounceButton: ImageButton
     lateinit var ecPagerViewAdapter:ECPagerViewAdapter
+
+//    lateinit var testStatusChart: PieChart
+    lateinit var pieChartLinearLayout: LinearLayout
+
     private var ecPagerView: ECPagerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -64,11 +69,8 @@ class LearningWordListFragment: Fragment(){
         var tmp = 1
         var tmpRange = when (tmp){
             0 -> 1..100
-
             1 -> 101..200
-
             else -> 201..300
-
         }
         for (i in tmpRange){
 
@@ -95,6 +97,7 @@ class LearningWordListFragment: Fragment(){
         }
 
         ecPagerView = view.findViewById(R.id.all_word_pager_element)
+
         cardRange = wordCardWithTestArr.indices
         dataset = WordListViewModel.generateWordCardList(cardRange!!)
         ecPagerViewAdapter = object : ECPagerViewAdapter(context, dataset) {
@@ -110,6 +113,8 @@ class LearningWordListFragment: Fragment(){
                 val learningMaterial = LearningMaterialTestFragment()
 
                 if (TOEIC600Word.testFirstWordId != null){
+
+                    //テストを受けに行くカードが表示される。
                     var TOEIC600Test = WordListViewModel.fetchTestCardArr(context,TOEIC600Word.testFirstWordId!!, TOEIC600Word.testLastWordId!! )
 
                     lauralImageView = res.findViewById(R.id.testcard_laurel_image_view)
@@ -117,8 +122,12 @@ class LearningWordListFragment: Fragment(){
                     testLastWordIdTextView = res.findViewById(R.id.test_last_word_id_text_view)
                     testCardWelldoneTextView = res.findViewById(R.id.testcard_welldone_text_view)
                     testCardTakeTestButton = res.findViewById(R.id.testcard_take_test_button)
-                    lauralImageView.setImageResource(R.drawable.ast_laurel)
 
+                    // PieChart を非表示にする。
+                    pieChartLinearLayout = res.findViewById(R.id.pie_chart_linear_layout)
+                    pieChartLinearLayout.visibility = View.GONE
+
+                    lauralImageView.setImageResource(R.drawable.ast_laurel)
                     testFirstWordIdTextView.text = TOEIC600Word.testFirstWordId.toString()
                     testLastWordIdTextView.text = TOEIC600Word.testLastWordId.toString()
 
@@ -160,6 +169,10 @@ class LearningWordListFragment: Fragment(){
                     showJpButton = res.findViewById(R.id.show_word_jp_button)
                     pronounceButton = res.findViewById(R.id.pronounce_word_button)
 
+                    // PieChart を非表示にする。
+                    pieChartLinearLayout = res.findViewById(R.id.pie_chart_linear_layout)
+                    pieChartLinearLayout.visibility = View.GONE
+
                     //テストを受けに行くカードをInvisibleにする。
                     var takeTestLinearLayout = res.findViewById<LinearLayout>(R.id.take_test_linear_layout)
                     var takeTestIconLinearLayout = res.findViewById<LinearLayout>(R.id.take_test_icon_linear_layout)
@@ -173,7 +186,6 @@ class LearningWordListFragment: Fragment(){
                     takeTestLinearLayout.visibility = View.INVISIBLE
                     takeTestIconLinearLayout.visibility = View.INVISIBLE
 
-                    //word_listに関するに関するUIに、値を挿入する。
                     englishWord.text = TOEIC600Word.worden
                     englishSentence.text = TOEIC600Word.exampleen
                     showJpButton.setOnCheckedChangeListener { showJpButton, isClicked ->
@@ -225,7 +237,6 @@ class LearningWordListFragment: Fragment(){
                         //var wordId = TOEIC600Word.id ?: 0
                         WordListViewModel.pronounceWord(context, TOEIC600Word.id!!)
                     }
-
                     ecPagerCardArr[position] = res
                 }
                 return res

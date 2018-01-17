@@ -1,17 +1,18 @@
 package com.example.shokiterashita.learningmaterial.views.fragments
 
 import android.content.Context
-import android.graphics.Color
 import android.support.v4.content.ContextCompat
+import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import com.example.shokiterashita.learningmaterial.R
+import com.example.shokiterashita.learningmaterial.views.fragments.result.TestResultItemList
+import com.example.shokiterashita.learningmaterial.views.fragments.result.viewholder.TestResultViewHolder
+import com.example.shokiterashita.learningmaterial.views.fragments.result.viewholder.TestResultWordViewHolder
 
 import com.ramotion.expandingcollection.ECCardContentListItemAdapter
-import java.util.Random
 
 class CardListItemAdapter(context: Context, objects: List<String>) : ECCardContentListItemAdapter<String>(context, R.layout.fragment_test_list_item, objects) {
 

@@ -19,10 +19,9 @@ object LessonMaterialManager {
                     .name("lesson_material.realm")
                     .deleteRealmIfMigrationNeeded()
                     .build()
-
             loadFromJson(context)
 
-        }catch (e:Exception){
+        } catch (e:Exception){
             Log.d("error",e.message)
         }
     }
@@ -41,12 +40,6 @@ object LessonMaterialManager {
             realm.createObjectFromJson(TOEICFlash600TestList::class.java, testListJsonText)
             realm.createObjectFromJson(TOEICFlash600WordList::class.java, wordListJsonText)
         }
-    }
-    fun generateEcPagerCardArr(context: Context): MutableList<TOEICFlash600Word>{
-        setup(context)
-        var realm = Realm.getInstance(lessonMaterialConfig)
-        return realm.where(TOEICFlash600Word::class.java).findAll()
-
     }
 
     fun convertTestIDtoWordID(testId:Int): Int{
@@ -77,22 +70,21 @@ object LessonMaterialManager {
         val realm = getLessonMaterial()
         realm.executeTransaction {
             val wordData = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst()
-
             //isCorrectの更新
             wordData.isCorrect = true
+            wordData.answerTimeSeconds = answerTimeSeconds
+
             // fastestAnsewrTimeSeconds の更新
             var existingAnswerTimeSeconds = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst().fastestAnswerTimeSeconds
             if (existingAnswerTimeSeconds == null){
                 wordData.fastestAnswerTimeSeconds = answerTimeSeconds
-            }else if (existingAnswerTimeSeconds > answerTimeSeconds ) {
+            } else if (existingAnswerTimeSeconds > answerTimeSeconds ) {
                 wordData.fastestAnswerTimeSeconds = answerTimeSeconds
             }
 
-            // correctAnswerCount の更新
             var correctCount = wordData.correctAnswerCount
             wordData.correctAnswerCount++
 
-            // averageAnsewrTimeSeconds の更新
             var averageAnswerTime = wordData.averageAnswerTimeSeconds
             if (averageAnswerTime == null){
                 wordData.averageAnswerTimeSeconds = answerTimeSeconds
@@ -102,17 +94,21 @@ object LessonMaterialManager {
         }
     }
 
-    fun updateInCorrectAnswerData(context: Context, wordId: Int){
+    fun updateInCorrectAnswerData(context: Context, wordId: Int, answerTimeSeconds:Double){
         setup(context)
         val realm = getLessonMaterial()
         realm.executeTransaction {
             val wordData = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst()
             wordData.isCorrect = false
+
+            //wordIdが一生　121を呼んでいる。
+            //出現するidがまばら
+            wordData.answerTimeSeconds = answerTimeSeconds
         }
     }
 
 
-    fun updateTestData(context:Context, testId: Int, correctCount: Int, quickTime: Double, averageTime: Double){
+    fun updateTestData(context:Context, testId: Int, correctCount: Int,instantAnswerCount: Int, quickTime: Double, averageTime: Double){
         setup(context)
         val realm = getLessonMaterial()
         realm.executeTransaction {
@@ -122,6 +118,7 @@ object LessonMaterialManager {
             TOEIC600Test.fastestTime = quickTime
             TOEIC600Test.averageTime = averageTime
             TOEIC600Test.result = correctCount
+            TOEIC600Test.instantAnswerCount = instantAnswerCount
         }
     }
 
@@ -149,18 +146,17 @@ open class TOEICFlash600TestList : RealmObject() {
 
 open class TOEICFlash600Test:RealmObject(){
 
-    //test_list.jsonの初期値が0であるが故に、nullは入らない。
     @PrimaryKey
     open var id:Int? = null
 
     open var idx_start:Int? = null
     open var result:Int? = null
     open var totalCount:Int? = null
-
     open var isFinished:Boolean = false
     open var averageTime:Double? = null
     open var fastestTime:Double? = null
 
+    open var instantAnswerCount:Int? = null
 
 }
 
@@ -186,6 +182,7 @@ open class TOEICFlash600Word:RealmObject(){
     open var testFirstWordId:Int? = null
     open var testLastWordId: Int? = null
 
+    open var answerTimeSeconds:Double? = null
     open var fastestAnswerTimeSeconds:Double? = null
     open var averageAnswerTimeSeconds:Double? = null
     open var correctAnswerCount:Int = 0

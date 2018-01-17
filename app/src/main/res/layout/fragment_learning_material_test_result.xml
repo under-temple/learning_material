@@ -2,9 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestResultFragment">
-    <TextView
+    android:background="@color/colorWhite"
+    tools:context="com.example.shokiterashita.learningmaterial.views.fragments.result.LearningMaterialTestResultFragment"
+    android:id="@+id/learning_material_test_result_fragment">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/test_result_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>

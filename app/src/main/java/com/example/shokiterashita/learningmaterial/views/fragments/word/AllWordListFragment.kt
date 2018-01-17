@@ -13,6 +13,7 @@ import com.ex.expandingcollection.examples.simple.WordListViewModel
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.lib.manager.TOEICFlash600Word
 import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
+import com.github.mikephil.charting.charts.PieChart
 import com.ramotion.expandingcollection.ECCardData
 import com.ramotion.expandingcollection.ECPagerCard
 import com.ramotion.expandingcollection.ECPagerView
@@ -50,6 +51,8 @@ class AllWordListFragment: Fragment(){
     lateinit var showJpButton: ToggleButton
     lateinit var pronounceButton: ImageButton
     lateinit var nextButton: Button
+    lateinit var pieChartLinearLayout: LinearLayout
+
     lateinit var ecPagerViewAdapter:ECPagerViewAdapter
     private var ecPagerView: ECPagerView? = null
 
@@ -112,6 +115,9 @@ class AllWordListFragment: Fragment(){
                     testFirstWordIdTextView.text = TOEIC600Word.testFirstWordId.toString()
                     testLastWordIdTextView.text = TOEIC600Word.testLastWordId.toString()
 
+                    pieChartLinearLayout = res.findViewById(R.id.pie_chart_linear_layout)
+                    pieChartLinearLayout.visibility = View.GONE
+
                     val testDataLinearLayout = res.findViewById<LinearLayout>(R.id.test_data_linear_layout)
                     val underlineTextView = res.findViewById<TextView>(R.id.underline_text_view)
                     japaneseWord = res.findViewById(R.id.word_jp_text)
@@ -157,6 +163,9 @@ class AllWordListFragment: Fragment(){
                     var testNumberLabelLineaLayout = res.findViewById<LinearLayout>(R.id.test_number_label_linear_layout)
                     var startTestButton = res.findViewById<Button>(R.id.start_test_button)
                     var problemProcedureLinearLayout = res.findViewById<LinearLayout>(R.id.problem_procedure_linear_layout)
+
+                    pieChartLinearLayout = res.findViewById(R.id.pie_chart_linear_layout)
+                    pieChartLinearLayout.visibility = View.GONE
 
                     problemProcedureLinearLayout.visibility = View.INVISIBLE
                     testNumberLabelLineaLayout.visibility = View.INVISIBLE
