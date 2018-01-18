@@ -94,9 +94,7 @@ class LearningWordListFragment: Fragment(){
                 wordCardWithTestArr.add(testCard)
             }
         }
-
         ecPagerView = view.findViewById(R.id.all_word_pager_element)
-
         cardRange = wordCardWithTestArr.indices
         dataset = WordListViewModel.generateWordCardList(cardRange!!)
         ecPagerViewAdapter = object : ECPagerViewAdapter(context, dataset) {
@@ -111,7 +109,7 @@ class LearningWordListFragment: Fragment(){
                 var TOEIC600Word = wordCardWithTestArr[position]
 
                 // TODO: TOEIC.isTakeTestではなくて？？
-                if (TOEIC600Word.testFirstWordId != null){
+                if (TOEIC600Word.isTestData){
 
                     //テストを受けに行くカードが表示される。
                     var TOEIC600Test = WordListViewModel.fetchTestCardArr(context,TOEIC600Word.testFirstWordId!!, TOEIC600Word.testLastWordId!! )
@@ -190,7 +188,6 @@ class LearningWordListFragment: Fragment(){
                         ecPagerCardArr[position]!!.findViewById<TextView>(R.id.sentence_jp_text).text = WordListViewModel.showOrHiddenJapaneseSentense(TOEIC600Word, isClicked)
                     }
 
-                    var fastestAnswerTimeSeconds = TOEIC600Word.fastestAnswerTimeSeconds
                     if (TOEIC600Word.isCorrect == null) {
 
                         //未回答の場合
@@ -201,12 +198,13 @@ class LearningWordListFragment: Fragment(){
                     } else {
 
                         //回答している場合
+                        //前回は、1.5秒以上の回答タイムであったが、過去の最速タイムが1.5秒以下のとき、瞬間回答と表示されてしまう。
                         if (TOEIC600Word.isCorrect!!){
 
-                            //正解の場合
-                            if (fastestAnswerTimeSeconds!! <= 1.50) {
+                            if (TOEIC600Word.answerTimeSeconds!! <= 1.50) {
 
                                 //瞬間回答の場合
+                                //そもそも、ここの行はまず呼ばれない。呼ばれたらミスである。
                                 instantAnswerLabel = res.findViewById(R.id.instant_answer_label)
                                 instantAnswerIcon = res.findViewById(R.id.instant_answer_icon)
                                 instantAnswerLabel.text = "瞬間回答"

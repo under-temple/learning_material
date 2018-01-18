@@ -178,8 +178,6 @@ class AllWordListFragment: Fragment(){
                         ecPagerCardArr[position]!!.findViewById<TextView>(R.id.word_jp_text).text = WordListViewModel.showOrHiddenJapaneseWord(TOEIC600Word, isClicked)
                         ecPagerCardArr[position]!!.findViewById<TextView>(R.id.sentence_jp_text).text = WordListViewModel.showOrHiddenJapaneseSentense(TOEIC600Word, isClicked)
                     }
-
-                    var fastestAnswerTimeSeconds = TOEIC600Word.fastestAnswerTimeSeconds
                     if (TOEIC600Word.isCorrect == null) {
 
                         //未回答の場合
@@ -192,7 +190,7 @@ class AllWordListFragment: Fragment(){
                         if (TOEIC600Word.isCorrect!!){
 
                             //正解の場合
-                            if (fastestAnswerTimeSeconds!! <= 1.50) {
+                            if (TOEIC600Word.answerTimeSeconds!! <= 1.50) {
 
                                 //瞬間回答の場合
                                 instantAnswerLabel = res.findViewById(R.id.instant_answer_label)

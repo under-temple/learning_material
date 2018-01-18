@@ -346,8 +346,6 @@ class LearningMaterialTestFragment : Fragment() {
             choiceAButton.setBackgroundResource(R.drawable.answer_button_black)
             choiceBButton.setBackgroundResource(R.drawable.answer_button_black)
             choiceCButton.setBackgroundResource(R.drawable.answer_button_black)
-
-
             showTest(view!!)
         }, 1000)
     }

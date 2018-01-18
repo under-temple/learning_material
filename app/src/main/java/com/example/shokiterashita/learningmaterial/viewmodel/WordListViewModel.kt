@@ -50,14 +50,14 @@ class WordListViewModel(val cardTitle: String,
         fun fetchLearningWordCardArr(context: Context, wordListId: Int) : MutableList<TOEICFlash600Word>{
             LessonMaterialManager.setup(context)
             val realm = LessonMaterialManager.getLessonMaterial()
-            val query = realm.where(TOEICFlash600Word::class.java).isNull("fastestAnswerTimeSeconds").or().greaterThanOrEqualTo("fastestAnswerTimeSeconds", 1.50)
+
+            val query = realm.where(TOEICFlash600Word::class.java).isNull("answerTimeSeconds").or().greaterThanOrEqualTo("answerTimeSeconds", 1.50).or().equalTo("isCorrect", false)
             var learningWordCardArr: MutableList<TOEICFlash600Word> = when (wordListId) {
 
                 0 -> query.lessThanOrEqualTo("id", 100).findAll()
-                1 -> realm.where(TOEICFlash600Word::class.java).between("id", 101, 200).beginGroup().isNull("fastestAnswerTimeSeconds").or().greaterThanOrEqualTo("fastestAnswerTimeSeconds", 1.50).endGroup().findAll()
-                2 -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).beginGroup().isNull("fastestAnswerTimeSeconds").or().greaterThanOrEqualTo("fastestAnswerTimeSeconds", 1.50).endGroup().findAll()
+                1 -> realm.where(TOEICFlash600Word::class.java).between("id", 101, 200).beginGroup().isNull("answerTimeSeconds").or().greaterThanOrEqualTo("answerTimeSeconds", 1.50).or().equalTo("isCorrect", false).endGroup().findAll()
+                2 -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).beginGroup().isNull("answerTimeSeconds").or().greaterThanOrEqualTo("answerTimeSeconds", 1.50).equalTo("isCorrect", false).endGroup().findAll()
                 else -> realm.where(TOEICFlash600Word::class.java).greaterThanOrEqualTo("id", 201).findAll()
-
             }
             return learningWordCardArr
         }
@@ -68,7 +68,6 @@ class WordListViewModel(val cardTitle: String,
             val realm = LessonMaterialManager.getLessonMaterial()
             return realm.where(TOEICFlash600Test::class.java).equalTo("idx_start",testFirstWordId).equalTo("totalCount",testLastWordId).findFirst()
         }
-
 
 
         //使わないけど、消せない。
