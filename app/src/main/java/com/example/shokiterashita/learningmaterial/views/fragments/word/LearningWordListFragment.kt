@@ -149,7 +149,7 @@ class LearningWordListFragment: Fragment(){
                         var transaction = fragmentManager.beginTransaction()
                         var args = Bundle()
                         args.putInt("testId", TOEIC600Test.id!!)
-                        args.putBoolean("isNormalOrder", true)
+                        args.putBoolean("isNormalOrder", false)
                         learningMaterial.arguments = args
                         transaction.replace(R.id.word_list,learningMaterial)
                         transaction.commit()

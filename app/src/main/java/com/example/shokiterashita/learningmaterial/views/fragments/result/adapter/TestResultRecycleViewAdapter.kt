@@ -32,8 +32,7 @@ class TestResultRecycleViewAdapter(val mContext: Context, val mValues: List<Test
         fun onClickTestListButton()
 
         fun onClickPronounceButton()
-        fun onClickTwitterButton()
-        fun onClickFacebookButton()
+        fun onClickShareLinearLayout()
     }
 
     var mClickListener: TestResultRecycleViewAdapter.OnClickListener? = null
@@ -63,17 +62,14 @@ class TestResultRecycleViewAdapter(val mContext: Context, val mValues: List<Test
             holder.testResultTotalTestCountTextView.text = (TOEIC600Test.totalCount!! - TOEIC600Test.idx_start!! + 1).toString()
             holder.testResultTotalAnswerTimeTextView.text = "%.2f".format(totalAnswerTime)
 
-            holder.twitterImageView.setOnClickListener{ view ->
-                mClickListener?.onClickTwitterButton()
+            holder.shareLinearLayout.setOnClickListener{ view ->
+                mClickListener?.onClickShareLinearLayout()
 
 //                var intent = Intent()
 //                intent.setAction(Intent.ACTION_SEND)
 //                intent.setPackage("com.twitter.android")
 //                intent.setType("image/png")
 //                intent.putExtra(Intent.EXTRA_TEXT, "Rarejob 瞬間英単語のテストを受けたよ。${TOEIC600Test.totalCount.toString()}")
-            }
-            holder.facebookImageView.setOnClickListener{ view ->
-                mClickListener?.onClickFacebookButton()
             }
             holder.testResultRetryButton.setOnClickListener{ view ->
                 mClickListener?.onClickRetryButton()
@@ -105,12 +101,8 @@ class TestResultRecycleViewAdapter(val mContext: Context, val mValues: List<Test
                     mClickListener?.onClickPronounceButton()
                 }
 
-                override fun onClickTwitterButton() {
-                    mClickListener?.onClickTwitterButton()
-                }
-
-                override fun onClickFacebookButton() {
-                    mClickListener?.onClickFacebookButton()
+                override fun onClickShareLinearLayout() {
+                    mClickListener?.onClickShareLinearLayout()
                 }
             }
 

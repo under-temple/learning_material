@@ -100,8 +100,6 @@ class AllWordListFragment: Fragment(){
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
                 var TOEIC600Word = wordCardWithTestArr?.get(position)
-                val learningMaterial = LearningMaterialTestFragment()
-
                 if (TOEIC600Word.testFirstWordId != null){
                     val TOEIC600Test = WordListViewModel.fetchTestCardArr(context,TOEIC600Word.testFirstWordId!!, TOEIC600Word.testLastWordId!! )
 
@@ -134,14 +132,14 @@ class AllWordListFragment: Fragment(){
                     japaneseWord.visibility = View.INVISIBLE
 
                     testCardTakeTestButton.setOnClickListener {
-
-                        val fragmentManager = fragmentManager.beginTransaction()
+                        val learningMaterial = LearningMaterialTestFragment()
+                        val transaction = fragmentManager.beginTransaction()
                         val args = Bundle()
-
                         args.putInt("testId", TOEIC600Test.id!!)
+                        args.putBoolean("isNormalOrder", false)
                         learningMaterial.arguments = args
-                        fragmentManager.replace(R.id.word_list,learningMaterial)
-                        fragmentManager.commit()
+                        transaction.replace(R.id.word_list,learningMaterial)
+                        transaction.commit()
                     }
 
                 } else {

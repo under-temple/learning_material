@@ -104,38 +104,23 @@ class LearningMaterialTestResultFragment : Fragment(){
                 transaction.commit()
             }
 
-
             override fun onClickPronounceButton() {
                 //viewAdapterで実装した。
-
             }
 
-            //ボタンを一個に統一する。
-            override fun onClickTwitterButton() {
+            override fun onClickShareLinearLayout() {
 
                 var builder = ShareCompat.IntentBuilder.from(activity)
                 var TOEIC600Test = LessonMaterialManager.fetchTestList(testId)
                 var sharedText = "瞬間英単語のテスト[${TOEIC600Test.idx_start} - ${TOEIC600Test.totalCount}]を終えました。瞬間回答出来た単語は${TOEIC600Test.instantAnswerCount}個でした。 #瞬間英単語 #TOEIC"
 
-                builder.setChooserTitle("Sharecompat test")
-                builder.setSubject("Sharecompat subject")
+                builder.setChooserTitle("テスト結果をシェアしましょう。")
+                builder.setSubject("テスト結果")
                 builder.setText(sharedText)
                 builder.setType("text/plain")
                 builder.startChooser()
             }
 
-            override fun onClickFacebookButton() {
-
-                var builder = ShareCompat.IntentBuilder.from(activity)
-                var TOEIC600Test = LessonMaterialManager.fetchTestList(testId)
-                var sharedText = "瞬間英単語のテスト[${TOEIC600Test.idx_start} - ${TOEIC600Test.totalCount}]を終えました。瞬間回答出来た単語は${TOEIC600Test.instantAnswerCount}個でした。 #瞬間英単語 #TOEIC"
-
-                builder.setChooserTitle("Sharecompat test")
-                builder.setSubject("Sharecompat subject")
-                builder.setText(sharedText)
-                builder.setType("text/plain")
-                builder.startChooser()
-            }
         }
 
         testResultRecyclerView.adapter = testResultRecyclerAdapter

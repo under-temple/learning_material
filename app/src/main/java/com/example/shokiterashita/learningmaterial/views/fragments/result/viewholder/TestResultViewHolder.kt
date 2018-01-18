@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.shokiterashita.learningmaterial.R
 import com.example.shokiterashita.learningmaterial.views.fragments.result.adapter.TestResultRecycleViewAdapter
@@ -30,8 +31,7 @@ class TestResultViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
     lateinit var testResultRetryButton: TextView
     lateinit var testResultWordListButton: TextView
     lateinit var testResultTestListButton: TextView
-    lateinit var twitterImageView: ImageView
-    lateinit var facebookImageView: ImageView
+    lateinit var shareLinearLayout: LinearLayout
 
     lateinit var itemAdapter: TestResultRecycleViewAdapter
     var mClickListener: TestResultViewHolder.OnClickListener? = null
@@ -43,8 +43,7 @@ class TestResultViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
         fun onClickTestListButton()
 
         fun onClickPronounceButton()
-        fun onClickTwitterButton()
-        fun onClickFacebookButton()
+        fun onClickShareLinearLayout()
     }
 
 
@@ -63,8 +62,7 @@ class TestResultViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
         testResultWordListButton = mView.findViewById(R.id.test_result_word_list_button)
         testResultTestListButton = mView.findViewById(R.id.test_result_test_list_button)
 
-        twitterImageView = mView.findViewById(R.id.twitter_image_view)
-        facebookImageView = mView.findViewById(R.id.facebook_image_view)
+        shareLinearLayout = mView.findViewById(R.id.share_linear_layout)
 
     }
 
