@@ -198,29 +198,6 @@
                 android:textOn="日本語を非表示"
                 android:textOff="日本語を表示"
                 android:layout_weight="1.78" />
-
-            <LinearLayout
-                android:layout_width="81dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/corner_radius"
-                android:layout_gravity="center_horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:src="@drawable/checkicon_2"
-                    />
-
-                <Button
-                    android:id="@+id/next_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colorWhite"
-                    android:layout_gravity="center"
-                    android:text="覚えた"
-                    android:background="@drawable/corner_radius" />
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

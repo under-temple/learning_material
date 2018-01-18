@@ -220,22 +220,6 @@ class AllWordListFragment: Fragment(){
                     pronounceButton.setOnClickListener{
                         WordListViewModel.pronounceWord(context, TOEIC600Word.id!!)
                     }
-
-                    nextButton = res.findViewById(R.id.next_button)
-                    nextButton.setOnClickListener {
-
-                        ecPagerView?.setOnScrollChangeListener { view, i1, i2, i3, i4 ->
-                            Log.d("vi1の値",i1.toString())
-                        }
-                        ecPagerView?.onScreenStateChanged(1)
-                        ecPagerView?.setOnCardSelectedListener { prevPageIndex, nextPageIndex, v3 ->
-                            //　ページ変更時に呼ばれる
-                            //わかったこと
-                            Log.d("v1の値",prevPageIndex.toString())
-                            Log.d("v2の値",nextPageIndex.toString())
-                            Log.d("v3の値",v3.toString())
-                        }
-                    }
                     ecPagerCardArr[position] = res
                 }
                 return res
