@@ -198,24 +198,9 @@ class LearningWordListFragment: Fragment(){
                     } else {
                         if (TOEIC600Word.isCorrect!!){
 
-                            if (TOEIC600Word.answerTimeSeconds!! <= 1.50) {
-
-                                //瞬間回答の場合
-                                //そもそも、ここの行はまず呼ばれない。呼ばれたらミスである。
-                                instantAnswerLabel = res.findViewById(R.id.instant_answer_label)
-                                instantAnswerIcon = res.findViewById(R.id.instant_answer_icon)
-                                instantAnswerLabel.text = "瞬間回答"
-                                instantAnswerIcon.setImageResource(R.drawable.master_small)
                                 previousCorrectCount.text = TOEIC600Word.correctAnswerCount.toString()
                                 fastestAnswerTimeTextView.text = "%.2f".format(TOEIC600Word.fastestAnswerTimeSeconds)
                                 averageAnswerTimeTextView.text = "%.2f".format(TOEIC600Word.averageAnswerTimeSeconds)
-                            } else {
-
-                                //瞬間回答ではない場合
-                                previousCorrectCount.text = TOEIC600Word.correctAnswerCount.toString()
-                                fastestAnswerTimeTextView.text = "%.2f".format(TOEIC600Word.fastestAnswerTimeSeconds)
-                                averageAnswerTimeTextView.text = "%.2f".format(TOEIC600Word.averageAnswerTimeSeconds)
-                            }
                         } else {
                             //不正解の場合
                             previousCorrectCount.text = TOEIC600Word.correctAnswerCount.toString()
