@@ -88,7 +88,6 @@
             android:orientation="vertical">
 
             <Button
-                style="@style/Widget.AppCompat.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/choice_a"
@@ -104,7 +103,6 @@
                 android:text="一般的な"/>
 
             <Button
-                style="@style/Widget.AppCompat.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/choice_b"
@@ -121,7 +119,6 @@
                 android:text="包括的な"/>
 
             <Button
-                style="@style/Widget.AppCompat.Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/choice_c"

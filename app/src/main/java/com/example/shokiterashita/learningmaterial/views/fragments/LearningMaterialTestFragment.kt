@@ -159,10 +159,9 @@ class LearningMaterialTestFragment : Fragment() {
 
     private fun showTest(view: View){
 
-        //600Wordsと複数形にする意義がないのでは？ → 単数形にして、wordIdであることを暗示した方が読みやすそう。
+        //TODO: 600Wordsと複数形にする意義がないのでは？ → 単数形にして、wordIdであることを暗示した方が読みやすそう。
         var TOEIC600Words = TOEIC600Words[CurrentShowIndex]
         showedWordIds.add(TOEIC600Words.id!!)
-
         currentTestNumberTextView.text = currentTestNumbers.toString()
         answerWordJp = TOEIC600Words.wordjp.toString()
         testWordTextView.text = TOEIC600Words.worden
@@ -339,9 +338,16 @@ class LearningMaterialTestFragment : Fragment() {
     private fun applyEffects(){
         var handler = Handler()
         handler.postDelayed({
+
             choiceAButton.setBackgroundColor(Color.WHITE)
             choiceBButton.setBackgroundColor(Color.WHITE)
             choiceCButton.setBackgroundColor(Color.WHITE)
+
+            choiceAButton.setBackgroundResource(R.drawable.answer_button_black)
+            choiceBButton.setBackgroundResource(R.drawable.answer_button_black)
+            choiceCButton.setBackgroundResource(R.drawable.answer_button_black)
+
+
             showTest(view!!)
         }, 1000)
     }
