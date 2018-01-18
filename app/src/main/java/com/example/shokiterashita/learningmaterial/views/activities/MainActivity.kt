@@ -1,7 +1,9 @@
 package com.example.shokiterashita.learningmaterial.views.activities
 
+import android.app.Activity
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 //import com.beardedhen.androidbootstrap.TypefaceProvider
 import com.example.shokiterashita.learningmaterial.R
@@ -25,9 +27,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        TypefaceProvider.registerDefaultIconSets()
-
         setContentView(R.layout.activity_main)
+        var decorView = window.decorView
+        decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+
+
+
         testButton = findViewById(R.id.toFragmentButton) as Button
         testListButton = findViewById(R.id.toTestListButton) as Button
         wordListButton = findViewById(R.id.toWordListButton) as Button

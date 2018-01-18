@@ -7,19 +7,19 @@
     android:id="@+id/word_list">
 
     <com.ramotion.expandingcollection.ECBackgroundSwitcherView
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="30dp"
         android:id="@+id/ec_bg_switcher_element"
         android:background="@color/clearColor"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <com.ramotion.expandingcollection.ECPagerView xmlns:ec="http://schemas.android.com/apk/res-auto"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:id="@+id/all_word_pager_element"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        ec:cardHeight="500dp"
+        ec:cardHeight="400dp"
         ec:cardWidth="280dp">
     </com.ramotion.expandingcollection.ECPagerView>
 
