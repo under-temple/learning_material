@@ -100,9 +100,6 @@ object LessonMaterialManager {
         realm.executeTransaction {
             val wordData = realm.where(TOEICFlash600Word::class.java).equalTo("id", wordId).findFirst()
             wordData.isCorrect = false
-
-            //wordIdが一生　121を呼んでいる。
-            //出現するidがまばら
             wordData.answerTimeSeconds = answerTimeSeconds
         }
     }
@@ -164,8 +161,6 @@ open class TOEICFlash600WordList : RealmObject() {
     open var list:RealmList<TOEICFlash600Word>? = null
 }
 
-
-
 open class TOEICFlash600Word:RealmObject(){
     @PrimaryKey
     open var id:Int? = null
@@ -179,6 +174,8 @@ open class TOEICFlash600Word:RealmObject(){
     open var isCorrect:Boolean? = null
 
     open var isTestData:Boolean = false
+
+    // TODO: 変数名がナンセンス
     open var testFirstWordId:Int? = null
     open var testLastWordId: Int? = null
 

@@ -87,7 +87,6 @@ class LearningMaterialTestFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        isNormalOrder = arguments.getBoolean("isNormalOrder")
         TOEIC600Words = LessonMaterialManager.generateTestWordArray(context,testId)
         subscriptions = CompositeSubscription()
     }
@@ -129,7 +128,6 @@ class LearningMaterialTestFragment : Fragment() {
         instantAnswerTextView.alpha = 0.0f
         finishTextView.alpha = 0.0f
 
-        disableBackKey(view)
         view.disableBackKey()
 
         if (!isNormalOrder){
@@ -261,7 +259,6 @@ class LearningMaterialTestFragment : Fragment() {
                 args.putBoolean("isNormalOrder", isNormalOrder)
                 resultView.arguments = args
                 transaction.replace(R.id.answer_effect_frame_layout,resultView)
-//                transaction.addToBackStack(null)
                 transaction.commit()
             }, 2500)
         } else {
@@ -289,7 +286,6 @@ class LearningMaterialTestFragment : Fragment() {
             var handler = Handler()
             handler.postDelayed({
 
-                //Blackシートがのこり残りすぎている。0.4秒ブラックをはやめに引き上げたいところ。
              var resultView = LearningMaterialTestResultFragment()
                 LessonMaterialManager.updateTestData(context, testId, correctCount, instantAnswerCount, quickTime, averageTime)
                 val transaction = fragmentManager.beginTransaction()
@@ -299,10 +295,7 @@ class LearningMaterialTestFragment : Fragment() {
                 args.putInt("testId", testId)
                 args.putBoolean("isNormalOrder", isNormalOrder)
                 resultView.arguments = args
-
-                //ここをaddにすると、2度目の「retry」でうまく表示されない。
                 transaction.replace(R.id.answer_effect_frame_layout,resultView)
-//                transaction.addToBackStack(null)
                 transaction.commit()
             }, 2500)
 
@@ -338,7 +331,7 @@ class LearningMaterialTestFragment : Fragment() {
         var args = Bundle()
         args.putBoolean("isStart", isStart)
         blackSheet.arguments = args
-        transaction.add(R.id.test_list,blackSheet)
+        transaction.add(R.id.answer_effect_frame_layout,blackSheet)
         transaction.addToBackStack(null)
         transaction.commit()
     }
@@ -373,12 +366,11 @@ class LearningMaterialTestFragment : Fragment() {
         }, 950)
     }
 
-
-    private fun disableBackKey(view: View){
-        view.setFocusableInTouchMode(true)
-        view.requestFocus()
-        view.setOnKeyListener { v, keyCode, event ->
-            return@setOnKeyListener (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_UP)
-        }
-    }
+//    private fun disableBackKey(view: View){
+//        view.setFocusableInTouchMode(true)
+//        view.requestFocus()
+//        view.setOnKeyListener { v, keyCode, event ->
+//            return@setOnKeyListener (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_UP)
+//        }
+//    }
 }

@@ -3,10 +3,8 @@ package com.example.shokiterashita.learningmaterial.views.fragments.test
 import android.support.v4.app.Fragment
 import android.graphics.Color
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import com.github.mikephil.charting.data.PieData
 
 import com.example.shokiterashita.learningmaterial.R
@@ -14,16 +12,19 @@ import com.example.shokiterashita.learningmaterial.R
 
 import android.widget.*
 import com.example.shokiterashita.learningmaterial.viewmodel.TestListViewModel
+import com.example.shokiterashita.learningmaterial.views.activities.MainActivity
 import com.example.shokiterashita.learningmaterial.views.fragments.LearningMaterialTestFragment
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.ramotion.expandingcollection.*
+import android.content.Intent
+
+
 
 class TestListFragment: Fragment() {
 
     private var ecPagerView: ECPagerView? = null
-
     lateinit var testNumber: TextView
     lateinit var previousCorrectCount: TextView
     lateinit var fastestAnswerTime: TextView
@@ -33,7 +34,6 @@ class TestListFragment: Fragment() {
     lateinit var normalOrderButton: RadioButton
     lateinit var randomOrderButton: RadioButton
 
-
     var englishWord: TextView? = null
     var japaneseWord: TextView? = null
     var japaneseSentence: TextView? = null
@@ -42,7 +42,6 @@ class TestListFragment: Fragment() {
     lateinit var wordListFrame: LinearLayout
     private var TEST_COUNT = 10f
     private var isNormalOrder = true
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,7 +111,6 @@ class TestListFragment: Fragment() {
                     isNormalOrder = false
                 }
 
-                //WordListのレイアウトを、インスタンス化する。
                 var takeTestLinearLayout = res.findViewById<LinearLayout>(R.id.take_test_linear_layout)
                 var takeTestIconLinearLayout = res.findViewById<LinearLayout>(R.id.take_test_icon_linear_layout)
                 var wordListButtonsLinearLayout = res.findViewById<LinearLayout>(R.id.word_list_buttons_linear_layout)
@@ -186,6 +184,20 @@ class TestListFragment: Fragment() {
 
         ecPagerView!!.setPagerViewAdapter(ecPagerViewAdapter)
         ecPagerView!!.setBackgroundSwitcherView(view.findViewById(R.id.ec_bg_switcher_element))
+
+        //テスト結果後には、この行が必要。
+        view.isFocusableInTouchMode = true
+        view.setOnKeyListener { view, keyCode, keyEvent ->
+            if (keyCode == KeyEvent.KEYCODE_BACK && keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+                val intent = Intent(context, MainActivity::class.java)
+                startActivity(intent)
+                false
+            }
+            true
+        }
+
+        //requestFocusがないと、viewにフォーカスされない。=> backkeyのイベントを取得できない。
+        view.requestFocus()
 
         return view
     }

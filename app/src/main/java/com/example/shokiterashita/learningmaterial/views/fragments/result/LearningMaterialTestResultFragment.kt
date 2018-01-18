@@ -2,6 +2,7 @@ package com.example.shokiterashita.learningmaterial.views.fragments.result
 
 import android.app.Activity
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.ShareCompat
@@ -44,6 +45,12 @@ class LearningMaterialTestResultFragment : Fragment(){
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.fragment_learning_material_test_result, container, false)
         var totalTestTimeSeconds: Double = arguments.getDouble("totalAnswerTime")
+        val mp: MediaPlayer = MediaPlayer.create(context,R.raw.result)
+        try {
+            mp.start()
+        }catch (e:Exception){
+            Log.d("Error", e.toString())
+        }
 
         testResultRecyclerView = view.findViewById(R.id.test_result_recyclerview)
         testResultRecyclerView.setHasTransientState(true)
@@ -56,18 +63,14 @@ class LearningMaterialTestResultFragment : Fragment(){
 
             override fun onClickRetryButton() {
 
-                // TODO: Retry Buttonを２回目クリックした時、カウントダウンのみが発生して、テスト画面が表示されない。
-
                 var transaction = fragmentManager.beginTransaction()
                 var learningMaterial = LearningMaterialTestFragment()
-
                 var args = Bundle()
                 args.putInt("testId", testId)
                 args.putBoolean("isNormalOrder", isNormalOrder)
                 learningMaterial.arguments = args
-
                 transaction.replace(R.id.learning_material_test_result_fragment,learningMaterial)
-                transaction.addToBackStack(null)
+//                transaction.addToBackStack(null)
                 transaction.commit()
             }
 
@@ -80,10 +83,8 @@ class LearningMaterialTestResultFragment : Fragment(){
 //                // テストリストのグループを指定する。
 //                args.putInt("wordListGroupId", 1)
 //                wordList.arguments = args
-                //todo: この時、バックボタンの仕様を考える。
 
-                transaction.add(R.id.learning_material_test_result_fragment,wordList)
-                transaction.addToBackStack(null)
+                transaction.replace(R.id.learning_material_test_result_fragment,wordList)
                 transaction.commit()
 
             }
@@ -99,16 +100,17 @@ class LearningMaterialTestResultFragment : Fragment(){
 //                args.putInt("testListPosition", 1)
 //                testList.arguments = args
 
-                transaction.add(R.id.learning_material_test_result_fragment,testList)
-                transaction.addToBackStack(null)
+                transaction.replace(R.id.learning_material_test_result_fragment,testList)
                 transaction.commit()
             }
 
 
             override fun onClickPronounceButton() {
+                //viewAdapterで実装した。
 
             }
 
+            //ボタンを一個に統一する。
             override fun onClickTwitterButton() {
 
                 var builder = ShareCompat.IntentBuilder.from(activity)
@@ -135,9 +137,8 @@ class LearningMaterialTestResultFragment : Fragment(){
                 builder.startChooser()
             }
         }
-        //アダプターを添付する。
-        testResultRecyclerView.adapter = testResultRecyclerAdapter
 
+        testResultRecyclerView.adapter = testResultRecyclerAdapter
         return view
     }
 }

@@ -36,7 +36,6 @@ class LearningWordListFragment: Fragment(){
     lateinit var instantAnswerLabel: TextView
     lateinit var instantAnswerIcon: ImageView
 
-    //テストを受けに行くカードのUI
     lateinit var lauralImageView: ImageView
     lateinit var testFirstWordIdTextView: TextView
     lateinit var testLastWordIdTextView: TextView
@@ -52,7 +51,6 @@ class LearningWordListFragment: Fragment(){
     lateinit var pronounceButton: ImageButton
     lateinit var ecPagerViewAdapter:ECPagerViewAdapter
 
-//    lateinit var testStatusChart: PieChart
     lateinit var pieChartLinearLayout: LinearLayout
 
     private var ecPagerView: ECPagerView? = null
@@ -66,6 +64,7 @@ class LearningWordListFragment: Fragment(){
 
         wordCardArr = WordListViewModel.fetchLearningWordCardArr(context,1)
 
+        // TODO: 前画面からtestIdを受け取る。
         var tmp = 1
         var tmpRange = when (tmp){
             0 -> 1..100
@@ -109,9 +108,9 @@ class LearningWordListFragment: Fragment(){
 
             override fun instantiateItem(container: ViewGroup?, position: Int): Any {
                 val res = super.instantiateItem(container, position) as ECPagerCard
-                var TOEIC600Word = wordCardWithTestArr?.let { it.get(position) }
-                val learningMaterial = LearningMaterialTestFragment()
+                var TOEIC600Word = wordCardWithTestArr[position]
 
+                // TODO: TOEIC.isTakeTestではなくて？？
                 if (TOEIC600Word.testFirstWordId != null){
 
                     //テストを受けに行くカードが表示される。
@@ -123,7 +122,6 @@ class LearningWordListFragment: Fragment(){
                     testCardWelldoneTextView = res.findViewById(R.id.testcard_welldone_text_view)
                     testCardTakeTestButton = res.findViewById(R.id.testcard_take_test_button)
 
-                    // PieChart を非表示にする。
                     pieChartLinearLayout = res.findViewById(R.id.pie_chart_linear_layout)
                     pieChartLinearLayout.visibility = View.GONE
 
@@ -147,14 +145,14 @@ class LearningWordListFragment: Fragment(){
                     japaneseWord.visibility = View.INVISIBLE
 
                     testCardTakeTestButton.setOnClickListener {
-
-                        var fragmentManager = fragmentManager.beginTransaction()
+                        val learningMaterial = LearningMaterialTestFragment()
+                        var transaction = fragmentManager.beginTransaction()
                         var args = Bundle()
-
                         args.putInt("testId", TOEIC600Test.id!!)
+                        args.putBoolean("isNormalOrder", true)
                         learningMaterial.arguments = args
-                        fragmentManager.replace(R.id.word_list,learningMaterial)
-                        fragmentManager.commit()
+                        transaction.replace(R.id.word_list,learningMaterial)
+                        transaction.commit()
                     }
 
                 } else {
@@ -169,7 +167,6 @@ class LearningWordListFragment: Fragment(){
                     showJpButton = res.findViewById(R.id.show_word_jp_button)
                     pronounceButton = res.findViewById(R.id.pronounce_word_button)
 
-                    // PieChart を非表示にする。
                     pieChartLinearLayout = res.findViewById(R.id.pie_chart_linear_layout)
                     pieChartLinearLayout.visibility = View.GONE
 
@@ -227,14 +224,13 @@ class LearningWordListFragment: Fragment(){
                         } else {
 
                             //不正解の場合
-                            previousCorrectCount.text = "0"
-                            fastestAnswerTimeTextView.text = "不正解"
-                            averageAnswerTimeTextView.text = "不正解"
+                            previousCorrectCount.text = TOEIC600Word.correctAnswerCount.toString()
+                            fastestAnswerTimeTextView.text = "%.2f".format(TOEIC600Word.averageAnswerTimeSeconds)
+                            averageAnswerTimeTextView.text = "%.2f".format(TOEIC600Word.averageAnswerTimeSeconds)
                         }
                     }
                     pronounceButton = res.findViewById(R.id.pronounce_word_button)
                     pronounceButton.setOnClickListener{
-                        //var wordId = TOEIC600Word.id ?: 0
                         WordListViewModel.pronounceWord(context, TOEIC600Word.id!!)
                     }
                     ecPagerCardArr[position] = res
