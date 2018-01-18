@@ -222,11 +222,10 @@ class LearningWordListFragment: Fragment(){
                                 averageAnswerTimeTextView.text = "%.2f".format(TOEIC600Word.averageAnswerTimeSeconds)
                             }
                         } else {
-
                             //不正解の場合
                             previousCorrectCount.text = TOEIC600Word.correctAnswerCount.toString()
-                            fastestAnswerTimeTextView.text = "%.2f".format(TOEIC600Word.averageAnswerTimeSeconds)
-                            averageAnswerTimeTextView.text = "%.2f".format(TOEIC600Word.averageAnswerTimeSeconds)
+                            fastestAnswerTimeTextView.text = if (TOEIC600Word.fastestAnswerTimeSeconds != null) "%.2f".format(TOEIC600Word.fastestAnswerTimeSeconds) else "不正解"
+                            averageAnswerTimeTextView.text = if (TOEIC600Word.averageAnswerTimeSeconds != null) "%.2f".format(TOEIC600Word.averageAnswerTimeSeconds) else "不正解"
                         }
                     }
                     pronounceButton = res.findViewById(R.id.pronounce_word_button)
