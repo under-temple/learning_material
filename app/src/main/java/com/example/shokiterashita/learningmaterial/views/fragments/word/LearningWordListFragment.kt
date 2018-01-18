@@ -196,9 +196,6 @@ class LearningWordListFragment: Fragment(){
                         averageAnswerTimeTextView.text = "未回答"
 
                     } else {
-
-                        //回答している場合
-                        //前回は、1.5秒以上の回答タイムであったが、過去の最速タイムが1.5秒以下のとき、瞬間回答と表示されてしまう。
                         if (TOEIC600Word.isCorrect!!){
 
                             if (TOEIC600Word.answerTimeSeconds!! <= 1.50) {

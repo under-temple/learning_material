@@ -24,6 +24,10 @@ class TestResultRecycleViewAdapter(val mContext: Context, val mValues: List<Test
         RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val HeaderViewId = 1
+    enum class HeaderViewIds(val headerId:Int){
+        TOP(0),
+        BOTTOM(1)
+    }
 
 
     public interface OnClickListener {
@@ -38,6 +42,18 @@ class TestResultRecycleViewAdapter(val mContext: Context, val mValues: List<Test
     var mClickListener: TestResultRecycleViewAdapter.OnClickListener? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+
+        when(viewType){
+            HeaderViewIds.TOP.headerId ->{
+
+            }
+            HeaderViewIds.BOTTOM.headerId ->{
+
+            }
+            else ->{
+
+            }
+        }
 
         // TODO: when構文で書き直す.
         if (viewType == HeaderViewId){
@@ -120,8 +136,12 @@ class TestResultRecycleViewAdapter(val mContext: Context, val mValues: List<Test
                 holder.answerdWordEnTextview.setTextColor(ContextCompat.getColor(mContext, R.color.correctAnswerTimeColor))
             } else {
                 holder.judgementImageView.setImageResource(R.drawable.incorrect)
+
+                //上でかきなおす。
                 holder.answerdWordEnTextview.setTextColor(mContext.resources.getColor(R.color.colorLightRed))
             }
+
+            // viewHolderにリスナーを実装すべし。
             holder.testResultPronounceIconImageView.setOnClickListener{
                 WordListViewModel.pronounceWord(mContext, TOEIC600Word.wordId)
             }

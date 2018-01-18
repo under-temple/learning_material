@@ -159,14 +159,13 @@ class LearningMaterialTestFragment : Fragment() {
 
     private fun showTest(view: View){
 
-        //TODO: 600Wordsと複数形にする意義がないのでは？ → 単数形にして、wordIdであることを暗示した方が読みやすそう。
-        var TOEIC600Words = TOEIC600Words[CurrentShowIndex]
-        showedWordIds.add(TOEIC600Words.id!!)
+        var TOEIC600Word = TOEIC600Words[CurrentShowIndex]
+        showedWordIds.add(TOEIC600Word.id!!)
         currentTestNumberTextView.text = currentTestNumbers.toString()
-        answerWordJp = TOEIC600Words.wordjp.toString()
-        testWordTextView.text = TOEIC600Words.worden
+        answerWordJp = TOEIC600Word.wordjp.toString()
+        testWordTextView.text = TOEIC600Word.worden
 
-        val answerOptions = arrayListOf(TOEIC600Words.wordjp!!, TOEIC600Words.option_1!!, TOEIC600Words.option_2!!)
+        val answerOptions = arrayListOf(TOEIC600Word.wordjp!!, TOEIC600Word.option_1!!, TOEIC600Word.option_2!!)
         Collections.shuffle(answerOptions)
         choiceAButton.text = answerOptions[0]
         choiceBButton.text = answerOptions[1]
@@ -367,14 +366,6 @@ class LearningMaterialTestFragment : Fragment() {
             hideAnimator.duration = 50
             hideAnimator.start()
             isImageViewAnimated = false
-        }, 950)
+        }, 1000)
     }
-
-//    private fun disableBackKey(view: View){
-//        view.setFocusableInTouchMode(true)
-//        view.requestFocus()
-//        view.setOnKeyListener { v, keyCode, event ->
-//            return@setOnKeyListener (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_UP)
-//        }
-//    }
 }
